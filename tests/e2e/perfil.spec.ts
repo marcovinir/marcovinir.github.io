@@ -13,4 +13,6 @@ test('perfil, educación y experiencia', async ({ page }) => {
   await expect(exp).toContainText('Desarrollador');
   await expect(exp).toContainText('Scrum');
   await expect(exp.getByRole('link', { name: /sira\.dannyas\.dev/ })).toHaveAttribute('href', 'https://sira.dannyas.dev/');
+  await expect(exp.getByRole('link', { name: /munimontesdeoro/ })).toHaveAttribute('href', 'https://munimontesdeoro.go.cr/');
+  await expect(exp).toContainText('Municipalidad de Montes de Oro');
 });

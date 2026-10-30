@@ -3,10 +3,10 @@
 
 export type Link = { label: string; href: string };
 export type Project = { name: string; summary: string; stack: string; href: string; team: boolean; inProgress?: boolean };
-export type TimelineEntry = { period: string; title: string; org: string; description?: string; current: boolean; bullets?: string[]; link?: Link };
+export type TimelineEntry = { period: string; title: string; org: string; description?: string; current: boolean; bullets?: string[]; links?: Link[] };
 export type AreaId = 'fluir' | 'cimientos' | 'chispa' | 'horizonte';
 export type Area = {
-  id: AreaId; label: string; number: string; cvCategory: string;
+  id: AreaId; label: string; number: string;
   titleLine1: string; titleLine2: string; text: string;
   skills: string[]; projects: Project[]; color: string; color2: string;
 };
@@ -46,26 +46,30 @@ export const experience: TimelineEntry[] = [
   {
     period: '2026 — Actualidad',
     title: 'SIRA — Sistema de Reportes de Avería',
-    org: 'Desarrollador · proyecto en equipo',
+    org: 'Desarrollador · proyecto en equipo para la Municipalidad de Montes de Oro',
     current: true,
     bullets: [
       'Desarrollado con metodología Scrum (sprints e historias de usuario) usando Azure DevOps.',
       'Stack: Django + React + TypeScript.',
+      'Despliegues por SSH en AWS (EC2 y RDS).',
     ],
-    link: { label: 'sira.dannyas.dev', href: 'https://sira.dannyas.dev/' },
+    links: [
+      { label: 'sira.dannyas.dev', href: 'https://sira.dannyas.dev/' },
+      { label: 'munimontesdeoro.go.cr', href: 'https://munimontesdeoro.go.cr/' },
+    ],
   },
 ];
 
 export const workflow: Step[] = [
   { title: 'Planificar', text: 'Divido el trabajo en issues y etapas.' },
-  { title: 'Implementar', text: 'En ramas, con apoyo de Claude Code.' },
+  { title: 'Implementar', text: 'En ramas, con Claude Code, agentes y servidores MCP para conectar herramientas.' },
   { title: 'Probar', text: 'Pruebas automáticas e integración continua.' },
   { title: 'Integrar', text: 'Pull request con revisión antes de fusionar.' },
 ];
 
 export const areas: Area[] = [
   {
-    id: 'fluir', label: 'Fluir', number: '01', cvCategory: 'Frontend',
+    id: 'fluir', label: 'Frontend', number: '01',
     titleLine1: 'Interfaces que se', titleLine2: 'mueven contigo.',
     text: 'Frontend rápido, accesible y con animaciones que se sienten naturales.',
     skills: ['React', 'Vue', 'TypeScript', 'Astro', 'Vite'],
@@ -76,7 +80,7 @@ export const areas: Area[] = [
     color: '#38bdf8', color2: '#6366f1',
   },
   {
-    id: 'cimientos', label: 'Cimientos', number: '02', cvCategory: 'Backend y datos',
+    id: 'cimientos', label: 'Backend y datos', number: '02',
     titleLine1: 'Backends que', titleLine2: 'no se mueven.',
     text: 'APIs, modelos de datos y bases de datos diseñadas para crecer sin romperse.',
     skills: ['Spring Boot', 'Django', 'FastAPI', '.NET 8', 'PostgreSQL', 'Oracle', 'Docker'],
@@ -86,29 +90,29 @@ export const areas: Area[] = [
     color: '#34d399', color2: '#a3e635',
   },
   {
-    id: 'chispa', label: 'Chispa', number: '03', cvCategory: 'Tiempo real y juegos',
+    id: 'chispa', label: 'Tiempo real y juegos', number: '03',
     titleLine1: 'Experiencias', titleLine2: 'en tiempo real.',
     text: 'Multijugador, sockets y juegos donde cada milisegundo cuenta.',
-    skills: ['Socket.io', 'Express', 'Godot', 'Three.js'],
+    skills: ['Socket.io', 'Express', 'Three.js'],
     projects: [
       { name: 'Pokémon Minigames', summary: 'Minijuegos 1 vs 1 en tiempo real', stack: 'React + Socket.io + Prisma', href: 'https://github.com/marcovinir/pokemon-minigames', team: false },
     ],
     color: '#fb7185', color2: '#f59e0b',
   },
   {
-    id: 'horizonte', label: 'Horizonte', number: '04', cvCategory: 'Cloud y despliegue',
+    id: 'horizonte', label: 'Cloud y despliegue', number: '04',
     titleLine1: 'Del código', titleLine2: 'a la nube.',
-    text: 'Despliegues automatizados, CI y servicios cloud para que tu proyecto llegue a todos.',
-    skills: ['Render', 'GitHub Actions', 'GitHub Pages'],
+    text: 'Despliegues automatizados, CI y servicios cloud para que tu proyecto llegue a todos. Conocimientos básicos de AWS.',
+    skills: ['AWS EC2', 'AWS RDS', 'SSH', 'Render', 'GitHub Actions', 'GitHub Pages'],
     projects: [
-      { name: 'SIRA', summary: 'Sistema de Reportes de Avería', stack: 'Django + React + TypeScript', href: 'https://sira.dannyas.dev/', team: true, inProgress: true },
+      { name: 'SIRA', summary: 'Sistema de Reportes de Avería para la Municipalidad de Montes de Oro', stack: 'Django + React + TypeScript', href: 'https://sira.dannyas.dev/', team: true, inProgress: true },
     ],
     color: '#e2e8f0', color2: '#a78bfa',
   },
 ];
 
 /** Herramientas de trabajo que no pertenecen a un área; solo aparecen en el CV. */
-export const tools: string[] = ['Git', 'GitHub', 'Claude Code', 'Vitest', 'Playwright'];
+export const tools: string[] = ['Git', 'GitHub', 'Claude Code', 'Agentes', 'MCP', 'Vitest', 'Playwright'];
 
 function collect(value: unknown, out: string[]): void {
   if (typeof value === 'string') out.push(value);

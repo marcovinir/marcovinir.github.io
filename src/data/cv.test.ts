@@ -11,8 +11,6 @@ test('sin ubicación', () => {
 });
 test('cuatro áreas en orden', () => {
   expect(areas.map(a => a.id)).toEqual(['fluir', 'cimientos', 'chispa', 'horizonte']);
-  expect(areas.map(a => a.label)).toEqual(['Fluir', 'Cimientos', 'Chispa', 'Horizonte']);
-  expect(areas.map(a => a.cvCategory)).toEqual(['Frontend', 'Backend y datos', 'Tiempo real y juegos', 'Cloud y despliegue']);
 });
 test('proyectos por área', () => {
   expect(areas[0].projects.map(p => p.name)).toEqual(['PomoPet', 'Gym-LACOBRA']);
@@ -37,7 +35,22 @@ test('educación solo UNA desde 2024', () => {
 test('experiencia SIRA como desarrollador', () => {
   expect(experience[0].title).toMatch(/SIRA/);
   expect(experience[0].org).toMatch(/Desarrollador/);
-  expect(experience[0].link?.href).toBe('https://sira.dannyas.dev/');
+  expect(experience[0].org).toMatch(/Municipalidad de Montes de Oro/);
+  expect(experience[0].links?.map(l => l.href)).toEqual(['https://sira.dannyas.dev/', 'https://munimontesdeoro.go.cr/']);
+});
+test('AWS básico con EC2, RDS y SSH', () => {
+  const nube = areas.find(a => a.id === 'horizonte')!;
+  expect(nube.text).toMatch(/básic/i);
+  expect(nube.skills).toEqual(expect.arrayContaining(['AWS EC2', 'AWS RDS', 'SSH']));
+  expect(JSON.stringify(experience)).toMatch(/SSH/);
+});
+test('Godot ya no aparece', () => expect(allText()).not.toMatch(/Godot/i));
+test('el flujo menciona agentes y MCP', () => {
+  expect(JSON.stringify(workflow)).toMatch(/agentes/i);
+  expect(JSON.stringify(workflow)).toMatch(/MCP/);
+});
+test('las áreas se nombran por su categoría', () => {
+  expect(areas.map(a => a.label)).toEqual(['Frontend', 'Backend y datos', 'Tiempo real y juegos', 'Cloud y despliegue']);
 });
 test('contacto', () => {
   expect(person.email).toBe('mvnaranjo1@gmail.com');

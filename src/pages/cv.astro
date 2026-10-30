@@ -32,7 +32,7 @@ const portfolio = Astro.site ? Astro.site.host : '';
           <div class="row"><h3>{e.title}</h3><span class="period">{e.period}</span></div>
           <p class="org">{e.org}</p>
           {e.bullets && <ul>{e.bullets.map(b => <li>{b}</li>)}</ul>}
-          {e.link && <p class="link">{e.link.label}</p>}
+          {e.links && <p class="link">{e.links.map(l => l.label).join(' · ')}</p>}
         </article>
       ))}
     </section>
@@ -63,7 +63,7 @@ const portfolio = Astro.site ? Astro.site.host : '';
     <section>
       <h2>Habilidades</h2>
       <dl class="skills">
-        {areas.map(a => (<><dt>{a.cvCategory}</dt><dd>{a.skills.join(' · ')}</dd></>))}
+        {areas.map(a => (<><dt>{a.label}</dt><dd>{a.skills.join(' · ')}</dd></>))}
         <dt>Herramientas</dt><dd>{tools.join(' · ')}</dd>
       </dl>
     </section>

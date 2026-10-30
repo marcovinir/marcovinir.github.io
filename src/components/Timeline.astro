@@ -17,7 +17,7 @@ const { entries } = Astro.props;
       <div class="tl-sub">{e.org}</div>
       {e.description && <p class="tl-desc">{e.description}</p>}
       {e.bullets && <ul class="tl-bullets">{e.bullets.map(b => <li>{b}</li>)}</ul>}
-      {e.link && <a class="tl-link" href={e.link.href} target="_blank" rel="noopener">{e.link.label}</a>}
+      {e.links?.map(l => <a class="tl-link" href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
     </li>
   ))}
 </ol>
@@ -37,5 +37,5 @@ const { entries } = Astro.props;
   .tl-sub { color: #c7cbe0; font-size: 14px; margin-top: 2px; }
   .tl-desc { color: var(--muted); font-size: 14px; margin-top: 8px; line-height: 1.55; }
   .tl-bullets { color: var(--muted); font-size: 14px; margin-top: 8px; line-height: 1.55; padding-left: 18px; }
-  .tl-link { display: inline-block; margin-top: 10px; font-size: 14px; color: var(--c1); text-underline-offset: 3px; }
+  .tl-link { display: inline-block; margin: 10px 16px 0 0; font-size: 14px; color: var(--c1); text-underline-offset: 3px; }
 </style>
