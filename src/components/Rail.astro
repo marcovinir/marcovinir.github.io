@@ -1,0 +1,25 @@
+---
+interface Props {
+  items: { id: string; color: string; label: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="rail" aria-label="Secciones">
+  {items.map(i => <a href={`#${i.id}`} data-color={i.color} aria-label={i.label} title={i.label}></a>)}
+</nav>
+
+<style>
+  .rail {
+    position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 40;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .rail a {
+    width: 10px; height: 10px; border-radius: 50%; background: #ffffff26;
+    transition: all .4s; display: block;
+  }
+  .rail a:hover { background: #ffffff66; }
+  .rail a.on { height: 34px; border-radius: 6px; background: var(--accent, #fff); box-shadow: 0 0 18px var(--accent, #fff); }
+  @media (max-width: 800px) { .rail { right: 10px; gap: 10px; } }
+</style>

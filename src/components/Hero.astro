@@ -1,0 +1,40 @@
+---
+import { person } from '../data/cv';
+---
+
+<section id="hero" data-accent="#ffffff">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="kicker reveal">{person.name} · {person.role}</div>
+    <h1 class="reveal">{person.heroTitleStart} <span class="grad-spectrum">{person.heroTitleAccent}</span></h1>
+    <p class="lead reveal">{person.heroText}</p>
+    <div class="reveal">
+      <a class="cta" href="/cv-marco-rojas.pdf" download>Descargar CV
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M3 14h10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" /></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scrollhint" aria-hidden="true"></div>
+</section>
+
+<style>
+  #hero { --accent: #fff; --accent2: #fff; }
+  h1 { margin-top: 16px; }
+  .kicker { color: var(--muted); }
+  .aurora { position: absolute; inset: -20%; filter: blur(70px); opacity: .55; }
+  .aurora span { position: absolute; width: 40vw; height: 40vw; border-radius: 50%; animation: float 18s ease-in-out infinite; }
+  .aurora span:nth-child(1) { background: var(--c1); left: 5%; top: 10%; }
+  .aurora span:nth-child(2) { background: var(--c2); right: 10%; top: 5%; animation-delay: -4s; }
+  .aurora span:nth-child(3) { background: var(--c3); left: 25%; bottom: 0; animation-delay: -8s; }
+  .aurora span:nth-child(4) { background: var(--c4b); right: 5%; bottom: 10%; animation-delay: -12s; }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(6vw, -4vh) scale(1.1); }
+    66% { transform: translate(-4vw, 5vh) scale(.92); }
+  }
+  .vignette { position: absolute; inset: 0; background: radial-gradient(transparent 0, var(--bg) 75%); }
+  .scrollhint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2; width: 24px; height: 40px; border: 2px solid #ffffff40; border-radius: 14px; }
+  .scrollhint::after { content: ""; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: #fff; animation: wheel 1.8s infinite; }
+  @keyframes wheel { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(12px); } }
+</style>

@@ -1,14 +1,23 @@
 ---
+import Base from '../layouts/Base.astro';
+import Rail from '../components/Rail.astro';
+import Hero from '../components/Hero.astro';
+
+const rail = [
+  { id: 'hero', color: '#ffffff', label: 'Inicio' },
+];
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Marco Rojas · Full-stack developer</title>
-	</head>
-	<body>
-		<h1>Marco Rojas</h1>
-	</body>
-</html>
+<Base
+  title="Marco Rojas · Full-stack developer"
+  description="Portafolio y CV de Marco Rojas, desarrollador full-stack: frontend, backend, tiempo real y despliegue."
+>
+  <Rail items={rail} />
+  <main>
+    <Hero />
+  </main>
+</Base>
+
+<script>
+  import '../scripts/reveal';
+</script>
