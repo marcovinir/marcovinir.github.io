@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Página no encontrada · Marco Rojas" description="Esta página no existe." noindex>
+  <main>
+    <section>
+      <div class="inner">
+        <div class="kicker">Error 404</div>
+        <h1>Esta página no existe.</h1>
+        <a class="cta" href="/">Volver al inicio</a>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<style>
+  section { justify-content: center; text-align: center; background: radial-gradient(ellipse at 50% 40%, #1b1e33 0, var(--bg) 60%); }
+  .kicker { color: var(--muted); margin-bottom: 16px; }
+</style>
