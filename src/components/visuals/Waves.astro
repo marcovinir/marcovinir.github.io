@@ -1,0 +1,32 @@
+<div class="visual" aria-hidden="true">
+  <div class="caustic"></div>
+  <div class="waves">
+    <svg class="w1" viewBox="0 0 2880 320" preserveAspectRatio="none"><path fill="#38bdf8" d="M0 160 C240 80 480 240 720 160 S1200 80 1440 160 S1920 240 2160 160 S2640 80 2880 160 V320 H0Z" /></svg>
+    <svg class="w2" viewBox="0 0 2880 320" preserveAspectRatio="none"><path fill="#6366f1" d="M0 200 C240 140 480 260 720 200 S1200 140 1440 200 S1920 260 2160 200 S2640 140 2880 200 V320 H0Z" /></svg>
+    <svg class="w3" viewBox="0 0 2880 320" preserveAspectRatio="none"><path fill="#0b1830" d="M0 250 C240 210 480 290 720 250 S1200 210 1440 250 S1920 290 2160 250 S2640 210 2880 250 V320 H0Z" /></svg>
+  </div>
+</div>
+
+<style>
+  .visual { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .waves { position: absolute; left: 0; right: 0; bottom: 0; height: 32%; overflow: hidden; }
+  .waves svg { position: absolute; bottom: 0; width: 200%; height: 100%; }
+  .w1 { animation: drift 14s linear infinite; opacity: .25; }
+  .w2 { animation: drift 9s linear infinite reverse; opacity: .35; }
+  .w3 { animation: drift 6s linear infinite; opacity: .55; }
+  @keyframes drift { to { transform: translateX(-50%); } }
+  .caustic {
+    position: absolute; right: 8vw; top: 18%; width: min(34vw, 420px); aspect-ratio: 1;
+    border-radius: 42% 58% 63% 37% / 45% 41% 59% 55%;
+    background: conic-gradient(from 0deg, var(--c1), var(--c1b), #22d3ee, var(--c1));
+    filter: blur(2px); opacity: .85; box-shadow: 0 0 120px #38bdf855;
+    animation: morph 10s ease-in-out infinite, spin 24s linear infinite;
+  }
+  .caustic::after { content: ""; position: absolute; inset: 14%; border-radius: inherit; background: var(--bg); opacity: .82; }
+  @keyframes morph {
+    0%, 100% { border-radius: 42% 58% 63% 37% / 45% 41% 59% 55%; }
+    50% { border-radius: 61% 39% 35% 65% / 58% 62% 38% 42%; }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (max-width: 800px) { .caustic { right: -20vw; width: 70vw; } }
+</style>

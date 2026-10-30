@@ -1,0 +1,32 @@
+<div class="visual" aria-hidden="true">
+  <div class="gridfloor"></div>
+  <svg class="iso" viewBox="0 0 400 340">
+    <defs>
+      <linearGradient id="iso-top" x1="0" x2="1"><stop offset="0" stop-color="#34d399" /><stop offset="1" stop-color="#a3e635" /></linearGradient>
+    </defs>
+    <g class="block"><polygon points="200,40 260,75 200,110 140,75" fill="url(#iso-top)" /><polygon points="140,75 200,110 200,170 140,135" fill="#10b98199" /><polygon points="260,75 200,110 200,170 260,135" fill="#05966999" /></g>
+    <g class="block"><polygon points="110,130 170,165 110,200 50,165" fill="url(#iso-top)" opacity=".85" /><polygon points="50,165 110,200 110,240 50,205" fill="#10b98177" /><polygon points="170,165 110,200 110,240 170,205" fill="#05966977" /></g>
+    <g class="block"><polygon points="290,130 350,165 290,200 230,165" fill="url(#iso-top)" opacity=".85" /><polygon points="230,165 290,200 290,240 230,205" fill="#10b98177" /><polygon points="350,165 290,200 290,240 350,205" fill="#05966977" /></g>
+    <g class="block"><polygon points="200,190 260,225 200,260 140,225" fill="url(#iso-top)" opacity=".7" /><polygon points="140,225 200,260 200,290 140,255" fill="#10b98166" /><polygon points="260,225 200,260 200,290 260,255" fill="#05966966" /></g>
+    <g class="block"><circle cx="200" cy="20" r="5" fill="#a3e635" /><line x1="200" y1="25" x2="200" y2="40" stroke="#a3e635" stroke-dasharray="2 3" /></g>
+  </svg>
+</div>
+
+<style>
+  .visual { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .iso { position: absolute; right: 6vw; top: 50%; transform: translateY(-50%); width: min(40vw, 500px); }
+  .block { animation: rise 4s ease-in-out infinite; }
+  .block:nth-of-type(2) { animation-delay: -.6s; }
+  .block:nth-of-type(3) { animation-delay: -1.2s; }
+  .block:nth-of-type(4) { animation-delay: -1.8s; }
+  .block:nth-of-type(5) { animation-delay: -2.4s; }
+  @keyframes rise { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .gridfloor {
+    position: absolute; left: -10%; right: -10%; bottom: -10%; height: 50%;
+    background-image: linear-gradient(#34d39922 1px, transparent 1px), linear-gradient(90deg, #34d39922 1px, transparent 1px);
+    background-size: 60px 60px; transform: perspective(500px) rotateX(62deg); transform-origin: bottom;
+    animation: gridmove 6s linear infinite; mask-image: linear-gradient(transparent, #000 60%);
+  }
+  @keyframes gridmove { to { background-position: 0 60px; } }
+  @media (max-width: 800px) { .iso { right: -15vw; width: 80vw; } }
+</style>

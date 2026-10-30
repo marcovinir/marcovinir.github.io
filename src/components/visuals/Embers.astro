@@ -1,0 +1,64 @@
+<div class="visual" aria-hidden="true">
+  <canvas id="embers"></canvas>
+  <div class="core"><i></i><i></i><i></i><b></b></div>
+</div>
+
+<style>
+  .visual { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  #embers { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .core { position: absolute; right: 12vw; top: 50%; width: min(26vw, 320px); aspect-ratio: 1; transform: translateY(-50%); }
+  .core i { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--c3); opacity: 0; animation: pulse 3s ease-out infinite; }
+  .core i:nth-child(2) { animation-delay: 1s; border-color: var(--c3b); }
+  .core i:nth-child(3) { animation-delay: 2s; }
+  .core b { position: absolute; inset: 32%; border-radius: 50%; background: radial-gradient(#fff 0, var(--c3b) 30%, var(--c3) 60%, transparent 72%); animation: flick 2.2s ease-in-out infinite; filter: blur(1px); }
+  @keyframes pulse { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(1.25); opacity: 0; } }
+  @keyframes flick { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.08); } 60% { transform: scale(.95); } }
+  @media (max-width: 800px) { .core { right: -10vw; width: 60vw; } }
+</style>
+
+<script>
+  // Brasas que suben. Solo animan mientras la sección está en pantalla y nunca con reduced motion.
+  const canvas = document.getElementById('embers') as HTMLCanvasElement | null;
+  const ctx = canvas?.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (canvas && ctx && !reduce) {
+    type Ember = { x: number; y: number; r: number; vx: number; vy: number; life: number; hue: number };
+    let embers: Ember[] = [];
+    let running = false;
+    let frame = 0;
+
+    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
+    const spawn = (): Ember => ({
+      x: canvas.width * (0.45 + Math.random() * 0.5), y: canvas.height + 10,
+      r: Math.random() * 2.2 + 0.6, vx: (Math.random() - 0.5) * 0.6, vy: -(Math.random() * 1.2 + 0.5),
+      life: 1, hue: Math.random() < 0.5 ? 350 : 35,
+    });
+
+    resize();
+    addEventListener('resize', resize);
+    embers = Array.from({ length: 90 }, () => ({ ...spawn(), y: Math.random() * canvas.height }));
+
+    const tick = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const e of embers) {
+        e.x += e.vx + Math.sin(e.y * 0.02) * 0.3;
+        e.y += e.vy;
+        e.life -= 0.0025;
+        if (e.y < -10 || e.life <= 0) Object.assign(e, spawn());
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${e.hue},95%,65%,${e.life})`;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = `hsl(${e.hue},95%,60%)`;
+        ctx.fill();
+      }
+      if (running) frame = requestAnimationFrame(tick);
+    };
+
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !running) { running = true; resize(); frame = requestAnimationFrame(tick); }
+      else if (!entry.isIntersecting && running) { running = false; cancelAnimationFrame(frame); }
+    }).observe(canvas);
+  }
+</script>

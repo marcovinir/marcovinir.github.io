@@ -1,0 +1,35 @@
+---
+import type { Area } from '../data/cv';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  area: Area;
+}
+
+const { area } = Astro.props;
+---
+
+<section id={area.id} class={`area area-${area.id}`} data-accent={area.color} style={`--accent:${area.color};--accent2:${area.color2}`}>
+  <slot name="visual" />
+  <div class="inner">
+    <div class="kicker reveal">{area.number} · {area.label}</div>
+    <h2 class="reveal">{area.titleLine1}<br /><span class="grad">{area.titleLine2}</span></h2>
+    <p class="lead reveal">{area.text}</p>
+    <ul class="chips reveal">{area.skills.map(s => <li class="chip">{s}</li>)}</ul>
+    <div class="reveal">
+      {area.projects.map(p => <ProjectCard project={p} accent={area.color} accent2={area.color2} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .inner { margin-top: 8px; }
+  .area-fluir { background: radial-gradient(ellipse at 70% 30%, #0c2a4a 0, var(--bg) 65%); }
+  .area-cimientos { background: radial-gradient(ellipse at 75% 60%, #0c2a1c 0, var(--bg) 65%); }
+  .area-chispa { background: radial-gradient(ellipse at 70% 100%, #3a0f12 0, var(--bg) 60%); }
+  .area-horizonte { background: radial-gradient(ellipse at 70% 40%, #1b1e33 0, var(--bg) 65%); }
+  .area-horizonte .kicker { color: var(--accent2); }
+  @media (max-width: 800px) {
+    .area :global(.visual) { opacity: .25; }
+  }
+</style>

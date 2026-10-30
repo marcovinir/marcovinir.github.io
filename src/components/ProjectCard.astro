@@ -1,0 +1,40 @@
+---
+import type { Project } from '../data/cv';
+
+interface Props {
+  project: Project;
+  accent: string;
+  accent2: string;
+}
+
+const { project, accent, accent2 } = Astro.props;
+---
+
+<a class="proj" href={project.href} target="_blank" rel="noopener" style={`--accent:${accent};--accent2:${accent2}`}>
+  <span class="bar" aria-hidden="true"></span>
+  <span class="body">
+    <span class="name">
+      <b>{project.name}{project.inProgress && ' · en desarrollo'}</b>
+      {project.team && <span class="tag">En equipo</span>}
+    </span>
+    <small>{project.summary} · {project.stack}</small>
+  </span>
+  <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" /></svg>
+</a>
+
+<style>
+  .proj {
+    margin-top: 14px; display: flex; align-items: center; gap: 14px; padding: 16px 18px;
+    border-radius: 16px; border: 1px solid #ffffff1a; text-decoration: none;
+    background: linear-gradient(135deg, #ffffff0d, #ffffff03); backdrop-filter: blur(10px);
+    max-width: 460px; transition: transform .3s, border-color .3s;
+  }
+  .proj:hover, .proj:focus-visible { transform: translateY(-3px); border-color: var(--accent); }
+  .bar { width: 4px; align-self: stretch; border-radius: 4px; background: linear-gradient(var(--accent), var(--accent2)); flex: none; }
+  .body { flex: 1; min-width: 0; }
+  .name { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .tag { font-size: 11px; font-weight: 600; letter-spacing: .04em; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); }
+  small { color: var(--muted); display: block; font-size: 12px; margin-top: 4px; line-height: 1.4; }
+  .arrow { color: var(--muted); flex: none; transition: transform .3s, color .3s; }
+  .proj:hover .arrow { transform: translate(2px, -2px); color: var(--accent); }
+</style>
