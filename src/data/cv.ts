@@ -107,6 +107,9 @@ export const areas: Area[] = [
   },
 ];
 
+/** Herramientas de trabajo que no pertenecen a un área; solo aparecen en el CV. */
+export const tools: string[] = ['Git', 'GitHub', 'Claude Code', 'Vitest', 'Playwright'];
+
 function collect(value: unknown, out: string[]): void {
   if (typeof value === 'string') out.push(value);
   else if (Array.isArray(value)) value.forEach(v => collect(v, out));
@@ -116,6 +119,6 @@ function collect(value: unknown, out: string[]): void {
 /** Une todos los textos del CV; lo usan las pruebas de reglas de contenido. */
 export function allText(): string {
   const out: string[] = [];
-  collect({ person, stats, education, experience, workflow, areas }, out);
+  collect({ person, stats, education, experience, workflow, areas, tools }, out);
   return out.join('\n');
 }
