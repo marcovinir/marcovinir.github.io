@@ -1,0 +1,17 @@
+---
+import { experience } from '../data/cv';
+import Timeline from './Timeline.astro';
+---
+
+<section id="experiencia" data-accent="#38bdf8">
+  <div class="inner">
+    <div class="kicker reveal">Trayectoria</div>
+    <h2 class="reveal">Experiencia</h2>
+    <div class="reveal"><Timeline entries={experience} /></div>
+  </div>
+</section>
+
+<style>
+  #experiencia { min-height: 70vh; background: radial-gradient(ellipse at 80% 50%, #0c1a33 0, var(--bg) 60%); }
+  .kicker { color: var(--muted); }
+</style>

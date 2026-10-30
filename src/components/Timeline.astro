@@ -1,0 +1,41 @@
+---
+import type { TimelineEntry } from '../data/cv';
+
+interface Props {
+  entries: TimelineEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<ol class="timeline">
+  {entries.map(e => (
+    <li class:list={['tl-item', { now: e.current }]}>
+      <span class="tl-dot" aria-hidden="true"></span>
+      <div class="tl-date">{e.period}</div>
+      <h3 class="tl-title">{e.title}</h3>
+      <div class="tl-sub">{e.org}</div>
+      {e.description && <p class="tl-desc">{e.description}</p>}
+      {e.bullets && <ul class="tl-bullets">{e.bullets.map(b => <li>{b}</li>)}</ul>}
+      {e.link && <a class="tl-link" href={e.link.href} target="_blank" rel="noopener">{e.link.label}</a>}
+    </li>
+  ))}
+</ol>
+
+<style>
+  .timeline { position: relative; margin-top: 26px; padding-left: 28px; list-style: none; }
+  .timeline::before {
+    content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px;
+    background: linear-gradient(var(--c1), var(--c2), var(--c3), var(--c4b)); opacity: .6;
+  }
+  .tl-item { position: relative; padding: 4px 0 26px; }
+  .tl-dot { position: absolute; left: -28px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid #ffffff55; }
+  .now .tl-dot { border-color: var(--c1); animation: ping 2s infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 #38bdf8aa; } 100% { box-shadow: 0 0 0 12px #38bdf800; } }
+  .tl-date { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--c1); }
+  .tl-title { font-size: 20px; font-weight: 700; margin-top: 4px; }
+  .tl-sub { color: #c7cbe0; font-size: 14px; margin-top: 2px; }
+  .tl-desc { color: var(--muted); font-size: 14px; margin-top: 8px; line-height: 1.55; }
+  .tl-bullets { color: var(--muted); font-size: 14px; margin-top: 8px; line-height: 1.55; padding-left: 18px; }
+  .tl-link { display: inline-block; margin-top: 10px; font-size: 14px; color: var(--c1); text-underline-offset: 3px; }
+</style>

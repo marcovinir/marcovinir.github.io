@@ -2,9 +2,13 @@
 import Base from '../layouts/Base.astro';
 import Rail from '../components/Rail.astro';
 import Hero from '../components/Hero.astro';
+import Perfil from '../components/Perfil.astro';
+import Experiencia from '../components/Experiencia.astro';
 
 const rail = [
   { id: 'hero', color: '#ffffff', label: 'Inicio' },
+  { id: 'perfil', color: '#ffffff', label: 'Sobre mí' },
+  { id: 'experiencia', color: '#38bdf8', label: 'Experiencia' },
 ];
 ---
 
@@ -15,6 +19,8 @@ const rail = [
   <Rail items={rail} />
   <main>
     <Hero />
+    <Perfil />
+    <Experiencia />
   </main>
 </Base>
 
