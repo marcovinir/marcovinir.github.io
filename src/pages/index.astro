@@ -4,11 +4,13 @@ import Rail from '../components/Rail.astro';
 import Hero from '../components/Hero.astro';
 import Perfil from '../components/Perfil.astro';
 import Experiencia from '../components/Experiencia.astro';
+import ComoTrabajo from '../components/ComoTrabajo.astro';
 
 const rail = [
   { id: 'hero', color: '#ffffff', label: 'Inicio' },
   { id: 'perfil', color: '#ffffff', label: 'Sobre mí' },
   { id: 'experiencia', color: '#38bdf8', label: 'Experiencia' },
+  { id: 'como-trabajo', color: '#a78bfa', label: 'Cómo trabajo' },
 ];
 ---
 
@@ -21,6 +23,7 @@ const rail = [
     <Hero />
     <Perfil />
     <Experiencia />
+    <ComoTrabajo />
   </main>
 </Base>
 

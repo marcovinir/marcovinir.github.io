@@ -1,0 +1,50 @@
+---
+import { workflow } from '../data/cv';
+---
+
+<section id="como-trabajo" data-accent="#a78bfa">
+  <div class="wrap">
+    <div class="kicker reveal">Proceso</div>
+    <h2 class="reveal">Cómo trabajo</h2>
+    <ol class="steps reveal">
+      {workflow.map((s, i) => (
+        <li class="step" style={`--i:${i}`}>
+          <span class="num">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  #como-trabajo { min-height: 80vh; background: linear-gradient(180deg, var(--bg), #0a0b14 50%, var(--bg)); }
+  .wrap { position: relative; z-index: 2; width: 100%; max-width: 1150px; }
+  .kicker { color: var(--muted); }
+  .steps { list-style: none; position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 44px; }
+  .steps::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 22px; height: 2px;
+    background: var(--spectrum); opacity: .5;
+  }
+  .step { position: relative; padding-top: 64px; }
+  .num {
+    position: absolute; top: 0; left: 0; width: 46px; height: 46px; border-radius: 50%;
+    display: grid; place-items: center; font-weight: 800; font-size: 14px;
+    background: var(--bg); border: 2px solid #ffffff33; color: var(--muted);
+    transition: border-color .5s, color .5s, box-shadow .5s;
+    transition-delay: calc(var(--i) * 150ms);
+  }
+  .step:nth-child(1) { --c: var(--c1); }
+  .step:nth-child(2) { --c: var(--c2); }
+  .step:nth-child(3) { --c: var(--c3); }
+  .step:nth-child(4) { --c: var(--c4b); }
+  .in .num, :global(html:not(.js)) .num { border-color: var(--c); color: var(--text); box-shadow: 0 0 24px color-mix(in srgb, var(--c) 45%, transparent); }
+  h3 { font-size: 20px; font-weight: 700; }
+  p { color: var(--muted); font-size: 15px; line-height: 1.55; margin-top: 8px; }
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: 1fr; gap: 8px; }
+    .steps::before { left: 22px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: linear-gradient(var(--c1), var(--c2), var(--c3), var(--c4b)); }
+    .step { padding: 0 0 24px 70px; min-height: 60px; }
+  }
+</style>
