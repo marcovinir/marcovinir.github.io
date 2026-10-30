@@ -11,6 +11,8 @@ import Waves from '../components/visuals/Waves.astro';
 import IsoBlocks from '../components/visuals/IsoBlocks.astro';
 import Embers from '../components/visuals/Embers.astro';
 import Streams from '../components/visuals/Streams.astro';
+import Contacto from '../components/Contacto.astro';
+import Footer from '../components/Footer.astro';
 import { areas } from '../data/cv';
 
 const visuals = { fluir: Waves, cimientos: IsoBlocks, chispa: Embers, horizonte: Streams };
@@ -21,6 +23,7 @@ const rail = [
   { id: 'experiencia', color: '#38bdf8', label: 'Experiencia' },
   { id: 'como-trabajo', color: '#a78bfa', label: 'Cómo trabajo' },
   ...areas.map(a => ({ id: a.id, color: a.id === 'horizonte' ? a.color2 : a.color, label: a.label })),
+  { id: 'contacto', color: '#ffffff', label: 'Contacto' },
 ];
 ---
 
@@ -39,7 +42,9 @@ const rail = [
       const Visual = visuals[a.id];
       return <Area area={a}><Visual slot="visual" /></Area>;
     })}
+    <Contacto />
   </main>
+  <Footer />
 </Base>
 
 <script>

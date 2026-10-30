@@ -1,0 +1,57 @@
+---
+import { person } from '../data/cv';
+---
+
+<section id="contacto" data-accent="#ffffff">
+  <div class="inner">
+    <div class="spectrum reveal" aria-hidden="true"></div>
+    <h2 class="reveal">¿Tienes un proyecto en mente?</h2>
+    <p class="lead reveal">Cuéntame tu idea y la construimos juntos. Escríbeme y te respondo pronto.</p>
+    <div class="mail reveal">
+      <a href={`mailto:${person.email}`}>
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" /><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
+        <span class="addr">{person.email}</span>
+      </a>
+      <button class="copy" type="button" data-email={person.email}>Copiar</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  #contacto { min-height: 70vh; justify-content: center; text-align: center; --accent: #fff; --accent2: #fff; background: linear-gradient(180deg, var(--bg), #0a0b12); }
+  .inner { max-width: 720px; }
+  .lead { margin: 16px auto 0; }
+  .spectrum { height: 3px; width: 220px; margin: 0 auto 26px; border-radius: 3px; background: var(--spectrum); background-size: 200% 100%; animation: shift 4s linear infinite; }
+  @keyframes shift { to { background-position: 200% 0; } }
+  .mail { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; padding: 10px 10px 10px 22px; border-radius: 16px; border: 1px solid #ffffff22; background: #ffffff08; transition: border-color .3s, background .3s; }
+  .mail:hover { border-color: #fff; background: #ffffff12; }
+  .mail a { display: inline-flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+  .copy { font: inherit; font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 10px; background: #ffffff14; color: var(--muted); cursor: pointer; border: 0; }
+  .copy:hover { color: var(--text); }
+  .copy.ok { color: var(--c2); }
+  @media (max-width: 480px) { .mail { flex-direction: column; padding: 16px; } .mail a { font-size: 16px; } }
+</style>
+
+<script>
+  // Copia el correo. Sin portapapeles disponible, lo deja seleccionado para copiarlo a mano.
+  document.querySelectorAll<HTMLButtonElement>('.copy').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const email = btn.dataset.email ?? '';
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('sin portapapeles');
+        await navigator.clipboard.writeText(email);
+        btn.textContent = 'Copiado';
+        btn.classList.add('ok');
+      } catch {
+        const addr = btn.parentElement?.querySelector('.addr');
+        const sel = getSelection();
+        if (addr && sel) {
+          const range = document.createRange();
+          range.selectNodeContents(addr);
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      }
+    });
+  });
+</script>

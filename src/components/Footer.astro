@@ -1,0 +1,16 @@
+---
+import { person } from '../data/cv';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <span>{year} · {person.name}</span>
+  <a href={person.github} target="_blank" rel="noopener">GitHub</a>
+</footer>
+
+<style>
+  footer { display: flex; justify-content: center; gap: 18px; padding: 28px 8vw 36px; color: var(--muted); font-size: 13px; background: #0a0b12; border-top: 1px solid #ffffff0f; }
+  a { text-underline-offset: 3px; }
+  a:hover { color: var(--text); }
+</style>
