@@ -1,6 +1,6 @@
-# marcovinir.github.io
+# marcovinir.dev
 
-Portafolio y CV interactivo de Marco Rojas, hecho con [Astro](https://astro.build) y publicado en GitHub Pages.
+Portafolio y CV interactivo de Marco Rojas, hecho con [Astro](https://astro.build) y publicado en [marcovinir.dev](https://marcovinir.dev) con GitHub Pages.
 
 ## Correrlo en local
 
