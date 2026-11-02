@@ -95,7 +95,7 @@ export const areas: Area[] = [
     text: 'Multijugador, sockets y juegos donde cada milisegundo cuenta.',
     skills: ['Socket.io', 'Express', 'Three.js'],
     projects: [
-      { name: 'PokeMiniGames', summary: 'Minijuegos 1 vs 1 en tiempo real', stack: 'React + Socket.io + Prisma', href: 'https://pokeminigames.marcovinir.dev/', team: false },
+      { name: 'Rivalmon', summary: 'Minijuegos 1 vs 1 en tiempo real', stack: 'React + Socket.io + Prisma', href: 'https://pokeminigames.marcovinir.dev/', team: false },
     ],
     color: '#fb7185', color2: '#f59e0b',
   },
