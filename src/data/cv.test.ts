@@ -15,7 +15,8 @@ test('cuatro áreas en orden', () => {
 test('proyectos por área', () => {
   expect(areas[0].projects.map(p => p.name)).toEqual(['PomoPet', 'Gym-LACOBRA']);
   expect(areas[1].projects.map(p => p.name)).toEqual(['OraAdmin XE']);
-  expect(areas[2].projects.map(p => p.name)).toEqual(['Pokémon Minigames']);
+  expect(areas[2].projects.map(p => p.name)).toEqual(['PokeMiniGames']);
+  expect(areas[2].projects[0].href).toBe('https://pokeminigames.marcovinir.dev/');
   expect(areas[3].projects.map(p => p.name)).toEqual(['SIRA']);
 });
 test('etiqueta En equipo solo en proyectos de equipo', () => {
