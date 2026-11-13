@@ -14,7 +14,7 @@ test('cuatro áreas en orden', () => {
 });
 test('proyectos por área', () => {
   expect(areas[0].projects.map(p => p.name)).toEqual(['PomoPet', 'Gym-LACOBRA']);
-  expect(areas[1].projects.map(p => p.name)).toEqual(['OraAdmin XE', 'Coffee Tour Finca Zagala Nueva']);
+  expect(areas[1].projects.map(p => p.name)).toEqual(['OraAdmin XE', 'Coffee Tour Pura Vista']);
   expect(areas[1].projects[1].href).toBe('https://zagala.marcovinir.dev/');
   expect(areas[2].projects.map(p => p.name)).toEqual(['Rivalmon']);
   expect(areas[2].projects[0].href).toBe('https://rivalmon.marcovinir.dev/');
