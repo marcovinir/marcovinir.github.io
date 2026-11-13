@@ -16,6 +16,7 @@ const portfolio = Astro.site ? Astro.site.host : '';
       <ul class="contact">
         <li><a href={`mailto:${person.email}`}>{person.email}</a></li>
         <li><a href={person.github}>{person.github.replace('https://', '')}</a></li>
+        <li><a href={person.linkedin}>linkedin.com/in/marco-vinicio-rojas-peña</a></li>
         {portfolio && <li><a href={Astro.site}>{portfolio}</a></li>}
       </ul>
     </header>

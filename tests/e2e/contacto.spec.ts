@@ -25,3 +25,11 @@ test('pie con GitHub', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('footer').getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/marcovinir');
 });
+
+test('LinkedIn en contacto, pie y CV', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#contacto').getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('href', 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/');
+  await expect(page.locator('footer').getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('href', 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/');
+  await page.goto('/cv');
+  await expect(page.getByRole('link', { name: /linkedin/i })).toHaveAttribute('href', 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/');
+});

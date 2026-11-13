@@ -14,6 +14,7 @@ import { person } from '../data/cv';
       </a>
       <button class="copy" type="button" data-email={person.email}>Copiar</button>
     </div>
+    <p class="social reveal"><a href={person.linkedin} target="_blank" rel="noopener">También en LinkedIn</a></p>
   </div>
 </section>
 
@@ -29,6 +30,9 @@ import { person } from '../data/cv';
   .copy { font: inherit; font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 10px; background: #ffffff14; color: var(--muted); cursor: pointer; border: 0; }
   .copy:hover { color: var(--text); }
   .copy.ok { color: var(--c2); }
+  .social { margin-top: 18px; font-size: 15px; }
+  .social a { color: var(--muted); text-underline-offset: 4px; }
+  .social a:hover { color: var(--text); }
   @media (max-width: 480px) { .mail { flex-direction: column; padding: 16px; } .mail a { font-size: 16px; } }
 </style>
 

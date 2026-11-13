@@ -17,6 +17,7 @@ export const person = {
   role: 'Full-stack developer',
   email: 'mvnaranjo1@gmail.com',
   github: 'https://github.com/marcovinir',
+  linkedin: 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/',
   heroTitleStart: 'Construyo software en',
   heroTitleAccent: 'equilibrio.',
   heroText: 'Interfaces que fluyen, bases que no se caen, experiencias en tiempo real y despliegues que llegan lejos.',

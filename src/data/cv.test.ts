@@ -67,3 +67,4 @@ test('Neon en datos y Cloudinary en la nube', () => {
   expect(areas.find(a => a.id === 'cimientos')!.skills).toContain('Neon');
   expect(areas.find(a => a.id === 'horizonte')!.skills).toContain('Cloudinary');
 });
+test('LinkedIn', () => expect(person.linkedin).toBe('https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/'));
