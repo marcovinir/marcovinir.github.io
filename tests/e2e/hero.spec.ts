@@ -27,3 +27,9 @@ test('reduced motion', async ({ browser }) => {
   expect(anim).toBe('none');
   await ctx.close();
 });
+
+test('el tagline dice qué hace y con qué', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#hero .kicker')).toContainText('Desarrollador full-stack · React, Spring Boot, Django y AWS');
+  await expect(page).toHaveTitle(/Desarrollador full-stack/);
+});

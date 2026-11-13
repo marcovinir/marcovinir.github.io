@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { person, education, experience, areas, tools } from '../data/cv';
+import { person, education, experience, areas, certifications, tools } from '../data/cv';
 
 const projects = areas.flatMap(a => a.projects);
 const portfolio = Astro.site ? Astro.site.host : '';
@@ -49,12 +49,21 @@ const portfolio = Astro.site ? Astro.site.host : '';
     </section>
 
     <section>
+      <h2>Certificaciones</h2>
+      {certifications.map(c => (
+        <article>
+          <div class="row"><h3>{c.href ? <a href={c.href}>{c.name}</a> : c.name}</h3><span class="period">{c.issuer} · {c.date}</span></div>
+        </article>
+      ))}
+    </section>
+
+    <section>
       <h2>Proyectos</h2>
       {projects.map(p => (
         <article class="proj">
           <div class="row">
             <h3>{p.name}{p.inProgress && ' (en desarrollo)'}{p.team && <span class="tag">En equipo</span>}</h3>
-            <span class="period">{p.href.replace('https://', '').replace(/\/$/, '')}</span>
+            <span class="period">{[p.demo, p.code].filter((u): u is string => Boolean(u)).map(u => u.replace('https://', '').replace(/\/$/, '')).join(' · ') || 'Código privado'}</span>
           </div>
           <p>{p.summary}. {p.stack}.</p>
         </article>

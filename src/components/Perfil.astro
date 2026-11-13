@@ -1,5 +1,5 @@
 ---
-import { person, stats, education } from '../data/cv';
+import { person, stats, education, certifications } from '../data/cv';
 import Timeline from './Timeline.astro';
 ---
 
@@ -17,11 +17,26 @@ import Timeline from './Timeline.astro';
       <div class="kicker reveal">Formación</div>
       <h2 class="reveal">Educación</h2>
       <div class="reveal"><Timeline entries={education} /></div>
+      <h3 class="cert-title reveal">Certificaciones</h3>
+      <ul class="certs reveal">
+        {certifications.map(c => (
+          <li>
+            {c.href ? <a href={c.href} target="_blank" rel="noopener">{c.name}</a> : <span>{c.name}</span>}
+            <small>{c.issuer} · {c.date}</small>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>
 
 <style>
+  .cert-title { font-size: 20px; font-weight: 700; margin-top: 8px; }
+  .certs { list-style: none; margin-top: 12px; display: grid; gap: 10px; }
+  .certs li { display: flex; flex-direction: column; padding: 12px 14px; border-radius: 12px; border: 1px solid #ffffff1a; background: #ffffff06; }
+  .certs a, .certs span { font-weight: 600; color: var(--text); text-underline-offset: 3px; }
+  .certs a:hover { color: var(--c1); }
+  .certs small { color: var(--muted); font-size: 13px; margin-top: 2px; }
   #perfil { --accent: #fff; --accent2: #fff; background: linear-gradient(180deg, var(--bg), #080a12 50%, var(--bg)); }
   .kicker { color: var(--muted); }
   .grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; width: 100%; max-width: 1150px; }

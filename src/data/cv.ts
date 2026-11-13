@@ -2,7 +2,8 @@
 // para actualizar el CV basta con editar este archivo.
 
 export type Link = { label: string; href: string };
-export type Project = { name: string; summary: string; stack: string; href: string; team: boolean; inProgress?: boolean };
+export type Project = { name: string; summary: string; stack: string; demo?: string; code?: string; team: boolean; inProgress?: boolean };
+export type Certification = { name: string; issuer: string; date: string; href?: string };
 export type TimelineEntry = { period: string; title: string; org: string; description?: string; current: boolean; bullets?: string[]; links?: Link[] };
 export type AreaId = 'fluir' | 'cimientos' | 'chispa' | 'horizonte';
 export type Area = {
@@ -14,7 +15,8 @@ export type Step = { title: string; text: string; example: string };
 
 export const person = {
   name: 'Marco Rojas',
-  role: 'Full-stack developer',
+  role: 'Desarrollador full-stack',
+  headline: 'Desarrollador full-stack · React, Spring Boot, Django y AWS',
   email: 'mvnaranjo1@gmail.com',
   github: 'https://github.com/marcovinir',
   linkedin: 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/',
@@ -23,7 +25,7 @@ export const person = {
   heroText: 'Interfaces que fluyen, bases que no se caen, experiencias en tiempo real y despliegues que llegan lejos.',
   about: [
     'Soy estudiante de Ingeniería en Sistemas y desarrollador full-stack. Me gusta llevar una idea de punta a punta: diseñar la base de datos, construir la API, pulir la interfaz, escribir las pruebas y dejarla desplegada. Trabajo bien en equipo, con ramas, pull requests y revisiones de código.',
-    'Uso desarrollo asistido por IA con Claude Code para planificar, implementar y revisar más rápido, sin dejar de lado las pruebas ni la revisión de código.',
+    'Uso Claude Code y agentes para avanzar más rápido, pero las decisiones técnicas son mías: defino el diseño, reviso cada cambio en un pull request y lo respaldo con pruebas automáticas antes de fusionarlo.',
   ],
 };
 
@@ -47,9 +49,10 @@ export const experience: TimelineEntry[] = [
   {
     period: '2026 — Actualidad',
     title: 'SIRA — Sistema de Reportes de Avería',
-    org: 'Desarrollador · proyecto en equipo para la Municipalidad de Montes de Oro',
+    org: 'Desarrollador full-stack · proyecto en equipo para la Municipalidad de Montes de Oro',
     current: true,
     bullets: [
+      'Desarrollo historias de usuario completas, del backend al frontend.',
       'Desarrollado con metodología Scrum (sprints e historias de usuario) usando Azure DevOps.',
       'Stack: Django + React + TypeScript.',
       'Despliegues por SSH en AWS (EC2 y RDS).',
@@ -76,8 +79,8 @@ export const areas: Area[] = [
     text: 'Frontend rápido, accesible y con animaciones que se sienten naturales.',
     skills: ['React', 'Vue', 'TypeScript', 'Astro', 'Vite'],
     projects: [
-      { name: 'PomoPet', summary: 'Plataforma gamificada de gestión del tiempo y estudio', stack: 'Vue 3 + FastAPI + PostgreSQL + Docker', href: 'https://github.com/You9123/PomoPet', team: true },
-      { name: 'Gym-LACOBRA', summary: 'App web para la gestión de un gimnasio', stack: 'React + Django', href: 'https://github.com/You9123/Gym-LACOBRA', team: true },
+      { name: 'PomoPet', summary: 'Plataforma gamificada de gestión del tiempo y estudio', stack: 'Vue 3 + FastAPI + PostgreSQL + Docker', code: 'https://github.com/You9123/PomoPet', team: true },
+      { name: 'Gym-LACOBRA', summary: 'App web para la gestión de un gimnasio', stack: 'React + Django', code: 'https://github.com/You9123/Gym-LACOBRA', team: true },
     ],
     color: '#38bdf8', color2: '#6366f1',
   },
@@ -87,8 +90,8 @@ export const areas: Area[] = [
     text: 'APIs, modelos de datos y bases de datos diseñadas para crecer sin romperse.',
     skills: ['Spring Boot', 'Django', 'FastAPI', '.NET 8', 'PostgreSQL', 'Neon', 'Oracle', 'Docker'],
     projects: [
-      { name: 'OraAdmin XE', summary: 'Consola DBA de escritorio para Oracle 21c', stack: 'C# + .NET 8', href: 'https://github.com/marcovinir/oraadmin-xe', team: false },
-      { name: 'Coffee Tour Pura Vista', summary: 'Tienda de café y reservas de visitas para una finca familiar', stack: 'React + Spring Boot + PostgreSQL', href: 'https://zagala.marcovinir.dev/', team: false },
+      { name: 'OraAdmin XE', summary: 'Consola DBA de escritorio para Oracle 21c', stack: 'C# + .NET 8', code: 'https://github.com/marcovinir/oraadmin-xe', team: false },
+      { name: 'Coffee Tour Pura Vista', summary: 'Tienda de café y reservas de visitas para una finca familiar', stack: 'React + Spring Boot + PostgreSQL', demo: 'https://zagala.marcovinir.dev/', team: false },
     ],
     color: '#34d399', color2: '#a3e635',
   },
@@ -98,7 +101,7 @@ export const areas: Area[] = [
     text: 'Multijugador, sockets y juegos donde cada milisegundo cuenta.',
     skills: ['Socket.io', 'Express', 'Three.js'],
     projects: [
-      { name: 'Rivalmon', summary: 'Minijuegos 1 vs 1 en tiempo real', stack: 'React + Socket.io + Prisma', href: 'https://rivalmon.marcovinir.dev/', team: false },
+      { name: 'Rivalmon', summary: 'Minijuegos 1 vs 1 en tiempo real', stack: 'React + Socket.io + Prisma', demo: 'https://rivalmon.marcovinir.dev/', code: 'https://github.com/marcovinir/rivalmon', team: false },
     ],
     color: '#fb7185', color2: '#f59e0b',
   },
@@ -108,10 +111,15 @@ export const areas: Area[] = [
     text: 'Despliegues automatizados, CI y servicios cloud para que tu proyecto llegue a todos. Conocimientos básicos de AWS.',
     skills: ['AWS EC2', 'AWS RDS', 'SSH', 'Render', 'Cloudinary', 'GitHub Actions', 'GitHub Pages'],
     projects: [
-      { name: 'SIRA', summary: 'Sistema de Reportes de Avería para la Municipalidad de Montes de Oro', stack: 'Django + React + TypeScript', href: 'https://sira.dannyas.dev/', team: true, inProgress: true },
+      { name: 'SIRA', summary: 'Sistema de Reportes de Avería para la Municipalidad de Montes de Oro', stack: 'Django + React + TypeScript', demo: 'https://sira.dannyas.dev/', team: true, inProgress: true },
     ],
     color: '#e2e8f0', color2: '#a78bfa',
   },
+];
+
+export const certifications: Certification[] = [
+  { name: 'Cloud Computing', issuer: 'Google', date: 'Junio 2026' },
+  { name: 'AI Skills Fest 2026', issuer: 'Microsoft', date: '2026', href: 'https://www.credly.com/badges/9fe53920-c524-4bfa-9019-586444f4c141' },
 ];
 
 /** Herramientas de trabajo que no pertenecen a un área; solo aparecen en el CV. */
@@ -126,6 +134,6 @@ function collect(value: unknown, out: string[]): void {
 /** Une todos los textos del CV; lo usan las pruebas de reglas de contenido. */
 export function allText(): string {
   const out: string[] = [];
-  collect({ person, stats, education, experience, workflow, areas, tools }, out);
+  collect({ person, stats, education, experience, workflow, areas, certifications, tools }, out);
   return out.join('\n');
 }

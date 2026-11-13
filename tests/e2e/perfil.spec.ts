@@ -16,3 +16,12 @@ test('perfil, educación y experiencia', async ({ page }) => {
   await expect(exp.getByRole('link', { name: /munimontesdeoro/ })).toHaveAttribute('href', 'https://munimontesdeoro.go.cr/');
   await expect(exp).toContainText('Municipalidad de Montes de Oro');
 });
+
+test('certificaciones en el perfil', async ({ page }) => {
+  await page.goto('/');
+  const perfil = page.locator('#perfil');
+  await expect(perfil.getByRole('heading', { name: 'Certificaciones' })).toBeVisible();
+  await expect(perfil).toContainText('Cloud Computing');
+  await expect(perfil.getByRole('link', { name: /AI Skills Fest 2026/ })).toHaveAttribute('href', 'https://www.credly.com/badges/9fe53920-c524-4bfa-9019-586444f4c141');
+  await expect(page.locator('#experiencia')).toContainText('historias de usuario completas');
+});

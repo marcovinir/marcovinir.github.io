@@ -24,3 +24,14 @@ test('canvas de brasas ocupa toda la sección', async ({ page }) => {
   const [c, s] = await Promise.all([page.locator('#embers').boundingBox(), page.locator('#chispa').boundingBox()]);
   expect(c!.width).toBeCloseTo(s!.width, 0);
 });
+
+test('las tarjetas muestran Ver demo y Ver código', async ({ page }) => {
+  await page.goto('/');
+  const rival = page.locator('.proj', { hasText: 'Rivalmon' });
+  await expect(rival.getByRole('link', { name: /Ver demo/ })).toHaveAttribute('href', 'https://rivalmon.marcovinir.dev/');
+  await expect(rival.getByRole('link', { name: /Ver código/ })).toHaveAttribute('href', 'https://github.com/marcovinir/rivalmon');
+  const cafe = page.locator('.proj', { hasText: 'Coffee Tour Pura Vista' });
+  await expect(cafe.getByRole('link', { name: /Ver demo/ })).toHaveAttribute('href', 'https://zagala.marcovinir.dev/');
+  await expect(cafe).toContainText('Código privado');
+  await expect(page.locator('.proj', { hasText: 'OraAdmin XE' }).getByRole('link', { name: /Ver demo/ })).toHaveCount(0);
+});

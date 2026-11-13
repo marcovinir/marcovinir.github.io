@@ -1,4 +1,4 @@
-import { person, stats, education, experience, workflow, areas, allText } from './cv';
+import { person, stats, education, experience, workflow, areas, certifications, allText } from './cv';
 
 const EMOJI = /\p{Extended_Pictographic}/u;
 const ELEMENTOS = /\b(agua|tierra|fuego|aire)\b/i;
@@ -15,9 +15,7 @@ test('cuatro áreas en orden', () => {
 test('proyectos por área', () => {
   expect(areas[0].projects.map(p => p.name)).toEqual(['PomoPet', 'Gym-LACOBRA']);
   expect(areas[1].projects.map(p => p.name)).toEqual(['OraAdmin XE', 'Coffee Tour Pura Vista']);
-  expect(areas[1].projects[1].href).toBe('https://zagala.marcovinir.dev/');
   expect(areas[2].projects.map(p => p.name)).toEqual(['Rivalmon']);
-  expect(areas[2].projects[0].href).toBe('https://rivalmon.marcovinir.dev/');
   expect(areas[3].projects.map(p => p.name)).toEqual(['SIRA']);
 });
 test('etiqueta En equipo solo en proyectos de equipo', () => {
@@ -68,3 +66,37 @@ test('Neon en datos y Cloudinary en la nube', () => {
   expect(areas.find(a => a.id === 'horizonte')!.skills).toContain('Cloudinary');
 });
 test('LinkedIn', () => expect(person.linkedin).toBe('https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/'));
+test('cada proyecto tiene demo, código o ambos', () => {
+  const links = Object.fromEntries(areas.flatMap(a => a.projects).map(p => [p.name, { demo: p.demo, code: p.code }]));
+  expect(links).toEqual({
+    'PomoPet': { demo: undefined, code: 'https://github.com/You9123/PomoPet' },
+    'Gym-LACOBRA': { demo: undefined, code: 'https://github.com/You9123/Gym-LACOBRA' },
+    'OraAdmin XE': { demo: undefined, code: 'https://github.com/marcovinir/oraadmin-xe' },
+    'Coffee Tour Pura Vista': { demo: 'https://zagala.marcovinir.dev/', code: undefined },
+    'Rivalmon': { demo: 'https://rivalmon.marcovinir.dev/', code: 'https://github.com/marcovinir/rivalmon' },
+    'SIRA': { demo: 'https://sira.dannyas.dev/', code: undefined },
+  });
+});
+test('rol en SIRA: historias de usuario completas, backend y frontend', () => {
+  expect(experience[0].org).toMatch(/^Desarrollador full-stack/);
+  expect(experience[0].bullets!.join(' ')).toMatch(/historias de usuario completas/i);
+  expect(experience[0].bullets!.join(' ')).toMatch(/backend.*frontend/i);
+});
+test('certificaciones de Google y Microsoft', () => {
+  expect(certifications).toEqual([
+    { name: 'Cloud Computing', issuer: 'Google', date: 'Junio 2026' },
+    { name: 'AI Skills Fest 2026', issuer: 'Microsoft', date: '2026', href: 'https://www.credly.com/badges/9fe53920-c524-4bfa-9019-586444f4c141' },
+  ]);
+  expect(allText()).toMatch(/AI Skills Fest/);
+});
+test('tagline claro y rol en español', () => {
+  expect(person.headline).toBe('Desarrollador full-stack · React, Spring Boot, Django y AWS');
+  expect(person.role).toBe('Desarrollador full-stack');
+});
+test('el párrafo de IA deja claro que él dirige y revisa', () => {
+  const ia = person.about[1];
+  expect(ia).toMatch(/Claude Code/);
+  expect(ia).toMatch(/reviso/i);
+  expect(ia).toMatch(/pruebas/i);
+  expect(ia).toMatch(/decisiones/i);
+});
