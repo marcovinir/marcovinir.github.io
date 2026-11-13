@@ -9,7 +9,7 @@ const ELEMENTOS = /\b(agua|tierra|fuego|aire)\b/i;
 const UBICACION = /Alajuela|Costa Rica/i;
 const UNIVERSIDAD = 'Universidad Nacional de Costa Rica';
 // Dominio de desarrollo de SIRA: está cubierto por un acuerdo de confidencialidad.
-const CONFIDENCIAL = /dannyas/i;
+const CONFIDENCIAL = /dannyas|Montes de Oro|munimontesdeoro/i;
 
 function htmlFiles(dir) {
   return readdirSync(dir).flatMap(name => {
@@ -44,7 +44,7 @@ for (const file of htmlFiles(DIST)) {
   if (elem) problems.push(`${where}: menciona "${elem[0]}"`);
   const loc = text.replaceAll(UNIVERSIDAD, '').match(UBICACION);
   if (loc) problems.push(`${where}: menciona la ubicación "${loc[0]}"`);
-  if (CONFIDENCIAL.test(html)) problems.push(`${where}: contiene el dominio confidencial de SIRA`);
+  if (CONFIDENCIAL.test(html)) problems.push(`${where}: contiene datos confidenciales de SIRA`);
 
   const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
   for (const [, attr, target] of html.matchAll(/\s(href|src)="([^"]+)"/g)) {

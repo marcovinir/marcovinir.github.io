@@ -145,7 +145,7 @@ El botón "Descargar CV" apunta a `/cv-marco-rojas.pdf`. **Decidido con Marco: e
 ## Cambios posteriores (2026-10-30, pedidos por Marco)
 
 - Las etiquetas de las áreas son ahora Frontend, Backend y datos, Tiempo real y juegos, y Cloud y despliegue, en lugar de Fluir, Cimientos, Chispa y Horizonte.
-- SIRA se presenta como proyecto para la Municipalidad de Montes de Oro, con enlace a su sitio y despliegues por SSH en AWS (EC2 y RDS).
+- SIRA se presenta como proyecto para una institución pública (sin nombrar al cliente ni enlazar su sitio, por confidencialidad), con despliegues por SSH en AWS (EC2 y RDS).
 - Se agregan conocimientos básicos de AWS, y agentes y MCP en "Cómo trabajo". Se retira Godot.
 
 ## 11. Preguntas abiertas

@@ -13,8 +13,8 @@ test('perfil, educación y experiencia', async ({ page }) => {
   await expect(exp).toContainText('Desarrollador');
   await expect(exp).toContainText('Scrum');
   await expect(exp.getByRole('link', { name: /dannyas/ })).toHaveCount(0);
-  await expect(exp.getByRole('link', { name: /munimontesdeoro/ })).toHaveAttribute('href', 'https://munimontesdeoro.go.cr/');
-  await expect(exp).toContainText('Municipalidad de Montes de Oro');
+  await expect(exp).toContainText('institución pública');
+  await expect(exp).not.toContainText('Montes de Oro');
 });
 
 test('certificaciones en el perfil', async ({ page }) => {

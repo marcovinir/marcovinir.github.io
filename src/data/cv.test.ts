@@ -35,8 +35,8 @@ test('educación solo UNA desde 2024', () => {
 test('experiencia SIRA como desarrollador', () => {
   expect(experience[0].title).toMatch(/SIRA/);
   expect(experience[0].org).toMatch(/Desarrollador/);
-  expect(experience[0].org).toMatch(/Municipalidad de Montes de Oro/);
-  expect(experience[0].links?.map(l => l.href)).toEqual(['https://munimontesdeoro.go.cr/']);
+  expect(experience[0].org).toMatch(/institución pública/);
+  expect(experience[0].links).toBeUndefined();
 });
 test('AWS básico con EC2, RDS y SSH', () => {
   const nube = areas.find(a => a.id === 'horizonte')!;
@@ -102,3 +102,4 @@ test('el párrafo de IA deja claro que él dirige y revisa', () => {
 });
 test('no se publica el dominio de desarrollo de SIRA (confidencialidad)', () => expect(allText()).not.toMatch(/dannyas/i));
 test('los despliegues de SIRA son del entorno de desarrollo', () => expect(experience[0].bullets).toContain('Despliegues del entorno de desarrollo por SSH en AWS (EC2 y RDS).'));
+test('no se nombra al cliente de SIRA (confidencialidad)', () => expect(allText()).not.toMatch(/Montes de Oro|munimontesdeoro/i));
