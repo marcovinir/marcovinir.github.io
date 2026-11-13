@@ -10,7 +10,7 @@ export type Area = {
   titleLine1: string; titleLine2: string; text: string;
   skills: string[]; projects: Project[]; color: string; color2: string;
 };
-export type Step = { title: string; text: string };
+export type Step = { title: string; text: string; example: string };
 
 export const person = {
   name: 'Marco Rojas',
@@ -61,10 +61,11 @@ export const experience: TimelineEntry[] = [
 ];
 
 export const workflow: Step[] = [
-  { title: 'Planificar', text: 'Divido el trabajo en issues y etapas.' },
-  { title: 'Implementar', text: 'En ramas, con Claude Code, agentes y servidores MCP para conectar herramientas.' },
-  { title: 'Probar', text: 'Pruebas automáticas e integración continua.' },
-  { title: 'Integrar', text: 'Pull request con revisión antes de fusionar.' },
+  { title: 'Entender', text: 'Escucho la necesidad y la aterrizo con maquetas antes de escribir código.', example: 'Coffee Tour Pura Vista: estilos y paletas definidos con la familia.' },
+  { title: 'Diseñar', text: 'Escribo un documento de diseño y un plan por etapas, con issues.', example: 'Rivalmon y este portafolio.' },
+  { title: 'Construir', text: 'En ramas, con Claude Code, agentes y servidores MCP para conectar herramientas.', example: 'Pull requests pequeños y revisados.' },
+  { title: 'Probar', text: 'Pruebas automáticas e integración continua antes de fusionar.', example: 'Vitest y Playwright en Rivalmon y en este portafolio.' },
+  { title: 'Desplegar', text: 'Lo dejo en línea, con dominio propio, y lo mantengo.', example: 'Render, GitHub Pages y AWS (EC2 y RDS).' },
 ];
 
 export const areas: Area[] = [
