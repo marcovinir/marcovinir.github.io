@@ -81,25 +81,25 @@ const portfolio = Astro.site ? Astro.site.host : '';
 </Base>
 
 <style is:global>
-  @page { size: A4; margin: 14mm; }
+  @page { size: A4; margin: 12mm 13mm; }
   :root { color-scheme: light !important; background: #fff !important; }
   html, body { background: #fff !important; color: #1a1d29 !important; }
-  body { font-size: 10.5pt; overflow: visible; }
+  body { font-size: 9.6pt; overflow: visible; }
 </style>
 
 <style>
-  .cv { max-width: 182mm; margin: 0 auto; padding: 24px 0; line-height: 1.4; }
+  .cv { max-width: 184mm; margin: 0 auto; padding: 24px 0; line-height: 1.35; }
   @media print { .cv { padding: 0; } }
   a { color: inherit; text-decoration: none; }
   header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding-bottom: 10px; border-bottom: 2px solid #6366f1; }
   h1 { font-size: 24pt; letter-spacing: -.02em; line-height: 1.05; }
   .role { color: #6366f1; font-weight: 600; margin-top: 2px; }
   .contact { list-style: none; text-align: right; font-size: 9.5pt; color: #4b5068; }
-  section { margin-top: 11px; min-height: 0; display: block; padding: 0; overflow: visible; }
+  section { margin-top: 9px; min-height: 0; display: block; padding: 0; overflow: visible; }
   h2 { font-size: 10pt; text-transform: uppercase; letter-spacing: .14em; color: #6366f1; margin: 0 0 5px; line-height: 1.2; }
-  h3 { font-size: 10.5pt; font-weight: 700; }
+  h3 { font-size: 9.8pt; font-weight: 700; }
   p { margin-top: 3px; }
-  article { margin-top: 5px; }
+  article { margin-top: 4px; }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
   .period { font-size: 9pt; color: #6b7088; white-space: nowrap; }
   .org { color: #4b5068; margin-top: 0; }

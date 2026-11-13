@@ -15,7 +15,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  font-family: "Inter Variable", "Segoe UI", system-ui, sans-serif;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }

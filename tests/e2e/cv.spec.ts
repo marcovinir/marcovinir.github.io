@@ -16,3 +16,10 @@ test('pdf existe y es una página', () => {
   expect(pdf.startsWith('%PDF')).toBe(true);
   expect((pdf.match(/\/Type\s*\/Page[^s]/g) ?? []).length).toBe(1);
 });
+
+test('el CV usa la tipografía incluida en el sitio, no la del sistema', async ({ page }) => {
+  await page.goto('/cv');
+  await page.evaluate(() => document.fonts.ready);
+  expect(await page.evaluate(() => getComputedStyle(document.body).fontFamily)).toMatch(/^"?Inter Variable"?/);
+  expect(await page.evaluate(() => document.fonts.check('16px "Inter Variable"'))).toBe(true);
+});

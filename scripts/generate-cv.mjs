@@ -18,6 +18,8 @@ try {
   const page = await browser.newPage();
   await page.goto(`http://localhost:${PORT}/cv`, { waitUntil: 'networkidle' });
   await page.emulateMedia({ media: 'print' });
+  // Esperar la tipografía incluida: con la del sistema el CV puede ocupar otra cantidad de páginas.
+  await page.evaluate(() => document.fonts.ready);
   await page.pdf({ path: OUT, format: 'A4', printBackground: true, preferCSSPageSize: true });
   console.log(`CV generado: ${OUT}`);
 } catch (err) {
