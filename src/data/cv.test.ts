@@ -84,7 +84,7 @@ test('rol en SIRA: historias de usuario completas, backend y frontend', () => {
 });
 test('certificaciones de Google y Microsoft', () => {
   expect(certifications).toEqual([
-    { name: 'Cloud Computing', issuer: 'Google', date: 'Junio 2026' },
+    { name: 'Cloud Computing', issuer: 'Google', date: 'Junio 2026', href: 'https://skillshop.exceedlms.com/student/award/xbT5TszjkaUcbVz9YzWg2Euy' },
     { name: 'AI Skills Fest 2026', issuer: 'Microsoft', date: '2026', href: 'https://www.credly.com/badges/9fe53920-c524-4bfa-9019-586444f4c141' },
   ]);
   expect(allText()).toMatch(/AI Skills Fest/);

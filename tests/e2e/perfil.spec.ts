@@ -25,3 +25,8 @@ test('certificaciones en el perfil', async ({ page }) => {
   await expect(perfil.getByRole('link', { name: /AI Skills Fest 2026/ })).toHaveAttribute('href', 'https://www.credly.com/badges/9fe53920-c524-4bfa-9019-586444f4c141');
   await expect(page.locator('#experiencia')).toContainText('historias de usuario completas');
 });
+
+test('la certificación de Google enlaza a Skillshop', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#perfil').getByRole('link', { name: 'Cloud Computing' })).toHaveAttribute('href', 'https://skillshop.exceedlms.com/student/award/xbT5TszjkaUcbVz9YzWg2Euy');
+});
