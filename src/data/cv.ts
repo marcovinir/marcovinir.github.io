@@ -84,7 +84,7 @@ export const areas: Area[] = [
     id: 'cimientos', label: 'Backend y datos', number: '02',
     titleLine1: 'Backends que', titleLine2: 'no se mueven.',
     text: 'APIs, modelos de datos y bases de datos diseñadas para crecer sin romperse.',
-    skills: ['Spring Boot', 'Django', 'FastAPI', '.NET 8', 'PostgreSQL', 'Oracle', 'Docker'],
+    skills: ['Spring Boot', 'Django', 'FastAPI', '.NET 8', 'PostgreSQL', 'Neon', 'Oracle', 'Docker'],
     projects: [
       { name: 'OraAdmin XE', summary: 'Consola DBA de escritorio para Oracle 21c', stack: 'C# + .NET 8', href: 'https://github.com/marcovinir/oraadmin-xe', team: false },
       { name: 'Coffee Tour Pura Vista', summary: 'Tienda de café y reservas de visitas para una finca familiar', stack: 'React + Spring Boot + PostgreSQL', href: 'https://zagala.marcovinir.dev/', team: false },
@@ -105,7 +105,7 @@ export const areas: Area[] = [
     id: 'horizonte', label: 'Cloud y despliegue', number: '04',
     titleLine1: 'Del código', titleLine2: 'a la nube.',
     text: 'Despliegues automatizados, CI y servicios cloud para que tu proyecto llegue a todos. Conocimientos básicos de AWS.',
-    skills: ['AWS EC2', 'AWS RDS', 'SSH', 'Render', 'GitHub Actions', 'GitHub Pages'],
+    skills: ['AWS EC2', 'AWS RDS', 'SSH', 'Render', 'Cloudinary', 'GitHub Actions', 'GitHub Pages'],
     projects: [
       { name: 'SIRA', summary: 'Sistema de Reportes de Avería para la Municipalidad de Montes de Oro', stack: 'Django + React + TypeScript', href: 'https://sira.dannyas.dev/', team: true, inProgress: true },
     ],

@@ -63,3 +63,7 @@ test('Claude Code aparece en el perfil y en el flujo', () => {
   expect(person.about.join(' ')).toMatch(/Claude Code/);
   expect(JSON.stringify(workflow)).toMatch(/Claude Code/);
 });
+test('Neon en datos y Cloudinary en la nube', () => {
+  expect(areas.find(a => a.id === 'cimientos')!.skills).toContain('Neon');
+  expect(areas.find(a => a.id === 'horizonte')!.skills).toContain('Cloudinary');
+});
