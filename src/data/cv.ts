@@ -55,7 +55,7 @@ export const experience: TimelineEntry[] = [
       'Desarrollo historias de usuario completas, del backend al frontend.',
       'Desarrollado con metodología Scrum (sprints e historias de usuario) usando Azure DevOps.',
       'Stack: Django + React + TypeScript.',
-      'Despliegues por SSH en AWS (EC2 y RDS).',
+      'Despliegues del entorno de desarrollo por SSH en AWS (EC2 y RDS).',
     ],
     links: [
       { label: 'munimontesdeoro.go.cr', href: 'https://munimontesdeoro.go.cr/' },

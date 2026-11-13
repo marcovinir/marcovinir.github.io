@@ -101,3 +101,4 @@ test('el párrafo de IA deja claro que él dirige y revisa', () => {
   expect(ia).toMatch(/decisiones/i);
 });
 test('no se publica el dominio de desarrollo de SIRA (confidencialidad)', () => expect(allText()).not.toMatch(/dannyas/i));
+test('los despliegues de SIRA son del entorno de desarrollo', () => expect(experience[0].bullets).toContain('Despliegues del entorno de desarrollo por SSH en AWS (EC2 y RDS).'));
