@@ -14,7 +14,8 @@ test('cuatro áreas en orden', () => {
 });
 test('proyectos por área', () => {
   expect(areas[0].projects.map(p => p.name)).toEqual(['PomoPet', 'Gym-LACOBRA']);
-  expect(areas[1].projects.map(p => p.name)).toEqual(['OraAdmin XE']);
+  expect(areas[1].projects.map(p => p.name)).toEqual(['OraAdmin XE', 'Coffee Tour Finca Zagala Nueva']);
+  expect(areas[1].projects[1].href).toBe('https://zagala.marcovinir.dev/');
   expect(areas[2].projects.map(p => p.name)).toEqual(['Rivalmon']);
   expect(areas[2].projects[0].href).toBe('https://rivalmon.marcovinir.dev/');
   expect(areas[3].projects.map(p => p.name)).toEqual(['SIRA']);
@@ -57,7 +58,7 @@ test('contacto', () => {
   expect(person.email).toBe('mvnaranjo1@gmail.com');
   expect(person.github).toBe('https://github.com/marcovinir');
 });
-test('cifras', () => expect(stats.map(s => s.value)).toEqual(['700+', '5', '6']));
+test('cifras', () => expect(stats.map(s => s.value)).toEqual(['700+', '6', '6']));
 test('Claude Code aparece en el perfil y en el flujo', () => {
   expect(person.about.join(' ')).toMatch(/Claude Code/);
   expect(JSON.stringify(workflow)).toMatch(/Claude Code/);
