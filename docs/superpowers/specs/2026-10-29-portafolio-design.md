@@ -67,7 +67,7 @@ Mismo estilo de línea de tiempo que Educación.
 - **SIRA — Sistema de Reportes de Avería** · rol: **Desarrollador** · 2026 — Actualidad · proyecto en equipo.
   - Desarrollado con metodología **Scrum** (sprints e historias de usuario) usando **Azure DevOps**.
   - Stack: Django + React + TypeScript.
-  - Enlace: https://sira.dannyas.dev/ (el repositorio es privado y no se enlaza).
+  - Enlace: [sitio de desarrollo confidencial] (el repositorio es privado y no se enlaza).
 
 ### 6.4 Cómo trabajo (nueva respecto al prototipo)
 Cuatro pasos en fila (en columna en celular) que se encienden en secuencia al entrar en pantalla:
@@ -84,7 +84,7 @@ Título de entrada: **"Cuatro áreas, un mismo equilibrio."** Después vienen cu
 | 01 | Fluir | agua | Interfaces que se mueven contigo. | Frontend rápido, accesible y con animaciones que se sienten naturales. | React · Vue · TypeScript · Astro · Vite | **Dos tarjetas:** (1) PomoPet, plataforma gamificada de gestión del tiempo y estudio, proyecto en equipo (Vue 3 + FastAPI + PostgreSQL + Docker) → https://github.com/You9123/PomoPet · (2) Gym-LACOBRA, app web para la gestión de un gimnasio, proyecto en equipo (React + Django) → https://github.com/You9123/Gym-LACOBRA |
 | 02 | Cimientos | tierra | Backends que no se mueven. | APIs, modelos de datos y bases de datos diseñadas para crecer sin romperse. | Spring Boot · Django · FastAPI · .NET 8 · PostgreSQL · Oracle · Docker | OraAdmin XE, consola DBA de escritorio para Oracle 21c (C# + .NET 8) → https://github.com/marcovinir/oraadmin-xe |
 | 03 | Chispa | fuego | Experiencias en tiempo real. | Multijugador, sockets y juegos donde cada milisegundo cuenta. | Socket.io · Express · Godot · Three.js | Pokémon Minigames, minijuegos 1 vs 1 en tiempo real (React + Socket.io + Prisma) → https://github.com/marcovinir/pokemon-minigames |
-| 04 | Horizonte | aire | Del código a la nube. | Despliegues automatizados, CI y servicios cloud para que tu proyecto llegue a todos. | Render · GitHub Actions · GitHub Pages | SIRA (en desarrollo), Sistema de Reportes de Avería → https://sira.dannyas.dev/ |
+| 04 | Horizonte | aire | Del código a la nube. | Despliegues automatizados, CI y servicios cloud para que tu proyecto llegue a todos. | Render · GitHub Actions · GitHub Pages | SIRA (en desarrollo), Sistema de Reportes de Avería → [sitio de desarrollo confidencial] |
 
 *Decisión mía sobre PomoPet:* va en Fluir como segunda tarjeta, porque su parte más visible es el frontend en Vue. Fluir es la única área con dos proyectos, y las tarjetas se apilan una debajo de la otra. Los proyectos hechos en equipo, donde Marco es uno de los integrantes (PomoPet y Gym-LACOBRA, y también SIRA en Horizonte), llevan una etiqueta pequeña que dice **"En equipo"**.
 

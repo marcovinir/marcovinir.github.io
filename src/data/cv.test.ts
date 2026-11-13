@@ -36,7 +36,7 @@ test('experiencia SIRA como desarrollador', () => {
   expect(experience[0].title).toMatch(/SIRA/);
   expect(experience[0].org).toMatch(/Desarrollador/);
   expect(experience[0].org).toMatch(/Municipalidad de Montes de Oro/);
-  expect(experience[0].links?.map(l => l.href)).toEqual(['https://sira.dannyas.dev/', 'https://munimontesdeoro.go.cr/']);
+  expect(experience[0].links?.map(l => l.href)).toEqual(['https://munimontesdeoro.go.cr/']);
 });
 test('AWS básico con EC2, RDS y SSH', () => {
   const nube = areas.find(a => a.id === 'horizonte')!;
@@ -66,7 +66,7 @@ test('Neon en datos y Cloudinary en la nube', () => {
   expect(areas.find(a => a.id === 'horizonte')!.skills).toContain('Cloudinary');
 });
 test('LinkedIn', () => expect(person.linkedin).toBe('https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/'));
-test('cada proyecto tiene demo, código o ambos', () => {
+test('enlaces de demo y código de cada proyecto', () => {
   const links = Object.fromEntries(areas.flatMap(a => a.projects).map(p => [p.name, { demo: p.demo, code: p.code }]));
   expect(links).toEqual({
     'PomoPet': { demo: undefined, code: 'https://github.com/You9123/PomoPet' },
@@ -74,7 +74,7 @@ test('cada proyecto tiene demo, código o ambos', () => {
     'OraAdmin XE': { demo: undefined, code: 'https://github.com/marcovinir/oraadmin-xe' },
     'Coffee Tour Pura Vista': { demo: 'https://zagala.marcovinir.dev/', code: undefined },
     'Rivalmon': { demo: 'https://rivalmon.marcovinir.dev/', code: 'https://github.com/marcovinir/rivalmon' },
-    'SIRA': { demo: 'https://sira.dannyas.dev/', code: undefined },
+    'SIRA': { demo: undefined, code: undefined },
   });
 });
 test('rol en SIRA: historias de usuario completas, backend y frontend', () => {
@@ -100,3 +100,4 @@ test('el párrafo de IA deja claro que él dirige y revisa', () => {
   expect(ia).toMatch(/pruebas/i);
   expect(ia).toMatch(/decisiones/i);
 });
+test('no se publica el dominio de desarrollo de SIRA (confidencialidad)', () => expect(allText()).not.toMatch(/dannyas/i));

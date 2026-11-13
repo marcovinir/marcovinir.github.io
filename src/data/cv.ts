@@ -58,7 +58,6 @@ export const experience: TimelineEntry[] = [
       'Despliegues por SSH en AWS (EC2 y RDS).',
     ],
     links: [
-      { label: 'sira.dannyas.dev', href: 'https://sira.dannyas.dev/' },
       { label: 'munimontesdeoro.go.cr', href: 'https://munimontesdeoro.go.cr/' },
     ],
   },
@@ -111,7 +110,7 @@ export const areas: Area[] = [
     text: 'Despliegues automatizados, CI y servicios cloud para que tu proyecto llegue a todos. Conocimientos básicos de AWS.',
     skills: ['AWS EC2', 'AWS RDS', 'SSH', 'Render', 'Cloudinary', 'GitHub Actions', 'GitHub Pages'],
     projects: [
-      { name: 'SIRA', summary: 'Sistema de Reportes de Avería para la Municipalidad de Montes de Oro', stack: 'Django + React + TypeScript', demo: 'https://sira.dannyas.dev/', team: true, inProgress: true },
+      { name: 'SIRA', summary: 'Sistema de Reportes de Avería para la Municipalidad de Montes de Oro', stack: 'Django + React + TypeScript', team: true, inProgress: true },
     ],
     color: '#e2e8f0', color2: '#a78bfa',
   },

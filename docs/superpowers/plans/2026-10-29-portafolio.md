@@ -178,7 +178,7 @@ test('educación solo UNA desde 2024', () => {
 test('experiencia SIRA como desarrollador', () => {
   expect(experience[0].title).toMatch(/SIRA/);
   expect(experience[0].org).toMatch(/Desarrollador/);
-  expect(experience[0].link?.href).toBe('https://sira.dannyas.dev/');
+  expect(experience[0].link?.href).toBe('[sitio de desarrollo confidencial]');
 });
 test('contacto', () => {
   expect(person.email).toBe('mvnaranjo1@gmail.com');
@@ -275,7 +275,7 @@ test('perfil, educación y experiencia', async ({ page }) => {
   const exp = page.locator('#experiencia');
   await expect(exp).toContainText('Desarrollador');
   await expect(exp).toContainText('Scrum');
-  await expect(exp.getByRole('link', { name: /sira\.dannyas\.dev/ })).toHaveAttribute('href', 'https://sira.dannyas.dev/');
+  await expect(exp.getByRole('link', { name: /sitio confidencial/ })).toHaveAttribute('href', '[sitio de desarrollo confidencial]');
 });
 ```
 
