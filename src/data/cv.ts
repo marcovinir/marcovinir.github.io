@@ -22,8 +22,8 @@ export const person = {
   linkedin: 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/',
   phone: '+506 8687-7280',
   phoneHref: 'tel:+50686877280',
-  /** Formulario de Formspree. PENDIENTE: cambiar por el código real; check-dist no deja publicar sin él. */
-  formEndpoint: 'https://formspree.io/f/PENDIENTE',
+  /** Formulario de Formspree: los mensajes llegan al correo de Marco. */
+  formEndpoint: 'https://formspree.io/f/xjywwleg',
   heroTitleStart: 'Construyo software en',
   heroTitleAccent: 'equilibrio.',
   heroText: 'Interfaces que fluyen, bases que no se caen, experiencias en tiempo real y despliegues que llegan lejos.',
