@@ -17,7 +17,7 @@ const es = {
   experiencia: { kicker: 'Trayectoria', title: 'Experiencia' },
   comoTrabajo: { kicker: 'Proceso', title: 'Cómo trabajo', example: 'Ejemplo' },
   areasIntro: { kicker: 'Habilidades y proyectos', titleStart: 'Cuatro áreas,', titleAccent: 'un mismo equilibrio.' },
-  project: { demo: 'Ver demo', code: 'Ver código', details: 'Ver detalles', private: 'Código privado', team: 'En equipo', inProgress: 'en desarrollo' },
+  project: { demo: 'Ver demo', code: 'Ver código', details: 'Ver detalles', detailsHint: 'Incluye capturas del panel y lo que construí.', private: 'Código privado', team: 'En equipo', inProgress: 'en desarrollo' },
   detail: { back: 'Volver al portafolio', site: 'El sitio público', panel: 'El panel de la familia', built: 'Lo que construí', stack: 'Tecnologías', role: 'Mi rol' },
   contacto: {
     title: '¿Tienes un puesto o un proyecto en mente? Escríbeme.',
@@ -48,7 +48,7 @@ const en: typeof es = {
   experiencia: { kicker: 'Track record', title: 'Experience' },
   comoTrabajo: { kicker: 'Process', title: 'How I work', example: 'Example' },
   areasIntro: { kicker: 'Skills and projects', titleStart: 'Four areas,', titleAccent: 'one balance.' },
-  project: { demo: 'View demo', code: 'View code', details: 'View details', private: 'Private code', team: 'Team project', inProgress: 'in progress' },
+  project: { demo: 'View demo', code: 'View code', details: 'View details', detailsHint: 'Includes dashboard screenshots and what I built.', private: 'Private code', team: 'Team project', inProgress: 'in progress' },
   detail: { back: 'Back to portfolio', site: 'The public site', panel: 'The family dashboard', built: 'What I built', stack: 'Tech stack', role: 'My role' },
   contacto: {
     title: 'Have a role or a project in mind? Write to me.',

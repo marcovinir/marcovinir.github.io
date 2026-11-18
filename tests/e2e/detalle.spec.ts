@@ -23,6 +23,7 @@ test('la tarjeta del Coffee Tour enlaza al detalle', async ({ page }) => {
 });
 
 test('detalle en español: sitio, panel y lo que construí', async ({ page }) => {
+  test.setTimeout(90_000); // 12 imágenes con carga diferida
   await page.goto(ES);
   await expect(page.locator('html')).toHaveAttribute('lang', 'es');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Coffee Tour Pura Vista');
@@ -37,6 +38,7 @@ test('detalle en español: sitio, panel y lo que construí', async ({ page }) =>
 });
 
 test('detalle en inglés', async ({ page }) => {
+  test.setTimeout(90_000);
   await page.goto(EN);
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.getByRole('heading', { name: 'The public site' })).toBeVisible();
@@ -52,4 +54,16 @@ test('el detalle no tiene scroll horizontal en móvil', async ({ page }) => {
   await page.goto(ES);
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
+});
+
+test('Ver detalles se ve como botón y va primero', async ({ page }) => {
+  await page.goto('/#cimientos');
+  const card = page.locator('.proj', { hasText: 'Coffee Tour Pura Vista' });
+  const btn = card.getByRole('link', { name: /Ver detalles/ });
+  await expect(btn).toHaveClass(/details-btn/);
+  const bg = await btn.evaluate(el => getComputedStyle(el).backgroundColor);
+  expect(bg).not.toBe('rgba(0, 0, 0, 0)');
+  const first = await card.locator('.links a').first().textContent();
+  expect(first).toMatch(/Ver detalles/);
+  await expect(card).toContainText('capturas');
 });
