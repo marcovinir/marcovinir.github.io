@@ -1,20 +1,25 @@
 ---
-import { person } from '../data/cv';
+import { cvData, type Lang } from '../data';
+import { t } from '../i18n/ui';
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const { person } = cvData(lang);
+const ui = t(lang).contacto;
 ---
 
 <section id="contacto" data-accent="#ffffff">
   <div class="inner">
     <div class="spectrum reveal" aria-hidden="true"></div>
-    <h2 class="reveal">¿Tienes un proyecto en mente?</h2>
-    <p class="lead reveal">Cuéntame tu idea y la construimos juntos. Escríbeme y te respondo pronto.</p>
+    <h2 class="reveal">{ui.title}</h2>
+    <p class="lead reveal">{ui.lead}</p>
     <div class="mail reveal">
       <a href={`mailto:${person.email}`}>
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" /><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
         <span class="addr">{person.email}</span>
       </a>
-      <button class="copy" type="button" data-email={person.email}>Copiar</button>
+      <button class="copy" type="button" data-email={person.email} data-copied={ui.copied}>{ui.copy}</button>
     </div>
-    <p class="social reveal"><a href={person.linkedin} target="_blank" rel="noopener">También en LinkedIn</a></p>
+    <p class="social reveal"><a href={person.linkedin} target="_blank" rel="noopener">{ui.linkedin}</a></p>
   </div>
 </section>
 
@@ -44,7 +49,7 @@ import { person } from '../data/cv';
       try {
         if (!navigator.clipboard?.writeText) throw new Error('sin portapapeles');
         await navigator.clipboard.writeText(email);
-        btn.textContent = 'Copiado';
+        btn.textContent = btn.dataset.copied ?? 'Copiado';
         btn.classList.add('ok');
       } catch {
         const addr = btn.parentElement?.querySelector('.addr');

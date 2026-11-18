@@ -1,12 +1,13 @@
 ---
 interface Props {
   items: { id: string; color: string; label: string }[];
+  label?: string;
 }
 
-const { items } = Astro.props;
+const { items, label = 'Secciones' } = Astro.props;
 ---
 
-<nav class="rail" aria-label="Secciones">
+<nav class="rail" aria-label={label}>
   {items.map(i => <a href={`#${i.id}`} data-color={i.color} aria-label={i.label} title={i.label}></a>)}
 </nav>
 

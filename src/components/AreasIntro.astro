@@ -1,7 +1,15 @@
+---
+import type { Lang } from '../data';
+import { t } from '../i18n/ui';
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const ui = t(lang).areasIntro;
+---
+
 <section id="areas" data-accent="#ffffff">
   <div class="inner">
-    <div class="kicker reveal">Habilidades y proyectos</div>
-    <h2 class="reveal">Cuatro áreas, <span class="grad-spectrum">un mismo equilibrio.</span></h2>
+    <div class="kicker reveal">{ui.kicker}</div>
+    <h2 class="reveal">{ui.titleStart} <span class="grad-spectrum">{ui.titleAccent}</span></h2>
   </div>
 </section>
 

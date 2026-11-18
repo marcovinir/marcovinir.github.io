@@ -1,13 +1,17 @@
 ---
 import type { Project } from '../data/cv';
+import type { Lang } from '../data';
+import { t } from '../i18n/ui';
 
 interface Props {
   project: Project;
   accent: string;
   accent2: string;
+  lang?: Lang;
 }
 
-const { project, accent, accent2 } = Astro.props;
+const { project, accent, accent2, lang = 'es' } = Astro.props;
+const ui = t(lang).project;
 const arrow = '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" /></svg>';
 ---
 
@@ -15,15 +19,15 @@ const arrow = '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true
   <span class="bar" aria-hidden="true"></span>
   <div class="body">
     <div class="name">
-      <b>{project.name}{project.inProgress && ' · en desarrollo'}</b>
-      {project.team && <span class="tag">En equipo</span>}
+      <b>{project.name}{project.inProgress && ` · ${ui.inProgress}`}</b>
+      {project.team && <span class="tag">{ui.team}</span>}
     </div>
     <small>{project.summary} · {project.stack}</small>
     <div class="links">
-      {project.demo && <a href={project.demo} target="_blank" rel="noopener">Ver demo <Fragment set:html={arrow} /></a>}
+      {project.demo && <a href={project.demo} target="_blank" rel="noopener">{ui.demo} <Fragment set:html={arrow} /></a>}
       {project.code
-        ? <a href={project.code} target="_blank" rel="noopener">Ver código <Fragment set:html={arrow} /></a>
-        : <span class="private">Código privado</span>}
+        ? <a href={project.code} target="_blank" rel="noopener">{ui.code} <Fragment set:html={arrow} /></a>
+        : <span class="private">{ui.private}</span>}
     </div>
   </div>
 </article>

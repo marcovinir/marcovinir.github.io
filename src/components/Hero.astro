@@ -1,5 +1,10 @@
 ---
-import { person } from '../data/cv';
+import { cvData, type Lang } from '../data';
+import { t } from '../i18n/ui';
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const { person } = cvData(lang);
+const ui = t(lang);
 ---
 
 <section id="hero" data-accent="#ffffff">
@@ -10,7 +15,7 @@ import { person } from '../data/cv';
     <h1 class="reveal">{person.heroTitleStart} <span class="grad-spectrum">{person.heroTitleAccent}</span></h1>
     <p class="lead reveal">{person.heroText}</p>
     <div class="reveal">
-      <a class="cta" href="/cv-marco-rojas.pdf" download>Descargar CV
+      <a class="cta" href={ui.cvPdf} download>{ui.hero.download}
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M3 14h10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" /></svg>
       </a>
     </div>

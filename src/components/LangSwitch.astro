@@ -1,0 +1,20 @@
+---
+import type { Lang } from '../data';
+import { t } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const ui = t(lang).switch;
+---
+
+<a class="lang" href={ui.href} hreflang={ui.hreflang} lang={ui.hreflang} aria-label={ui.label} title={ui.label}>{ui.text}</a>
+
+<style>
+  .lang {
+    position: fixed; top: 18px; right: 18px; z-index: 50;
+    padding: 7px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .12em;
+    color: var(--text); text-decoration: none; border: 1px solid #ffffff2e;
+    background: #05060acc; backdrop-filter: blur(8px); transition: border-color .3s, background .3s;
+  }
+  .lang:hover { border-color: #fff; background: #ffffff14; }
+</style>

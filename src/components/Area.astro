@@ -1,12 +1,14 @@
 ---
 import type { Area } from '../data/cv';
+import type { Lang } from '../data';
 import ProjectCard from './ProjectCard.astro';
 
 interface Props {
   area: Area;
+  lang?: Lang;
 }
 
-const { area } = Astro.props;
+const { area, lang = 'es' } = Astro.props;
 ---
 
 <section id={area.id} class={`area area-${area.id}`} data-accent={area.color} style={`--accent:${area.color};--accent2:${area.color2}`}>
@@ -17,7 +19,7 @@ const { area } = Astro.props;
     <p class="lead reveal">{area.text}</p>
     <ul class="chips reveal">{area.skills.map(s => <li class="chip">{s}</li>)}</ul>
     <div class="reveal">
-      {area.projects.map(p => <ProjectCard project={p} accent={area.color} accent2={area.color2} />)}
+      {area.projects.map(p => <ProjectCard project={p} accent={area.color} accent2={area.color2} lang={lang} />)}
     </div>
   </div>
 </section>

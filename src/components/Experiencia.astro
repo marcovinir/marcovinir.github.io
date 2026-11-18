@@ -1,12 +1,17 @@
 ---
-import { experience } from '../data/cv';
+import { cvData, type Lang } from '../data';
+import { t } from '../i18n/ui';
 import Timeline from './Timeline.astro';
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const { experience } = cvData(lang);
+const ui = t(lang).experiencia;
 ---
 
 <section id="experiencia" data-accent="#38bdf8">
   <div class="inner">
-    <div class="kicker reveal">Trayectoria</div>
-    <h2 class="reveal">Experiencia</h2>
+    <div class="kicker reveal">{ui.kicker}</div>
+    <h2 class="reveal">{ui.title}</h2>
     <div class="reveal"><Timeline entries={experience} /></div>
   </div>
 </section>

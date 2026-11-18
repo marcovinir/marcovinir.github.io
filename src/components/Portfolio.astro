@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import Rail from './Rail.astro';
+import Hero from './Hero.astro';
+import Perfil from './Perfil.astro';
+import Experiencia from './Experiencia.astro';
+import ComoTrabajo from './ComoTrabajo.astro';
+import AreasIntro from './AreasIntro.astro';
+import Area from './Area.astro';
+import Waves from './visuals/Waves.astro';
+import IsoBlocks from './visuals/IsoBlocks.astro';
+import Embers from './visuals/Embers.astro';
+import Streams from './visuals/Streams.astro';
+import Contacto from './Contacto.astro';
+import Footer from './Footer.astro';
+import LangSwitch from './LangSwitch.astro';
+import { cvData, type Lang } from '../data';
+import { t } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const { areas } = cvData(lang);
+const ui = t(lang);
+
+const visuals = { fluir: Waves, cimientos: IsoBlocks, chispa: Embers, horizonte: Streams };
+
+const rail = [
+  { id: 'hero', color: '#ffffff', label: ui.rail.hero },
+  { id: 'perfil', color: '#ffffff', label: ui.rail.perfil },
+  { id: 'experiencia', color: '#38bdf8', label: ui.rail.experiencia },
+  { id: 'como-trabajo', color: '#a78bfa', label: ui.rail.comoTrabajo },
+  ...areas.map(a => ({ id: a.id, color: a.id === 'horizonte' ? a.color2 : a.color, label: a.label })),
+  { id: 'contacto', color: '#ffffff', label: ui.rail.contacto },
+];
+---
+
+<Base title={ui.meta.title} description={ui.meta.description} lang={lang} translated>
+  <LangSwitch lang={lang} />
+  <Rail items={rail} label={ui.rail.label} />
+  <main>
+    <Hero lang={lang} />
+    <Perfil lang={lang} />
+    <Experiencia lang={lang} />
+    <ComoTrabajo lang={lang} />
+    <AreasIntro lang={lang} />
+    {areas.map(a => {
+      const Visual = visuals[a.id];
+      return <Area area={a} lang={lang}><Visual slot="visual" /></Area>;
+    })}
+    <Contacto lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Base>
+
+<script>
+  import '../scripts/reveal';
+</script>

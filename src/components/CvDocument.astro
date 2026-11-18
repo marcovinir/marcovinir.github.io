@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import { cvData, type Lang } from '../data';
+import { t } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const { person, education, experience, areas, certifications, tools } = cvData(lang);
+const ui = t(lang);
+const projects = areas.flatMap(a => a.projects);
+const home = Astro.site ? new URL(ui.home, Astro.site) : undefined;
+const portfolio = home ? (home.host + home.pathname).replace(/\/$/, '') : '';
+---
+
+<Base title={ui.meta.cvTitle} description={ui.meta.cvDescription} lang={lang} noindex>
+  <main class="cv">
+    <header>
+      <div>
+        <h1>{person.name}</h1>
+        <p class="role">{person.role}</p>
+      </div>
+      <ul class="contact">
+        <li><a href={`mailto:${person.email}`}>{person.email}</a></li>
+        <li><a href={person.github}>{person.github.replace('https://', '')}</a></li>
+        <li><a href={person.linkedin}>linkedin.com/in/marco-vinicio-rojas-peña</a></li>
+        {portfolio && <li><a href={home}>{portfolio}</a></li>}
+      </ul>
+    </header>
+
+    <section>
+      <h2>{ui.cv.profile}</h2>
+      {person.about.map(p => <p>{p}</p>)}
+    </section>
+
+    <section>
+      <h2>{ui.cv.experience}</h2>
+      {experience.map(e => (
+        <article>
+          <div class="row"><h3>{e.title}</h3><span class="period">{e.period}</span></div>
+          <p class="org">{e.org}</p>
+          {e.bullets && <ul>{e.bullets.map(b => <li>{b}</li>)}</ul>}
+          {e.links && <p class="link">{e.links.map(l => l.label).join(' · ')}</p>}
+        </article>
+      ))}
+    </section>
+
+    <section>
+      <h2>{ui.cv.education}</h2>
+      {education.map(e => (
+        <article>
+          <div class="row"><h3>{e.title}</h3><span class="period">{e.period}</span></div>
+          <p class="org">{e.org}</p>
+        </article>
+      ))}
+    </section>
+
+    <section>
+      <h2>{ui.cv.certifications}</h2>
+      {certifications.map(c => (
+        <article>
+          <div class="row"><h3>{c.href ? <a href={c.href}>{c.name}</a> : c.name}</h3><span class="period">{c.issuer} · {c.date}</span></div>
+        </article>
+      ))}
+    </section>
+
+    <section>
+      <h2>{ui.cv.projects}</h2>
+      {projects.map(p => (
+        <article class="proj">
+          <div class="row">
+            <h3>{p.name}{p.inProgress && ` (${ui.project.inProgress})`}{p.team && <span class="tag">{ui.project.team}</span>}</h3>
+            <span class="period">{[p.demo, p.code].filter((u): u is string => Boolean(u)).map(u => u.replace('https://', '').replace(/\/$/, '')).join(' · ') || ui.project.private}</span>
+          </div>
+          <p>{p.summary}. {p.stack}.</p>
+        </article>
+      ))}
+    </section>
+
+    <section>
+      <h2>{ui.cv.skills}</h2>
+      <dl class="skills">
+        {areas.map(a => (<><dt>{a.label}</dt><dd>{a.skills.join(' · ')}</dd></>))}
+        <dt>{ui.cv.tools}</dt><dd>{tools.join(' · ')}</dd>
+      </dl>
+    </section>
+  </main>
+</Base>
+
+<style is:global>
+  @page { size: A4; margin: 12mm 13mm; }
+  :root { color-scheme: light !important; background: #fff !important; }
+  html, body { background: #fff !important; color: #1a1d29 !important; }
+  body { font-size: 9.6pt; overflow: visible; }
+</style>
+
+<style>
+  .cv { max-width: 184mm; margin: 0 auto; padding: 24px 0; line-height: 1.35; }
+  @media print { .cv { padding: 0; } }
+  a { color: inherit; text-decoration: none; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding-bottom: 10px; border-bottom: 2px solid #6366f1; }
+  h1 { font-size: 24pt; letter-spacing: -.02em; line-height: 1.05; }
+  .role { color: #6366f1; font-weight: 600; margin-top: 2px; }
+  .contact { list-style: none; text-align: right; font-size: 9.5pt; color: #4b5068; }
+  section { margin-top: 9px; min-height: 0; display: block; padding: 0; overflow: visible; }
+  h2 { font-size: 10pt; text-transform: uppercase; letter-spacing: .14em; color: #6366f1; margin: 0 0 5px; line-height: 1.2; }
+  h3 { font-size: 9.8pt; font-weight: 700; }
+  p { margin-top: 3px; }
+  article { margin-top: 4px; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .period { font-size: 9pt; color: #6b7088; white-space: nowrap; }
+  .org { color: #4b5068; margin-top: 0; }
+  ul { padding-left: 16px; margin-top: 2px; }
+  .link { font-size: 9pt; color: #6b7088; }
+  .proj p { margin-top: 1px; color: #3a3f55; }
+  .tag { font-size: 8pt; font-weight: 600; color: #6366f1; border: 1px solid #6366f1; border-radius: 999px; padding: 0 6px; margin-left: 8px; vertical-align: 1px; }
+  .skills { display: grid; grid-template-columns: 42mm 1fr; gap: 3px 10px; }
+  dt { font-weight: 700; }
+  dd { color: #3a3f55; }
+</style>

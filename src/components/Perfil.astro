@@ -1,20 +1,25 @@
 ---
-import { person, education, certifications } from '../data/cv';
+import { cvData, type Lang } from '../data';
+import { t } from '../i18n/ui';
 import Timeline from './Timeline.astro';
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const { person, education, certifications } = cvData(lang);
+const ui = t(lang).perfil;
 ---
 
 <section id="perfil" data-accent="#ffffff">
   <div class="grid">
     <div>
-      <div class="kicker reveal">Perfil</div>
-      <h2 class="reveal">Sobre mí</h2>
+      <div class="kicker reveal">{ui.kicker}</div>
+      <h2 class="reveal">{ui.about}</h2>
       <div class="reveal">{person.about.map(p => <p class="lead">{p}</p>)}</div>
     </div>
     <div>
-      <div class="kicker reveal">Formación</div>
-      <h2 class="reveal">Educación</h2>
+      <div class="kicker reveal">{ui.formation}</div>
+      <h2 class="reveal">{ui.education}</h2>
       <div class="reveal"><Timeline entries={education} /></div>
-      <h3 class="cert-title reveal">Certificaciones</h3>
+      <h3 class="cert-title reveal">{ui.certifications}</h3>
       <ul class="certs reveal">
         {certifications.map(c => (
           <li>

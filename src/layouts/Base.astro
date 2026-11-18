@@ -1,19 +1,24 @@
 ---
 import '@fontsource-variable/inter';
 import '../styles/global.css';
+import type { Lang } from '../data';
+import { alternates } from '../i18n/ui';
 
 interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  lang?: Lang;
+  /** Si la página tiene su par en el otro idioma (la portada sí; el CV no se indexa). */
+  translated?: boolean;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, lang = 'es', translated = false } = Astro.props;
 const url = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,6 +32,9 @@ const url = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_CR'} />
+    {translated && Object.entries(alternates).map(([l, path]) => <link rel="alternate" hreflang={l} href={new URL(path, Astro.site)} />)}
+    {translated && <link rel="alternate" hreflang="x-default" href={new URL(alternates.es, Astro.site)} />}
     <slot name="head" />
   </head>
   <body>

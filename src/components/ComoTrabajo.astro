@@ -1,18 +1,23 @@
 ---
-import { workflow } from '../data/cv';
+import { cvData, type Lang } from '../data';
+import { t } from '../i18n/ui';
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const { workflow } = cvData(lang);
+const ui = t(lang).comoTrabajo;
 ---
 
 <section id="como-trabajo" data-accent="#a78bfa">
   <div class="wrap">
-    <div class="kicker reveal">Proceso</div>
-    <h2 class="reveal">Cómo trabajo</h2>
+    <div class="kicker reveal">{ui.kicker}</div>
+    <h2 class="reveal">{ui.title}</h2>
     <ol class="steps reveal">
       {workflow.map((s, i) => (
         <li class="step" style={`--i:${i}`} tabindex="0">
           <span class="num">{String(i + 1).padStart(2, '0')}</span>
           <h3>{s.title}</h3>
           <p>{s.text}</p>
-          <p class="example"><span>Ejemplo</span>{s.example}</p>
+          <p class="example"><span>{ui.example}</span>{s.example}</p>
         </li>
       ))}
     </ol>

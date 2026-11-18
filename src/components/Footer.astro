@@ -1,5 +1,8 @@
 ---
-import { person } from '../data/cv';
+import { cvData, type Lang } from '../data';
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const { person } = cvData(lang);
 
 const year = new Date().getFullYear();
 ---
