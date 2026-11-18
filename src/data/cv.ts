@@ -43,6 +43,13 @@ export const education: TimelineEntry[] = [
     description: 'Bases de datos, programación, ingeniería de software y administración de sistemas.',
     current: true,
   },
+  {
+    period: 'Noviembre 2026',
+    title: 'Diplomado en Programación de Aplicaciones Informáticas',
+    org: 'Universidad Nacional de Costa Rica (UNA)',
+    description: 'Título obtenido. Facultad de Ciencias Exactas y Naturales.',
+    current: false,
+  },
 ];
 
 export const experience: TimelineEntry[] = [

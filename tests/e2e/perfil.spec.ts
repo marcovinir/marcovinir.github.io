@@ -9,6 +9,7 @@ test('perfil, educación y experiencia', async ({ page }) => {
   await expect(perfil.getByRole('heading', { name: 'Educación' })).toBeVisible();
   await expect(perfil).toContainText('2024 — Actualidad');
   await expect(perfil).toContainText('Ingeniería en Sistemas de Información');
+  await expect(perfil).toContainText('Diplomado en Programación de Aplicaciones Informáticas');
   const exp = page.locator('#experiencia');
   await expect(exp).toContainText('Desarrollador');
   await expect(exp).toContainText('Scrum');

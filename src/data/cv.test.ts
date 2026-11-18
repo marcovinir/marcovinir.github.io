@@ -28,9 +28,10 @@ test('Scrum y Azure DevOps solo en SIRA', () => {
   expect(JSON.stringify(experience)).toMatch(/Scrum/);
   expect(JSON.stringify(experience)).toMatch(/Azure DevOps/);
 });
-test('educación solo UNA desde 2024', () => {
-  expect(education).toHaveLength(1);
+test('educación: ingeniería en curso y diplomado obtenido', () => {
+  expect(education).toHaveLength(2);
   expect(education[0]).toMatchObject({ period: '2024 — Actualidad', title: 'Ingeniería en Sistemas de Información', current: true });
+  expect(education[1]).toMatchObject({ period: 'Noviembre 2026', title: 'Diplomado en Programación de Aplicaciones Informáticas', org: 'Universidad Nacional de Costa Rica (UNA)', current: false });
 });
 test('experiencia SIRA como desarrollador', () => {
   expect(experience[0].title).toMatch(/SIRA/);
