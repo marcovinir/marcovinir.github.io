@@ -17,7 +17,7 @@ export const person = {
   name: 'Marco Rojas',
   role: 'Desarrollador full-stack',
   headline: 'Desarrollador full-stack · React, Spring Boot, Django y AWS',
-  email: 'mvnaranjo1@gmail.com',
+  email: 'marcorojassp@gmail.com',
   github: 'https://github.com/marcovinir',
   linkedin: 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/',
   phone: '+506 8687-7280',

@@ -4,11 +4,12 @@ test('contacto con correo y copiar', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto('/#contacto');
   const c = page.locator('#contacto');
-  await expect(c.getByRole('heading', { level: 2 })).toHaveText('¿Tienes un puesto o un proyecto en mente? Escríbeme.');
-  await expect(c.getByRole('link', { name: /mvnaranjo1@gmail\.com/ })).toHaveAttribute('href', 'mailto:mvnaranjo1@gmail.com');
+  await expect(c.getByRole('heading', { level: 2 })).toHaveText('Contacto');
+  await expect(c.locator('.card')).toHaveCount(0);
+  await expect(c.getByRole('link', { name: /marcorojassp@gmail.com/ })).toHaveAttribute('href', 'mailto:marcorojassp@gmail.com');
   await c.getByRole('button', { name: 'Copiar' }).click();
   await expect(c.getByRole('button', { name: 'Copiado' })).toBeVisible();
-  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('mvnaranjo1@gmail.com');
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('marcorojassp@gmail.com');
 });
 
 test('copiar sin clipboard', async ({ page }) => {
@@ -18,7 +19,7 @@ test('copiar sin clipboard', async ({ page }) => {
   await page.goto('/#contacto');
   await page.locator('#contacto').getByRole('button', { name: 'Copiar' }).click();
   expect(errores).toEqual([]);
-  expect(await page.evaluate(() => getSelection()?.toString())).toBe('mvnaranjo1@gmail.com');
+  expect(await page.evaluate(() => getSelection()?.toString())).toBe('marcorojassp@gmail.com');
 });
 
 test('pie con GitHub', async ({ page }) => {
@@ -77,7 +78,7 @@ test('si el envío falla, avisa y sugiere el correo', async ({ page }) => {
   await c.getByLabel('Correo').fill('ana@example.com');
   await c.getByLabel('Mensaje').fill('Hola');
   await c.getByRole('button', { name: 'Enviar mensaje' }).click();
-  await expect(c.getByRole('status')).toContainText('mvnaranjo1@gmail.com');
+  await expect(c.getByRole('status')).toContainText('marcorojassp@gmail.com');
   await expect(c.getByLabel('Mensaje')).toHaveValue('Hola');
 });
 
@@ -93,7 +94,7 @@ test('no envía si faltan datos', async ({ page }) => {
 test('formulario en inglés', async ({ page }) => {
   await page.goto('/en/#contacto');
   const c = page.locator('#contacto');
-  await expect(c.getByRole('heading', { level: 2 })).toHaveText('Have a role or a project in mind? Write to me.');
+  await expect(c.getByRole('heading', { level: 2 })).toHaveText('Contact');
   await expect(c.getByLabel('Name')).toBeVisible();
   await expect(c.getByLabel('Email')).toBeVisible();
   await expect(c.getByLabel('Message')).toBeVisible();

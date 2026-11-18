@@ -9,18 +9,8 @@ const ui = t(lang).contacto;
 
 <section id="contacto" data-accent="#ffffff">
   <div class="grid">
-    <aside class="card reveal" aria-hidden="true">
-      <div class="glow"><span></span><span></span><span></span><span></span></div>
-      <div class="card-text">
-        <b>{person.name}</b>
-        <span>{ui.cardTitle}</span>
-        <small>{ui.cardText}</small>
-      </div>
-    </aside>
-
     <div class="side">
       <h2 class="reveal">{ui.title}</h2>
-      <p class="lead reveal">{ui.lead}</p>
 
       <ul class="links reveal">
         <li class="mail">
@@ -30,48 +20,35 @@ const ui = t(lang).contacto;
         <li><a href={person.phoneHref}>{person.phone}</a></li>
         <li><a href={person.linkedin} target="_blank" rel="noopener">{ui.linkedin}</a></li>
       </ul>
-
-      <form class="form reveal" action={person.formEndpoint} method="POST"
-        data-success={ui.success} data-error={ui.error} data-email={person.email} data-sending={ui.sending}>
-        <div class="row">
-          <label>
-            <span>{ui.name}</span>
-            <input name="name" type="text" autocomplete="name" required maxlength="100" />
-          </label>
-          <label>
-            <span>{ui.email}</span>
-            <input name="email" type="email" autocomplete="email" required maxlength="150" />
-          </label>
-        </div>
-        <label>
-          <span class="msg-head">{ui.message} <span class="counter" aria-live="polite">0/500</span></span>
-          <textarea name="message" rows="5" required maxlength="500"></textarea>
-        </label>
-        <!-- Campo trampa para bots: las personas no lo ven. -->
-        <input class="trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <button class="cta send" type="submit">{ui.send}</button>
-        <p class="status" role="status" aria-live="polite"></p>
-      </form>
     </div>
+
+    <form class="form reveal" action={person.formEndpoint} method="POST"
+      data-success={ui.success} data-error={ui.error} data-email={person.email} data-sending={ui.sending}>
+      <div class="row">
+        <label>
+          <span>{ui.name}</span>
+          <input name="name" type="text" autocomplete="name" required maxlength="100" />
+        </label>
+        <label>
+          <span>{ui.email}</span>
+          <input name="email" type="email" autocomplete="email" required maxlength="150" />
+        </label>
+      </div>
+      <label>
+        <span class="msg-head">{ui.message} <span class="counter" aria-live="polite">0/500</span></span>
+        <textarea name="message" rows="5" required maxlength="500"></textarea>
+      </label>
+      <!-- Campo trampa para bots: las personas no lo ven. -->
+      <input class="trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <button class="cta send" type="submit">{ui.send}</button>
+      <p class="status" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 
 <style>
   #contacto { min-height: 80vh; --accent: #fff; --accent2: #fff; background: linear-gradient(180deg, var(--bg), #0a0b12); }
-  .grid { position: relative; z-index: 2; width: 100%; max-width: 1150px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 6vw; align-items: start; }
-
-  .card { position: relative; aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; border: 1px solid #ffffff1f; background: #070810; box-shadow: 0 30px 80px #0008; }
-  .glow { position: absolute; inset: -20%; filter: blur(48px); opacity: .7; }
-  .glow span { position: absolute; width: 55%; height: 55%; border-radius: 50%; animation: drift 16s ease-in-out infinite; }
-  .glow span:nth-child(1) { background: var(--c1); left: 8%; top: 10%; }
-  .glow span:nth-child(2) { background: var(--c2); right: 6%; top: 6%; animation-delay: -4s; }
-  .glow span:nth-child(3) { background: var(--c3); left: 22%; bottom: 4%; animation-delay: -8s; }
-  .glow span:nth-child(4) { background: var(--c4b); right: 4%; bottom: 10%; animation-delay: -12s; }
-  @keyframes drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(6%, -5%); } }
-  .card-text { position: absolute; left: 22px; bottom: 20px; right: 22px; display: flex; flex-direction: column; gap: 2px; text-shadow: 0 2px 12px #0009; }
-  .card-text b { font-size: 22px; }
-  .card-text span { font-size: 15px; }
-  .card-text small { color: #e7e9f3; font-size: 13px; margin-top: 6px; }
+  .grid { position: relative; z-index: 2; width: 100%; max-width: 1150px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 6vw; align-items: start; }
 
   .side h2 { margin-top: 0; }
   .links { list-style: none; margin-top: 22px; display: grid; gap: 10px; font-size: 16px; }
@@ -83,7 +60,7 @@ const ui = t(lang).contacto;
   .copy:hover { color: var(--text); }
   .copy.ok { color: var(--c2); }
 
-  .form { margin-top: 34px; display: grid; gap: 22px; }
+  .form { display: grid; gap: 22px; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   label { display: grid; gap: 8px; font-size: 13px; color: var(--muted); }
   .msg-head { display: flex; justify-content: space-between; }
@@ -102,7 +79,6 @@ const ui = t(lang).contacto;
 
   @media (max-width: 900px) {
     .grid { grid-template-columns: 1fr; }
-    .card { max-width: 520px; aspect-ratio: 16 / 9; }
   }
   @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
 </style>

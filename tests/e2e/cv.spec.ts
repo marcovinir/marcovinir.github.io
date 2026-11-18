@@ -6,7 +6,7 @@ test('página /cv con categorías normales y noindex', async ({ page }) => {
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   for (const t of ['Frontend', 'Backend y datos', 'Tiempo real y juegos', 'Cloud y despliegue']) await expect(page.locator('body')).toContainText(t);
   for (const t of ['Fluir', 'Cimientos', 'Chispa', 'Horizonte']) await expect(page.locator('body')).not.toContainText(t);
-  await expect(page.locator('body')).toContainText('mvnaranjo1@gmail.com');
+  await expect(page.locator('body')).toContainText('marcorojassp@gmail.com');
 });
 
 test('pdf existe y es una página', () => {

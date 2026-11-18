@@ -55,7 +55,7 @@ test('las áreas se nombran por su categoría', () => {
   expect(areas.map(a => a.label)).toEqual(['Frontend', 'Backend y datos', 'Tiempo real y juegos', 'Cloud y despliegue']);
 });
 test('contacto', () => {
-  expect(person.email).toBe('mvnaranjo1@gmail.com');
+  expect(person.email).toBe('marcorojassp@gmail.com');
   expect(person.github).toBe('https://github.com/marcovinir');
 });
 test('Claude Code aparece en el perfil y en el flujo', () => {

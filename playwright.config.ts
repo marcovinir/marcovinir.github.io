@@ -12,7 +12,8 @@ export default defineConfig({
     { name: 'mobile', use: { ...devices['Desktop Chrome'], viewport: { width: 375, height: 812 } } },
   ],
   webServer: {
-    command: 'npm run preview -- --port 4321',
+    // --force reemplaza un servidor de vista previa que haya quedado abierto.
+    command: 'npm run preview -- --port 4321 --force',
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
   },
