@@ -41,8 +41,8 @@ const es: Record<string, ProjectDetail> = {
     ],
     panelShots: [
       { file: 'panel-entrar', alt: 'Pantalla de acceso al panel de la familia', caption: 'Entrar: acceso privado con la clave de la familia.' },
-      { file: 'panel-inicio', alt: 'Inicio del panel con tarjetas de tours, pendientes, ingresos e inventario', caption: 'Inicio: los tours de hoy, lo que falta atender, los ingresos del mes y el café que se acaba.' },
-      { file: 'panel-buzon', alt: 'Buzón con visitas por confirmar y pedidos', caption: 'Buzón: pedidos y reservas que llegan de la página o se anotan a mano, con filtros y búsqueda.' },
+      { file: 'panel-inicio', alt: 'Inicio del panel con tarjetas de tours, pendientes, ingresos e inventario', caption: 'Inicio: los tours de hoy, lo que falta atender, los ingresos del mes y el café que se acaba. Nombres difuminados.' },
+      { file: 'panel-buzon', alt: 'Buzón con visitas por confirmar y pedidos', caption: 'Buzón: pedidos y reservas que llegan de la página o se anotan a mano, con filtros y búsqueda. Nombres difuminados.' },
       { file: 'panel-ventas', alt: 'Ventas del mes con filtros y tabla de ventas', caption: 'Ventas: el café entregado en el mes, con filtros y exportación a Excel. Nombres difuminados.' },
       { file: 'panel-tours', alt: 'Calendario semanal de tours', caption: 'Tours: calendario semanal de visitas, con guía y cantidad de personas.' },
       { file: 'panel-inventario', alt: 'Inventario de bolsas de cada café', caption: 'Inventario: bolsas de cada café; bajan solas al marcar un pedido como entregado.' },
@@ -79,8 +79,8 @@ const en: Record<string, ProjectDetail> = {
     ],
     panelShots: [
       { file: 'panel-entrar', alt: 'Sign-in screen of the family dashboard', caption: 'Sign-in: private access with the family password.' },
-      { file: 'panel-inicio', alt: 'Dashboard home with cards for tours, pending items, revenue and inventory', caption: 'Home: today’s tours, what needs attention, monthly revenue and coffee running low.' },
-      { file: 'panel-buzon', alt: 'Inbox with visits to confirm and orders', caption: 'Inbox: orders and bookings from the site or entered by hand, with filters and search.' },
+      { file: 'panel-inicio', alt: 'Dashboard home with cards for tours, pending items, revenue and inventory', caption: 'Home: today’s tours, what needs attention, monthly revenue and coffee running low. Names blurred.' },
+      { file: 'panel-buzon', alt: 'Inbox with visits to confirm and orders', caption: 'Inbox: orders and bookings from the site or entered by hand, with filters and search. Names blurred.' },
       { file: 'panel-ventas', alt: 'Monthly sales with filters and a sales table', caption: 'Sales: coffee delivered in the month, with filters and Excel export. Names blurred.' },
       { file: 'panel-tours', alt: 'Weekly tour calendar', caption: 'Tours: weekly calendar of visits, with the guide and group size.' },
       { file: 'panel-inventario', alt: 'Bag inventory for each coffee', caption: 'Inventory: bags of each coffee; they go down automatically when an order is delivered.' },
