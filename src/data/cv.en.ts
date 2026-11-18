@@ -9,6 +9,10 @@ export const person = {
   email: 'mvnaranjo1@gmail.com',
   github: 'https://github.com/marcovinir',
   linkedin: 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/',
+  phone: '+506 8687-7280',
+  phoneHref: 'tel:+50686877280',
+  /** Formulario de Formspree. PENDIENTE: cambiar por el código real; check-dist no deja publicar sin él. */
+  formEndpoint: 'https://formspree.io/f/PENDIENTE',
   heroTitleStart: 'I build software in',
   heroTitleAccent: 'balance.',
   heroText: 'Interfaces that flow, backends that hold, real-time experiences and deployments that go the distance.',

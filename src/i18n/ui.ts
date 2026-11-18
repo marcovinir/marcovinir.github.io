@@ -19,7 +19,16 @@ const es = {
   areasIntro: { kicker: 'Habilidades y proyectos', titleStart: 'Cuatro áreas,', titleAccent: 'un mismo equilibrio.' },
   project: { demo: 'Ver demo', code: 'Ver código', details: 'Ver detalles', private: 'Código privado', team: 'En equipo', inProgress: 'en desarrollo' },
   detail: { back: 'Volver al portafolio', site: 'El sitio público', panel: 'El panel de la familia', built: 'Lo que construí', stack: 'Tecnologías', role: 'Mi rol' },
-  contacto: { title: '¿Tienes un proyecto en mente?', lead: 'Cuéntame tu idea y la construimos juntos. Escríbeme y te respondo pronto.', copy: 'Copiar', copied: 'Copiado', linkedin: 'También en LinkedIn' },
+  contacto: {
+    title: '¿Tienes un puesto o un proyecto en mente? Escríbeme.',
+    lead: 'Cuéntame tu idea y la construimos juntos. Te respondo pronto.',
+    copy: 'Copiar', copied: 'Copiado', linkedin: 'LinkedIn',
+    name: 'Nombre', email: 'Correo', message: 'Mensaje', send: 'Enviar mensaje', sending: 'Enviando…',
+    success: 'Gracias, {name}. Tu mensaje llegó; te respondo pronto.',
+    error: 'No se pudo enviar el mensaje. Escríbeme directo a {email}.',
+    cardTitle: 'Desarrollador full-stack',
+    cardText: 'Disponible para proyectos y empleo.',
+  },
   cv: { profile: 'Perfil', experience: 'Experiencia', education: 'Educación', certifications: 'Certificaciones', projects: 'Proyectos', skills: 'Habilidades', tools: 'Herramientas' },
 };
 
@@ -41,7 +50,16 @@ const en: typeof es = {
   areasIntro: { kicker: 'Skills and projects', titleStart: 'Four areas,', titleAccent: 'one balance.' },
   project: { demo: 'View demo', code: 'View code', details: 'View details', private: 'Private code', team: 'Team project', inProgress: 'in progress' },
   detail: { back: 'Back to portfolio', site: 'The public site', panel: 'The family dashboard', built: 'What I built', stack: 'Tech stack', role: 'My role' },
-  contacto: { title: 'Have a project in mind?', lead: 'Tell me your idea and let’s build it together. Write to me and I’ll get back to you soon.', copy: 'Copy', copied: 'Copied', linkedin: 'Also on LinkedIn' },
+  contacto: {
+    title: 'Have a role or a project in mind? Write to me.',
+    lead: 'Tell me your idea and let’s build it together. I’ll get back to you soon.',
+    copy: 'Copy', copied: 'Copied', linkedin: 'LinkedIn',
+    name: 'Name', email: 'Email', message: 'Message', send: 'Send message', sending: 'Sending…',
+    success: 'Thank you, {name}. Your message arrived; I’ll reply soon.',
+    error: 'The message could not be sent. Write to me directly at {email}.',
+    cardTitle: 'Full-stack developer',
+    cardText: 'Open to projects and jobs.',
+  },
   cv: { profile: 'Profile', experience: 'Experience', education: 'Education', certifications: 'Certifications', projects: 'Projects', skills: 'Skills', tools: 'Tools' },
 };
 

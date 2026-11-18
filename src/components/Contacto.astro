@@ -8,37 +8,103 @@ const ui = t(lang).contacto;
 ---
 
 <section id="contacto" data-accent="#ffffff">
-  <div class="inner">
-    <div class="spectrum reveal" aria-hidden="true"></div>
-    <h2 class="reveal">{ui.title}</h2>
-    <p class="lead reveal">{ui.lead}</p>
-    <div class="mail reveal">
-      <a href={`mailto:${person.email}`}>
-        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" /><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
-        <span class="addr">{person.email}</span>
-      </a>
-      <button class="copy" type="button" data-email={person.email} data-copied={ui.copied}>{ui.copy}</button>
+  <div class="grid">
+    <aside class="card reveal" aria-hidden="true">
+      <div class="glow"><span></span><span></span><span></span><span></span></div>
+      <div class="card-text">
+        <b>{person.name}</b>
+        <span>{ui.cardTitle}</span>
+        <small>{ui.cardText}</small>
+      </div>
+    </aside>
+
+    <div class="side">
+      <h2 class="reveal">{ui.title}</h2>
+      <p class="lead reveal">{ui.lead}</p>
+
+      <ul class="links reveal">
+        <li class="mail">
+          <a href={`mailto:${person.email}`}><span class="addr">{person.email}</span></a>
+          <button class="copy" type="button" data-email={person.email} data-copied={ui.copied}>{ui.copy}</button>
+        </li>
+        <li><a href={person.phoneHref}>{person.phone}</a></li>
+        <li><a href={person.linkedin} target="_blank" rel="noopener">{ui.linkedin}</a></li>
+      </ul>
+
+      <form class="form reveal" action={person.formEndpoint} method="POST"
+        data-success={ui.success} data-error={ui.error} data-email={person.email} data-sending={ui.sending}>
+        <div class="row">
+          <label>
+            <span>{ui.name}</span>
+            <input name="name" type="text" autocomplete="name" required maxlength="100" />
+          </label>
+          <label>
+            <span>{ui.email}</span>
+            <input name="email" type="email" autocomplete="email" required maxlength="150" />
+          </label>
+        </div>
+        <label>
+          <span class="msg-head">{ui.message} <span class="counter" aria-live="polite">0/500</span></span>
+          <textarea name="message" rows="5" required maxlength="500"></textarea>
+        </label>
+        <!-- Campo trampa para bots: las personas no lo ven. -->
+        <input class="trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="cta send" type="submit">{ui.send}</button>
+        <p class="status" role="status" aria-live="polite"></p>
+      </form>
     </div>
-    <p class="social reveal"><a href={person.linkedin} target="_blank" rel="noopener">{ui.linkedin}</a></p>
   </div>
 </section>
 
 <style>
-  #contacto { min-height: 70vh; justify-content: center; text-align: center; --accent: #fff; --accent2: #fff; background: linear-gradient(180deg, var(--bg), #0a0b12); }
-  .inner { max-width: 720px; }
-  .lead { margin: 16px auto 0; }
-  .spectrum { height: 3px; width: 220px; margin: 0 auto 26px; border-radius: 3px; background: var(--spectrum); background-size: 200% 100%; animation: shift 4s linear infinite; }
-  @keyframes shift { to { background-position: 200% 0; } }
-  .mail { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; padding: 10px 10px 10px 22px; border-radius: 16px; border: 1px solid #ffffff22; background: #ffffff08; transition: border-color .3s, background .3s; }
-  .mail:hover { border-color: #fff; background: #ffffff12; }
-  .mail a { display: inline-flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
-  .copy { font: inherit; font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 10px; background: #ffffff14; color: var(--muted); cursor: pointer; border: 0; }
+  #contacto { min-height: 80vh; --accent: #fff; --accent2: #fff; background: linear-gradient(180deg, var(--bg), #0a0b12); }
+  .grid { position: relative; z-index: 2; width: 100%; max-width: 1150px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 6vw; align-items: start; }
+
+  .card { position: relative; aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; border: 1px solid #ffffff1f; background: #070810; box-shadow: 0 30px 80px #0008; }
+  .glow { position: absolute; inset: -20%; filter: blur(48px); opacity: .7; }
+  .glow span { position: absolute; width: 55%; height: 55%; border-radius: 50%; animation: drift 16s ease-in-out infinite; }
+  .glow span:nth-child(1) { background: var(--c1); left: 8%; top: 10%; }
+  .glow span:nth-child(2) { background: var(--c2); right: 6%; top: 6%; animation-delay: -4s; }
+  .glow span:nth-child(3) { background: var(--c3); left: 22%; bottom: 4%; animation-delay: -8s; }
+  .glow span:nth-child(4) { background: var(--c4b); right: 4%; bottom: 10%; animation-delay: -12s; }
+  @keyframes drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(6%, -5%); } }
+  .card-text { position: absolute; left: 22px; bottom: 20px; right: 22px; display: flex; flex-direction: column; gap: 2px; text-shadow: 0 2px 12px #0009; }
+  .card-text b { font-size: 22px; }
+  .card-text span { font-size: 15px; }
+  .card-text small { color: #e7e9f3; font-size: 13px; margin-top: 6px; }
+
+  .side h2 { margin-top: 0; }
+  .links { list-style: none; margin-top: 22px; display: grid; gap: 10px; font-size: 16px; }
+  .links a { color: var(--text); text-underline-offset: 4px; }
+  .links a:hover { color: var(--c1); }
+  .mail { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .mail a { font-weight: 600; overflow-wrap: anywhere; }
+  .copy { font: inherit; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 10px; background: #ffffff14; color: var(--muted); cursor: pointer; border: 0; }
   .copy:hover { color: var(--text); }
   .copy.ok { color: var(--c2); }
-  .social { margin-top: 18px; font-size: 15px; }
-  .social a { color: var(--muted); text-underline-offset: 4px; }
-  .social a:hover { color: var(--text); }
-  @media (max-width: 480px) { .mail { flex-direction: column; padding: 16px; } .mail a { font-size: 16px; } }
+
+  .form { margin-top: 34px; display: grid; gap: 22px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  label { display: grid; gap: 8px; font-size: 13px; color: var(--muted); }
+  .msg-head { display: flex; justify-content: space-between; }
+  input, textarea {
+    font: inherit; font-size: 16px; color: var(--text); background: transparent;
+    border: 0; border-bottom: 1px solid #ffffff33; padding: 8px 2px; resize: vertical; transition: border-color .3s;
+  }
+  input:focus, textarea:focus { outline: none; border-bottom-color: var(--c1); }
+  input:focus-visible, textarea:focus-visible { box-shadow: 0 2px 0 0 var(--c1); }
+  .trap { display: none; }
+  .send { margin-top: 4px; justify-self: start; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+  .send[disabled] { opacity: .6; cursor: wait; }
+  .status { min-height: 1.4em; font-size: 15px; color: var(--muted); }
+  .status.ok { color: var(--c2); }
+  .status.bad { color: var(--c3); }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+    .card { max-width: 520px; aspect-ratio: 16 / 9; }
+  }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
 </style>
 
 <script>
@@ -60,6 +126,41 @@ const ui = t(lang).contacto;
           sel.removeAllRanges();
           sel.addRange(range);
         }
+      }
+    });
+  });
+
+  // Formulario: contador de caracteres y envío a Formspree sin salir de la página.
+  document.querySelectorAll<HTMLFormElement>('#contacto form').forEach(form => {
+    const message = form.querySelector('textarea')!;
+    const counter = form.querySelector('.counter')!;
+    const status = form.querySelector<HTMLElement>('.status')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const updateCounter = () => { counter.textContent = `${message.value.length}/${message.maxLength}`; };
+    message.addEventListener('input', updateCounter);
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+      const label = button.textContent;
+      button.disabled = true;
+      button.textContent = form.dataset.sending ?? label;
+      status.className = 'status';
+      status.textContent = '';
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        status.textContent = (form.dataset.success ?? '').replace('{name}', name);
+        status.classList.add('ok');
+        form.reset();
+        updateCounter();
+      } catch {
+        status.textContent = (form.dataset.error ?? '').replace('{email}', form.dataset.email ?? '');
+        status.classList.add('bad');
+      } finally {
+        button.disabled = false;
+        button.textContent = label;
       }
     });
   });

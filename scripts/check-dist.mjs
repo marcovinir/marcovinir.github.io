@@ -44,6 +44,7 @@ for (const file of htmlFiles(DIST)) {
   if (elem) problems.push(`${where}: menciona "${elem[0]}"`);
   const loc = text.replaceAll(UNIVERSIDAD, '').match(UBICACION);
   if (loc) problems.push(`${where}: menciona la ubicación "${loc[0]}"`);
+  if (html.includes('formspree.io/f/PENDIENTE')) problems.push(`${where}: falta el código real del formulario de Formspree`);
   if (CONFIDENCIAL.test(html)) problems.push(`${where}: contiene datos confidenciales de SIRA`);
 
   const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
