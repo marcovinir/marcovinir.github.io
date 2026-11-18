@@ -16,7 +16,7 @@ export type Step = { title: string; text: string; example: string };
 export const person = {
   name: 'Marco Rojas',
   role: 'Desarrollador full-stack',
-  headline: 'Desarrollador full-stack · React, Spring Boot, Django y AWS',
+  headline: 'Diplomado en Programación de Aplicaciones Informáticas (UNA)',
   email: 'marcorojassp@gmail.com',
   github: 'https://github.com/marcovinir',
   linkedin: 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/',
@@ -24,9 +24,9 @@ export const person = {
   phoneHref: 'tel:+50686877280',
   /** Formulario de Formspree: los mensajes llegan al correo de Marco. */
   formEndpoint: 'https://formspree.io/f/xjywwleg',
-  heroTitleStart: 'Construyo software en',
-  heroTitleAccent: 'equilibrio.',
-  heroText: 'Interfaces que fluyen, bases que no se caen, experiencias en tiempo real y despliegues que llegan lejos.',
+  heroTitleStart: 'Desarrollador',
+  heroTitleAccent: 'full-stack.',
+  heroText: 'Construyo aplicaciones web de punta a punta con React, Spring Boot y Django, y las despliego en la nube.',
   about: [
     'Soy estudiante de Ingeniería en Sistemas y desarrollador full-stack. Me gusta llevar una idea de punta a punta: diseñar la base de datos, construir la API, pulir la interfaz, escribir las pruebas y dejarla desplegada. Trabajo bien en equipo, con ramas, pull requests y revisiones de código.',
     'Uso Claude Code y agentes para avanzar más rápido, pero las decisiones técnicas son mías: defino el diseño, reviso cada cambio en un pull request y lo respaldo con pruebas automáticas antes de fusionarlo.',

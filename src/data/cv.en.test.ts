@@ -44,7 +44,9 @@ describe('inglés: misma estructura que español', () => {
 describe('inglés: textos clave', () => {
   test('rol y tagline', () => {
     expect(en.person.role).toBe('Full-stack developer');
-    expect(en.person.headline).toBe('Full-stack developer · React, Spring Boot, Django and AWS');
+    expect(en.person.headline).toBe('Diplomado in Application Programming (UNA)');
+    expect(en.person.heroTitleStart + ' ' + en.person.heroTitleAccent).toBe('Full-stack developer.');
+    expect(en.person.heroText).toBe('I build end-to-end web applications with React, Spring Boot and Django, and deploy them to the cloud.');
   });
   test('categorías de las áreas', () => {
     expect(en.areas.map(a => a.label)).toEqual(['Frontend', 'Backend & data', 'Real-time & games', 'Cloud & deployment']);

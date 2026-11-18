@@ -91,7 +91,9 @@ test('certificaciones de Google y Microsoft', () => {
   expect(allText()).toMatch(/AI Skills Fest/);
 });
 test('tagline claro y rol en español', () => {
-  expect(person.headline).toBe('Desarrollador full-stack · React, Spring Boot, Django y AWS');
+  expect(person.headline).toBe('Diplomado en Programación de Aplicaciones Informáticas (UNA)');
+  expect(person.heroTitleStart + ' ' + person.heroTitleAccent).toBe('Desarrollador full-stack.');
+  expect(person.heroText).toBe('Construyo aplicaciones web de punta a punta con React, Spring Boot y Django, y las despliego en la nube.');
   expect(person.role).toBe('Desarrollador full-stack');
 });
 test('el párrafo de IA deja claro que él dirige y revisa', () => {

@@ -5,7 +5,7 @@ import type { Area, Certification, Step, TimelineEntry } from './cv';
 export const person = {
   name: 'Marco Rojas',
   role: 'Full-stack developer',
-  headline: 'Full-stack developer · React, Spring Boot, Django and AWS',
+  headline: 'Diplomado in Application Programming (UNA)',
   email: 'marcorojassp@gmail.com',
   github: 'https://github.com/marcovinir',
   linkedin: 'https://www.linkedin.com/in/marco-vinicio-rojas-pe%C3%B1a-89497a416/',
@@ -13,9 +13,9 @@ export const person = {
   phoneHref: 'tel:+50686877280',
   /** Formulario de Formspree: los mensajes llegan al correo de Marco. */
   formEndpoint: 'https://formspree.io/f/xjywwleg',
-  heroTitleStart: 'I build software in',
-  heroTitleAccent: 'balance.',
-  heroText: 'Interfaces that flow, backends that hold, real-time experiences and deployments that go the distance.',
+  heroTitleStart: 'Full-stack',
+  heroTitleAccent: 'developer.',
+  heroText: 'I build end-to-end web applications with React, Spring Boot and Django, and deploy them to the cloud.',
   about: [
     'I am a Systems Engineering student and a full-stack developer. I like taking an idea from start to finish: designing the database, building the API, polishing the interface, writing the tests and shipping it. I work well in teams, with branches, pull requests and code reviews.',
     'I use Claude Code and agents to move faster, but the technical decisions are mine: I define the design, review every change in a pull request and back it with automated tests before merging.',

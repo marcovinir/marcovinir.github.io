@@ -5,7 +5,9 @@ test('la versión en inglés existe en /en/', async ({ page }) => {
   await page.goto('/en/');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page).toHaveTitle(/Full-stack developer/);
-  await expect(page.locator('#hero .kicker')).toContainText('Full-stack developer · React, Spring Boot, Django and AWS');
+  await expect(page.locator('#hero h1')).toHaveText('Full-stack developer.');
+  await expect(page.locator('#hero .kicker')).toContainText('Diplomado in Application Programming (UNA)');
+  await expect(page.locator('#hero').getByRole('link', { name: 'View projects' })).toHaveAttribute('href', '#areas');
   await expect(page.locator('#hero').getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', '/cv-marco-rojas-en.pdf');
   for (const name of ['About me', 'Education', 'Certifications', 'Experience', 'How I work']) {
     await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
