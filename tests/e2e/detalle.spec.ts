@@ -67,3 +67,22 @@ test('Ver detalles se ve como botón y va primero', async ({ page }) => {
   expect(first).toMatch(/Ver detalles/);
   await expect(card).toContainText('capturas');
 });
+
+for (const p of [
+  { slug: 'rivalmon', name: 'Rivalmon', area: 'chispa', shots: 6, gallery: 'juego', en: 'Technical challenges' },
+  { slug: 'oraadmin-xe', name: 'OraAdmin XE', area: 'cimientos', shots: 10, gallery: 'app', en: 'Technical challenges' },
+]) {
+  test(`detalle de ${p.name}: retos, galería y enlaces`, async ({ page }) => {
+    test.setTimeout(90_000);
+    await page.goto('/');
+    await expect(page.locator('.proj', { hasText: p.name }).getByRole('link', { name: /Ver detalles/ })).toHaveAttribute('href', `/proyectos/${p.slug}/`);
+    await page.goto(`/proyectos/${p.slug}/`);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(p.name);
+    await expect(page.getByRole('heading', { name: 'Retos técnicos' })).toBeVisible();
+    expect(await imagenesCargadas(page, `.gallery-${p.gallery} img`)).toBe(p.shots);
+    await expect(page.getByRole('link', { name: /Ver código/ }).first()).toHaveAttribute('href', /github\.com\/marcovinir\//);
+    await expect(page.getByRole('link', { name: /Volver al portafolio/ })).toHaveAttribute('href', `/#${p.area}`);
+    await page.goto(`/en/projects/${p.slug}/`);
+    await expect(page.getByRole('heading', { name: p.en })).toBeVisible();
+  });
+}

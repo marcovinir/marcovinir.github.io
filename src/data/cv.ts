@@ -91,7 +91,7 @@ export const areas: Area[] = [
     text: 'APIs, modelos de datos y bases de datos diseñadas para crecer sin romperse.',
     skills: ['Spring Boot', 'Django', 'FastAPI', '.NET 8', 'PostgreSQL', 'Neon', 'Oracle', 'Docker'],
     projects: [
-      { name: 'OraAdmin XE', summary: 'Consola DBA de escritorio para Oracle 21c', stack: 'C# + .NET 8', code: 'https://github.com/marcovinir/oraadmin-xe', team: true },
+      { name: 'OraAdmin XE', summary: 'Consola DBA de escritorio para Oracle 21c', stack: 'C# + .NET 8', code: 'https://github.com/marcovinir/oraadmin-xe', team: true, detail: 'oraadmin-xe' },
       { name: 'Coffee Tour Pura Vista', summary: 'Tienda de café y reservas de visitas para una finca familiar', stack: 'React + Spring Boot + PostgreSQL', demo: 'https://zagala.marcovinir.dev/', team: false, detail: 'coffee-tour-pura-vista' },
     ],
     color: '#34d399', color2: '#a3e635',
@@ -102,7 +102,7 @@ export const areas: Area[] = [
     text: 'Multijugador, sockets y juegos donde cada milisegundo cuenta.',
     skills: ['Socket.io', 'Express', 'Three.js'],
     projects: [
-      { name: 'Rivalmon', summary: 'Minijuegos 1 vs 1 en tiempo real', stack: 'React + Socket.io + Prisma', demo: 'https://rivalmon.marcovinir.dev/', code: 'https://github.com/marcovinir/rivalmon', team: false },
+      { name: 'Rivalmon', summary: 'Minijuegos 1 vs 1 en tiempo real', stack: 'React + Socket.io + Prisma', demo: 'https://rivalmon.marcovinir.dev/', code: 'https://github.com/marcovinir/rivalmon', team: false, detail: 'rivalmon' },
     ],
     color: '#fb7185', color2: '#f59e0b',
   },

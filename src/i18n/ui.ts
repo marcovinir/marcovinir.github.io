@@ -18,8 +18,8 @@ const es = {
   stack: { kicker: 'Tecnologías', title: 'Con qué trabajo' },
   comoTrabajo: { kicker: 'Proceso', title: 'Cómo trabajo', example: 'Ejemplo' },
   areasIntro: { kicker: 'Habilidades y proyectos', titleStart: 'Cuatro áreas,', titleAccent: 'un mismo equilibrio.' },
-  project: { demo: 'Ver demo', code: 'Ver código', details: 'Ver detalles', detailsHint: 'Incluye capturas del panel y lo que construí.', private: 'Código privado', team: 'En equipo', inProgress: 'en desarrollo' },
-  detail: { back: 'Volver al portafolio', site: 'El sitio público', panel: 'El panel de la familia', built: 'Lo que construí', stack: 'Tecnologías', role: 'Mi rol' },
+  project: { demo: 'Ver demo', code: 'Ver código', details: 'Ver detalles', detailsHint: 'Incluye capturas y lo que construí.', private: 'Código privado', team: 'En equipo', inProgress: 'en desarrollo' },
+  detail: { back: 'Volver al portafolio', built: 'Lo que construí', challenges: 'Retos técnicos', stack: 'Tecnologías', role: 'Mi rol' },
   contacto: {
     title: 'Contacto',
     copy: 'Copiar', copied: 'Copiado', linkedin: 'LinkedIn',
@@ -47,8 +47,8 @@ const en: typeof es = {
   stack: { kicker: 'Technologies', title: 'What I work with' },
   comoTrabajo: { kicker: 'Process', title: 'How I work', example: 'Example' },
   areasIntro: { kicker: 'Skills and projects', titleStart: 'Four areas,', titleAccent: 'one balance.' },
-  project: { demo: 'View demo', code: 'View code', details: 'View details', detailsHint: 'Includes dashboard screenshots and what I built.', private: 'Private code', team: 'Team project', inProgress: 'in progress' },
-  detail: { back: 'Back to portfolio', site: 'The public site', panel: 'The family dashboard', built: 'What I built', stack: 'Tech stack', role: 'My role' },
+  project: { demo: 'View demo', code: 'View code', details: 'View details', detailsHint: 'Includes screenshots and what I built.', private: 'Private code', team: 'Team project', inProgress: 'in progress' },
+  detail: { back: 'Back to portfolio', built: 'What I built', challenges: 'Technical challenges', stack: 'Tech stack', role: 'My role' },
   contacto: {
     title: 'Contact',
     copy: 'Copy', copied: 'Copied', linkedin: 'LinkedIn',
