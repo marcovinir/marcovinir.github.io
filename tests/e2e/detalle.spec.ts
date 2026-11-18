@@ -86,3 +86,22 @@ for (const p of [
     await expect(page.getByRole('heading', { name: p.en })).toBeVisible();
   });
 }
+
+for (const p of [
+  { slug: 'pomopet', name: 'PomoPet', role: 'temporizador' },
+  { slug: 'gym-lacobra', name: 'Gym-LACOBRA', role: 'coach' },
+]) {
+  test(`detalle de ${p.name}: rol en el equipo y código`, async ({ page }) => {
+    await page.goto('/');
+    const card = page.locator('.proj', { hasText: p.name });
+    await expect(card.getByRole('link', { name: /Ver detalles/ })).toHaveAttribute('href', `/proyectos/${p.slug}/`);
+    await expect(card).not.toContainText('capturas');
+    await page.goto(`/proyectos/${p.slug}/`);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(p.name);
+    await expect(page.locator('.role')).toContainText(p.role);
+    await expect(page.getByRole('link', { name: /Ver código/ }).first()).toHaveAttribute('href', new RegExp(`github\\.com/You9123/`));
+    await expect(page.getByRole('link', { name: /Volver al portafolio/ })).toHaveAttribute('href', '/#fluir');
+    await page.goto(`/en/projects/${p.slug}/`);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  });
+}

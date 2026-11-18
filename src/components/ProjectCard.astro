@@ -2,7 +2,7 @@
 import type { Project } from '../data/cv';
 import type { Lang } from '../data';
 import { t } from '../i18n/ui';
-import { detailPath } from '../data/detalles';
+import { detailPath, detalles } from '../data/detalles';
 
 interface Props {
   project: Project;
@@ -13,6 +13,8 @@ interface Props {
 
 const { project, accent, accent2, lang = 'es' } = Astro.props;
 const ui = t(lang).project;
+// La nota solo promete capturas si el detalle tiene alguna galería.
+const hasShots = project.detail ? detalles[lang][project.detail].galleries.length > 0 : false;
 const arrow = '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" /></svg>';
 ---
 
@@ -24,7 +26,7 @@ const arrow = '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true
       {project.team && <span class="tag">{ui.team}</span>}
     </div>
     <small>{project.summary} · {project.stack}</small>
-    {project.detail && <p class="hint">{ui.detailsHint}</p>}
+    {project.detail && <p class="hint">{hasShots ? ui.detailsHint : ui.detailsHintText}</p>}
     <div class="links">
       {project.detail && <a class="details-btn" href={detailPath(lang, project.detail)}>{ui.details} <span aria-hidden="true">→</span></a>}
       {project.demo && <a href={project.demo} target="_blank" rel="noopener">{ui.demo} <Fragment set:html={arrow} /></a>}

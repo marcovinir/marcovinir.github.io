@@ -69,8 +69,8 @@ export const areas: Area[] = [
     text: 'Fast, accessible frontends with animations that feel natural.',
     skills: ['React', 'Vue', 'TypeScript', 'Astro', 'Vite'],
     projects: [
-      { name: 'PomoPet', summary: 'Gamified platform for time management and studying', stack: 'Vue 3 + FastAPI + PostgreSQL + Docker', code: 'https://github.com/You9123/PomoPet', team: true },
-      { name: 'Gym-LACOBRA', summary: 'Web app to manage a gym', stack: 'React + Django', code: 'https://github.com/You9123/Gym-LACOBRA', team: true },
+      { name: 'PomoPet', summary: 'Gamified platform for time management and studying', stack: 'Vue 3 + FastAPI + PostgreSQL + Docker', code: 'https://github.com/You9123/PomoPet', team: true, detail: 'pomopet' },
+      { name: 'Gym-LACOBRA', summary: 'Web app to manage a gym', stack: 'React + Django', code: 'https://github.com/You9123/Gym-LACOBRA', team: true, detail: 'gym-lacobra' },
     ],
     color: '#38bdf8', color2: '#6366f1',
   },

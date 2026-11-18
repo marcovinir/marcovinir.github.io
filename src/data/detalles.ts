@@ -146,6 +146,51 @@ const es: Record<string, ProjectDetail> = {
     ],
     backTo: '/#cimientos',
   },
+  pomopet: {
+    name: 'PomoPet',
+    intro: [
+      'Plataforma gamificada para estudiar con la técnica Pomodoro: cada sesión de estudio hace crecer y evolucionar una mascota en pixel art.',
+      'Incluye materias, estadísticas de estudio y un quiz contra un Jefe Final generado con IA. Proyecto del curso Paradigmas de Programación de la UNA, hecho en equipo.',
+    ],
+    role: 'Proyecto en equipo. Hice el temporizador Pomodoro completo (los endpoints de sesiones y pausas en FastAPI y la pantalla del temporizador en Vue), las mascotas en pixel art con sus variantes de color y la evolución por niveles, y el servicio de IA con Gemini para el consejo de la mascota y el quiz del Jefe Final.',
+    featuresTitle: 'Qué hace la plataforma',
+    features: [
+      'Temporizador Pomodoro con pausas, que se retoma donde quedó si recargas la página.',
+      'Una mascota en pixel art (gato, perro o dragón) en cinco colores, que sube de nivel y evoluciona al estudiar.',
+      'Materias, estadísticas de estudio y jefes por vencer.',
+      'Consejos de la mascota y un quiz contra el Jefe Final generados con IA (Gemini).',
+      'Backend en FastAPI con PostgreSQL y frontend en Vue 3 con Pinia, todo levantado con Docker.',
+    ],
+    challenges: [
+      { title: 'Pausar dos veces sin errores', text: 'Al pausar dos veces seguidas el servidor fallaba; lo resolví bloqueando la sesión en la base de datos antes de leer sus pausas.' },
+      { title: 'Un temporizador que no se pierde', text: 'El tiempo se calcula con marcas de tiempo del servidor y no con un contador del navegador, así que al recargar la página la sesión se retoma desde la API.' },
+      { title: 'IA que no rompe la app', text: 'El servicio de Gemini tiene un modo falso para las pruebas y una respuesta de respaldo si la IA no contesta, así la plataforma sigue funcionando.' },
+      { title: 'Setenta y cinco sprites sin dibujarlos a mano', text: 'Hice herramientas que generan las variantes de color de cada mascota a partir de un sprite base, con pruebas para que no cambie ni un píxel por error.' },
+    ],
+    stack: ['Vue 3', 'Vite', 'Pinia', 'JavaScript', 'Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Gemini API', 'pytest'],
+    code: 'https://github.com/You9123/PomoPet',
+    galleries: [],
+    backTo: '/#fluir',
+  },
+  'gym-lacobra': {
+    name: 'Gym-LACOBRA',
+    intro: [
+      'Aplicación web para administrar un gimnasio: usuarios, sedes, ejercicios, rutinas y las medidas de cada cliente, con vistas distintas para administradores, coaches y clientes.',
+      'Proyecto del curso Programación IV de la UNA, hecho en un equipo de cuatro personas.',
+    ],
+    role: 'Proyecto en equipo. Hice los modelos de Django y la conexión con la base de datos Oracle, las API de usuarios, ubicaciones y medidas, las pantallas de administración de usuarios y ubicaciones, y el panel del coach: sus alumnos, sus medidas y la creación y asignación de rutinas.',
+    featuresTitle: 'Qué hace la aplicación',
+    features: [
+      'Panel de administración para usuarios, sedes, ubicaciones y ejercicios.',
+      'Panel del coach con sus alumnos, el registro de medidas y rutinas para crear y asignar.',
+      'Vistas para clientes, con ejercicios animados.',
+      'API REST con Django REST Framework sobre una base de datos Oracle.',
+    ],
+    stack: ['React', 'TypeScript', 'Vite', 'Python', 'Django', 'Django REST Framework', 'Oracle'],
+    code: 'https://github.com/You9123/Gym-LACOBRA',
+    galleries: [],
+    backTo: '/#fluir',
+  },
 };
 
 const en: Record<string, ProjectDetail> = {
@@ -269,6 +314,51 @@ const en: Record<string, ProjectDetail> = {
       },
     ],
     backTo: '/en/#cimientos',
+  },
+  pomopet: {
+    name: 'PomoPet',
+    intro: [
+      'A gamified platform for studying with the Pomodoro technique: every study session helps a pixel-art pet grow and evolve.',
+      'It includes subjects, study stats and a quiz against a Final Boss generated with AI. Built as a team for the Programming Paradigms course at UNA.',
+    ],
+    role: 'Team project. I built the full Pomodoro timer (the session and pause endpoints in FastAPI and the timer screen in Vue), the pixel-art pets with their color variants and level-based evolution, and the AI service with Gemini for the pet’s advice and the Final Boss quiz.',
+    featuresTitle: 'What the platform does',
+    features: [
+      'A Pomodoro timer with pauses that picks up where it left off if you reload the page.',
+      'A pixel-art pet (cat, dog or dragon) in five colors that levels up and evolves as you study.',
+      'Subjects, study stats and bosses to defeat.',
+      'Pet advice and a quiz against the Final Boss generated with AI (Gemini).',
+      'FastAPI backend with PostgreSQL and a Vue 3 frontend with Pinia, all running with Docker.',
+    ],
+    challenges: [
+      { title: 'Pausing twice without errors', text: 'Pausing twice in a row made the server fail; I fixed it by locking the session in the database before reading its pauses.' },
+      { title: 'A timer that never gets lost', text: 'Time is calculated from server timestamps instead of a browser counter, so when the page reloads the session is resumed from the API.' },
+      { title: 'AI that does not break the app', text: 'The Gemini service has a fake mode for tests and a fallback answer if the AI does not respond, so the platform keeps working.' },
+      { title: 'Seventy-five sprites without drawing them by hand', text: 'I built tools that generate each pet’s color variants from a base sprite, with tests so not a single pixel changes by mistake.' },
+    ],
+    stack: ['Vue 3', 'Vite', 'Pinia', 'JavaScript', 'Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Gemini API', 'pytest'],
+    code: 'https://github.com/You9123/PomoPet',
+    galleries: [],
+    backTo: '/en/#fluir',
+  },
+  'gym-lacobra': {
+    name: 'Gym-LACOBRA',
+    intro: [
+      'A web app to run a gym: users, branches, exercises, routines and each client’s measurements, with separate views for admins, coaches and clients.',
+      'Built for the Programming IV course at UNA by a team of four.',
+    ],
+    role: 'Team project. I built the Django models and the connection to the Oracle database, the users, locations and measurements APIs, the admin screens for users and locations, and the coach dashboard: their students, their measurements and creating and assigning routines.',
+    featuresTitle: 'What the app does',
+    features: [
+      'Admin dashboard for users, branches, locations and exercises.',
+      'Coach dashboard with their students, measurement tracking and routines to create and assign.',
+      'Client views with animated exercises.',
+      'REST API with Django REST Framework on an Oracle database.',
+    ],
+    stack: ['React', 'TypeScript', 'Vite', 'Python', 'Django', 'Django REST Framework', 'Oracle'],
+    code: 'https://github.com/You9123/Gym-LACOBRA',
+    galleries: [],
+    backTo: '/en/#fluir',
   },
 };
 
