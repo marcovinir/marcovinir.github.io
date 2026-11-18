@@ -26,8 +26,8 @@ test('galerías esperadas por proyecto', () => {
   expect(g('coffee-tour-pura-vista')).toEqual([['panel', 10], ['site', 2]]);
   expect(g('rivalmon')).toEqual([['juego', 6]]);
   expect(g('oraadmin-xe')).toEqual([['app', 10]]);
-  expect(g('pomopet')).toEqual([]);
-  expect(g('gym-lacobra')).toEqual([]);
+  expect(g('pomopet')).toEqual([['mascota', 4]]);
+  expect(g('gym-lacobra')).toEqual([['app', 8]]);
 });
 
 test('Rivalmon y OraAdmin XE explican sus retos técnicos', () => {
@@ -52,7 +52,7 @@ test('cada captura tiene texto alternativo y pie de foto', () => {
       for (const s of d.galleries.flatMap(g => g.shots)) {
         expect(s.alt.length).toBeGreaterThan(10);
         expect(s.caption.length).toBeGreaterThan(10);
-        expect(s.file).toMatch(/\.(png|jpg)$/);
+        expect(s.file).toMatch(/\.(png|jpg|gif)$/);
       }
     }
   }

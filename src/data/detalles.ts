@@ -169,7 +169,16 @@ const es: Record<string, ProjectDetail> = {
     ],
     stack: ['Vue 3', 'Vite', 'Pinia', 'JavaScript', 'Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Gemini API', 'pytest'],
     code: 'https://github.com/You9123/PomoPet',
-    galleries: [],
+    galleries: [
+      {
+        id: 'mascota', title: 'La mascota evoluciona', shots: [
+          { file: 'cria.gif', alt: 'Mascota dragón en pixel art en la etapa Cría', caption: 'Cría: la etapa inicial, desde 0 XP.' },
+          { file: 'joven.gif', alt: 'Mascota dragón en pixel art en la etapa Joven', caption: 'Joven: a los 500 XP, unos 5 pomodoros.' },
+          { file: 'adulta.gif', alt: 'Mascota dragón en pixel art en la etapa Adulta', caption: 'Adulta: a los 2500 XP, unos 25 pomodoros.' },
+          { file: 'legendaria.gif', alt: 'Mascota dragón en pixel art en la etapa Legendaria, con corona', caption: 'Legendaria: a los 5000 XP.' },
+        ],
+      },
+    ],
     backTo: '/#fluir',
   },
   'gym-lacobra': {
@@ -188,7 +197,20 @@ const es: Record<string, ProjectDetail> = {
     ],
     stack: ['React', 'TypeScript', 'Vite', 'Python', 'Django', 'Django REST Framework', 'Oracle'],
     code: 'https://github.com/You9123/Gym-LACOBRA',
-    galleries: [],
+    galleries: [
+      {
+        id: 'app', title: 'La aplicación', shots: [
+          { file: 'coach.png', alt: 'Panel del coach con sus alumnos y acciones', caption: 'Panel del coach: sus alumnos, plantillas de rutinas y mediciones. Parte que hice.' },
+          { file: 'disenar-rutina.jpg', alt: 'Formulario para diseñar una rutina base', caption: 'El coach diseña una rutina base y le agrega ejercicios. Parte que hice.' },
+          { file: 'usuarios.jpg', alt: 'Administración de usuarios del sistema', caption: 'Administración de usuarios. Parte que hice.' },
+          { file: 'medidas.jpg', alt: 'Medidas corporales de los clientes', caption: 'Medidas corporales de cada cliente, con su índice de masa corporal.' },
+          { file: 'admin.png', alt: 'Dashboard del administrador con usuarios recientes', caption: 'Dashboard del administrador: usuarios, ejercicios, rutinas y sedes.' },
+          { file: 'cliente.png', alt: 'Perfil del cliente con su coach, rutina y medidas', caption: 'Perfil del cliente con su coach, su rutina activa y sus medidas.' },
+          { file: 'historial-medidas.jpg', alt: 'Historial de medidas del cliente con un gráfico', caption: 'Historial de medidas del cliente, con el gráfico de su evolución.' },
+          { file: 'inicio.jpg', alt: 'Página principal del gimnasio', caption: 'Página principal del gimnasio.' },
+        ],
+      },
+    ],
     backTo: '/#fluir',
   },
 };
@@ -338,7 +360,16 @@ const en: Record<string, ProjectDetail> = {
     ],
     stack: ['Vue 3', 'Vite', 'Pinia', 'JavaScript', 'Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Gemini API', 'pytest'],
     code: 'https://github.com/You9123/PomoPet',
-    galleries: [],
+    galleries: [
+      {
+        id: 'mascota', title: 'The pet evolves', shots: [
+          { file: 'cria.gif', alt: 'Pixel-art dragon pet at the Baby stage', caption: 'Baby: the first stage, from 0 XP.' },
+          { file: 'joven.gif', alt: 'Pixel-art dragon pet at the Young stage', caption: 'Young: at 500 XP, about 5 pomodoros.' },
+          { file: 'adulta.gif', alt: 'Pixel-art dragon pet at the Adult stage', caption: 'Adult: at 2500 XP, about 25 pomodoros.' },
+          { file: 'legendaria.gif', alt: 'Pixel-art dragon pet at the Legendary stage, with a crown', caption: 'Legendary: at 5000 XP.' },
+        ],
+      },
+    ],
     backTo: '/en/#fluir',
   },
   'gym-lacobra': {
@@ -357,7 +388,20 @@ const en: Record<string, ProjectDetail> = {
     ],
     stack: ['React', 'TypeScript', 'Vite', 'Python', 'Django', 'Django REST Framework', 'Oracle'],
     code: 'https://github.com/You9123/Gym-LACOBRA',
-    galleries: [],
+    galleries: [
+      {
+        id: 'app', title: 'The application', shots: [
+          { file: 'coach.png', alt: 'Coach dashboard with their students and actions', caption: 'Coach dashboard: their students, routine templates and measurements. Built by me.' },
+          { file: 'disenar-rutina.jpg', alt: 'Form to design a base routine', caption: 'The coach designs a base routine and adds exercises to it. Built by me.' },
+          { file: 'usuarios.jpg', alt: 'User management screen', caption: 'User management. Built by me.' },
+          { file: 'medidas.jpg', alt: 'Body measurements of the clients', caption: 'Each client’s body measurements, with their body mass index.' },
+          { file: 'admin.png', alt: 'Admin dashboard with recent users', caption: 'Admin dashboard: users, exercises, routines and branches.' },
+          { file: 'cliente.png', alt: 'Client profile with their coach, routine and measurements', caption: 'Client profile with their coach, active routine and measurements.' },
+          { file: 'historial-medidas.jpg', alt: 'Client measurement history with a chart', caption: 'Client measurement history, with a chart of their progress.' },
+          { file: 'inicio.jpg', alt: 'Gym home page', caption: 'The gym’s home page.' },
+        ],
+      },
+    ],
     backTo: '/en/#fluir',
   },
 };

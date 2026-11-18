@@ -14,7 +14,7 @@ const d = detalles[lang][slug];
 const ui = t(lang);
 const other: Lang = lang === 'es' ? 'en' : 'es';
 
-const images = import.meta.glob<{ default: ImageMetadata }>('../assets/proyectos/*/*.{png,jpg}', { eager: true });
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/proyectos/*/*.{png,jpg,gif}', { eager: true });
 const img = (s: Shot) => images[`../assets/proyectos/${slug}/${s.file}`].default;
 const arrow = '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" /></svg>';
 ---
@@ -69,7 +69,10 @@ const arrow = '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true
           {g.shots.map(s => (
             <figure>
               <a href={img(s).src} target="_blank" rel="noopener">
-                <Image src={img(s)} alt={s.alt} widths={[640, 960, 1400]} sizes="(max-width: 800px) 92vw, 560px" loading="lazy" />
+                {/* Los GIF se sirven tal cual para conservar la animación. */}
+                {s.file.endsWith('.gif')
+                  ? <img src={img(s).src} alt={s.alt} width={img(s).width} height={img(s).height} loading="lazy" />
+                  : <Image src={img(s)} alt={s.alt} widths={[640, 960, 1400]} sizes="(max-width: 800px) 92vw, 560px" loading="lazy" />}
               </a>
               <figcaption>{s.caption}</figcaption>
             </figure>
@@ -110,6 +113,9 @@ const arrow = '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true
   figure a { display: block; border-radius: 14px; overflow: hidden; border: 1px solid #ffffff1a; transition: border-color .3s, transform .3s; }
   figure a:hover, figure a:focus-visible { border-color: var(--accent); transform: translateY(-3px); }
   figure :global(img) { display: block; width: 100%; height: auto; }
+  .gallery-mascota { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .gallery-mascota a { background: #f4efe6; }
+  .gallery-mascota :global(img) { image-rendering: pixelated; }
   figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.5; }
-  @media (max-width: 800px) { .gallery, .challenges { grid-template-columns: 1fr; } .detail { padding-top: 64px; } }
+  @media (max-width: 800px) { .gallery, .challenges { grid-template-columns: 1fr; } .gallery-mascota { grid-template-columns: repeat(2, minmax(0, 1fr)); } .detail { padding-top: 64px; } }
 </style>
