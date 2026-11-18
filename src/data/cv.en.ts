@@ -77,7 +77,7 @@ export const areas: Area[] = [
     skills: ['Spring Boot', 'Django', 'FastAPI', '.NET 8', 'PostgreSQL', 'Neon', 'Oracle', 'Docker'],
     projects: [
       { name: 'OraAdmin XE', summary: 'Desktop DBA console for Oracle 21c', stack: 'C# + .NET 8', code: 'https://github.com/marcovinir/oraadmin-xe', team: true },
-      { name: 'Coffee Tour Pura Vista', summary: 'Coffee shop and visit bookings for a family farm', stack: 'React + Spring Boot + PostgreSQL', demo: 'https://zagala.marcovinir.dev/', team: false },
+      { name: 'Coffee Tour Pura Vista', summary: 'Coffee shop and visit bookings for a family farm', stack: 'React + Spring Boot + PostgreSQL', demo: 'https://zagala.marcovinir.dev/', team: false, detail: 'coffee-tour-pura-vista' },
     ],
     color: '#34d399', color2: '#a3e635',
   },

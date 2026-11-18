@@ -2,12 +2,12 @@
 import type { Lang } from '../data';
 import { t } from '../i18n/ui';
 
-interface Props { lang?: Lang }
-const { lang = 'es' } = Astro.props;
+interface Props { lang?: Lang; /** Página equivalente en el otro idioma; por defecto, la portada. */ href?: string }
+const { lang = 'es', href } = Astro.props;
 const ui = t(lang).switch;
 ---
 
-<a class="lang" href={ui.href} hreflang={ui.hreflang} lang={ui.hreflang} aria-label={ui.label} title={ui.label}>{ui.text}</a>
+<a class="lang" href={href ?? ui.href} hreflang={ui.hreflang} lang={ui.hreflang} aria-label={ui.label} title={ui.label}>{ui.text}</a>
 
 <style>
   .lang {

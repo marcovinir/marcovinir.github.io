@@ -2,7 +2,7 @@
 // para actualizar el CV basta con editar este archivo.
 
 export type Link = { label: string; href: string };
-export type Project = { name: string; summary: string; stack: string; demo?: string; code?: string; team: boolean; inProgress?: boolean };
+export type Project = { name: string; summary: string; stack: string; demo?: string; code?: string; team: boolean; inProgress?: boolean; /** Slug de la página de detalle, si la tiene. */ detail?: string };
 export type Certification = { name: string; issuer: string; date: string; href?: string };
 export type TimelineEntry = { period: string; title: string; org: string; description?: string; current: boolean; bullets?: string[]; links?: Link[] };
 export type AreaId = 'fluir' | 'cimientos' | 'chispa' | 'horizonte';
@@ -88,7 +88,7 @@ export const areas: Area[] = [
     skills: ['Spring Boot', 'Django', 'FastAPI', '.NET 8', 'PostgreSQL', 'Neon', 'Oracle', 'Docker'],
     projects: [
       { name: 'OraAdmin XE', summary: 'Consola DBA de escritorio para Oracle 21c', stack: 'C# + .NET 8', code: 'https://github.com/marcovinir/oraadmin-xe', team: true },
-      { name: 'Coffee Tour Pura Vista', summary: 'Tienda de café y reservas de visitas para una finca familiar', stack: 'React + Spring Boot + PostgreSQL', demo: 'https://zagala.marcovinir.dev/', team: false },
+      { name: 'Coffee Tour Pura Vista', summary: 'Tienda de café y reservas de visitas para una finca familiar', stack: 'React + Spring Boot + PostgreSQL', demo: 'https://zagala.marcovinir.dev/', team: false, detail: 'coffee-tour-pura-vista' },
     ],
     color: '#34d399', color2: '#a3e635',
   },

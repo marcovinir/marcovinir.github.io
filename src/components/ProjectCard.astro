@@ -2,6 +2,7 @@
 import type { Project } from '../data/cv';
 import type { Lang } from '../data';
 import { t } from '../i18n/ui';
+import { detailPath } from '../data/detalles';
 
 interface Props {
   project: Project;
@@ -24,6 +25,7 @@ const arrow = '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true
     </div>
     <small>{project.summary} · {project.stack}</small>
     <div class="links">
+      {project.detail && <a href={detailPath(lang, project.detail)}>{ui.details}</a>}
       {project.demo && <a href={project.demo} target="_blank" rel="noopener">{ui.demo} <Fragment set:html={arrow} /></a>}
       {project.code
         ? <a href={project.code} target="_blank" rel="noopener">{ui.code} <Fragment set:html={arrow} /></a>
