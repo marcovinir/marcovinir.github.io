@@ -26,7 +26,7 @@ test('galerías esperadas por proyecto', () => {
   expect(g('coffee-tour-pura-vista')).toEqual([['panel', 10], ['site', 2]]);
   expect(g('rivalmon')).toEqual([['juego', 6]]);
   expect(g('oraadmin-xe')).toEqual([['app', 10]]);
-  expect(g('pomopet')).toEqual([['mascota', 4]]);
+  expect(g('pomopet')).toEqual([['pantallas', 4], ['mascota', 4]]);
   expect(g('gym-lacobra')).toEqual([['app', 8]]);
 });
 

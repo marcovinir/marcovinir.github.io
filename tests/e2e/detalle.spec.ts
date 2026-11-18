@@ -88,7 +88,7 @@ for (const p of [
 }
 
 for (const p of [
-  { slug: 'pomopet', name: 'PomoPet', role: 'temporizador', gallery: 'mascota', shots: 4 },
+  { slug: 'pomopet', name: 'PomoPet', role: 'temporizador', gallery: 'pantallas', shots: 4 },
   { slug: 'gym-lacobra', name: 'Gym-LACOBRA', role: 'coach', gallery: 'app', shots: 8 },
 ]) {
   test(`detalle de ${p.name}: rol en el equipo y código`, async ({ page }) => {

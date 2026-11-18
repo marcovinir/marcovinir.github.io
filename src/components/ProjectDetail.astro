@@ -113,9 +113,9 @@ const arrow = '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true
   figure a { display: block; border-radius: 14px; overflow: hidden; border: 1px solid #ffffff1a; transition: border-color .3s, transform .3s; }
   figure a:hover, figure a:focus-visible { border-color: var(--accent); transform: translateY(-3px); }
   figure :global(img) { display: block; width: 100%; height: auto; }
-  .gallery-mascota { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .gallery-mascota, .gallery-pantallas { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; align-items: start; }
   .gallery-mascota a { background: #f4efe6; }
   .gallery-mascota :global(img) { image-rendering: pixelated; }
   figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.5; }
-  @media (max-width: 800px) { .gallery, .challenges { grid-template-columns: 1fr; } .gallery-mascota { grid-template-columns: repeat(2, minmax(0, 1fr)); } .detail { padding-top: 64px; } }
+  @media (max-width: 800px) { .gallery, .challenges { grid-template-columns: 1fr; } .gallery-mascota, .gallery-pantallas { grid-template-columns: repeat(2, minmax(0, 1fr)); } .detail { padding-top: 64px; } }
 </style>

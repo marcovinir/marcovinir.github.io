@@ -171,6 +171,14 @@ const es: Record<string, ProjectDetail> = {
     code: 'https://github.com/You9123/PomoPet',
     galleries: [
       {
+        id: 'pantallas', title: 'La aplicación', shots: [
+          { file: 'mascota-consejo.png', alt: 'Pantalla principal con la mascota dragón y su consejo', caption: 'La mascota y su consejo, generado con Gemini según cómo estudiaste. Parte que hice.' },
+          { file: 'temporizador.png', alt: 'Temporizador Pomodoro de 25 minutos con materia y Jefe Final', caption: 'El temporizador: eliges la materia y un Jefe Final. Parte que hice.' },
+          { file: 'materias.png', alt: 'Lista de materias con pomodoros, minutos y nivel', caption: 'Materias con sus pomodoros, minutos, XP y nivel.' },
+          { file: 'estadisticas.png', alt: 'Estadísticas de estudio: tiempo, XP, éxito y pomodoros', caption: 'Estadísticas: tiempo estudiado, XP, éxito y sesiones canceladas.' },
+        ],
+      },
+      {
         id: 'mascota', title: 'La mascota evoluciona', shots: [
           { file: 'cria.gif', alt: 'Mascota dragón en pixel art en la etapa Cría', caption: 'Cría: la etapa inicial, desde 0 XP.' },
           { file: 'joven.gif', alt: 'Mascota dragón en pixel art en la etapa Joven', caption: 'Joven: a los 500 XP, unos 5 pomodoros.' },
@@ -361,6 +369,14 @@ const en: Record<string, ProjectDetail> = {
     stack: ['Vue 3', 'Vite', 'Pinia', 'JavaScript', 'Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Gemini API', 'pytest'],
     code: 'https://github.com/You9123/PomoPet',
     galleries: [
+      {
+        id: 'pantallas', title: 'The application', shots: [
+          { file: 'mascota-consejo.png', alt: 'Main screen with the dragon pet and its advice', caption: 'The pet and its advice, generated with Gemini from how you studied. Built by me.' },
+          { file: 'temporizador.png', alt: '25-minute Pomodoro timer with subject and Final Boss', caption: 'The timer: you pick the subject and a Final Boss. Built by me.' },
+          { file: 'materias.png', alt: 'List of subjects with pomodoros, minutes and level', caption: 'Subjects with their pomodoros, minutes, XP and level.' },
+          { file: 'estadisticas.png', alt: 'Study stats: time, XP, success rate and pomodoros', caption: 'Stats: time studied, XP, success rate and cancelled sessions.' },
+        ],
+      },
       {
         id: 'mascota', title: 'The pet evolves', shots: [
           { file: 'cria.gif', alt: 'Pixel-art dragon pet at the Baby stage', caption: 'Baby: the first stage, from 0 XP.' },
