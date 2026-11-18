@@ -8,7 +8,8 @@ test('cuatro áreas con etiquetas y proyectos', async ({ page }) => {
   await expect(page.locator('#fluir .proj')).toHaveCount(2);
   await expect(page.locator('#fluir .proj').first()).toContainText('PomoPet');
   await expect(page.locator('.proj', { hasText: 'PomoPet' })).toContainText('En equipo');
-  await expect(page.locator('.proj', { hasText: 'OraAdmin XE' })).not.toContainText('En equipo');
+  await expect(page.locator('.proj', { hasText: 'OraAdmin XE' })).toContainText('En equipo');
+  await expect(page.locator('.proj', { hasText: 'Rivalmon' })).not.toContainText('En equipo');
   await expect(page.locator('#horizonte .chip')).toHaveText(['AWS EC2', 'AWS RDS', 'SSH', 'Render', 'Cloudinary', 'GitHub Actions', 'GitHub Pages']);
 });
 

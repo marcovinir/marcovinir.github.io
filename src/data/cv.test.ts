@@ -1,4 +1,5 @@
-import { person, stats, education, experience, workflow, areas, certifications, allText } from './cv';
+import * as cv from './cv';
+import { person, education, experience, workflow, areas, certifications, allText } from './cv';
 
 const EMOJI = /\p{Extended_Pictographic}/u;
 const ELEMENTOS = /\b(agua|tierra|fuego|aire)\b/i;
@@ -20,10 +21,10 @@ test('proyectos por área', () => {
 });
 test('etiqueta En equipo solo en proyectos de equipo', () => {
   const team = areas.flatMap(a => a.projects).filter(p => p.team).map(p => p.name).sort();
-  expect(team).toEqual(['Gym-LACOBRA', 'PomoPet', 'SIRA']);
+  expect(team).toEqual(['Gym-LACOBRA', 'OraAdmin XE', 'PomoPet', 'SIRA']);
 });
 test('Scrum y Azure DevOps solo en SIRA', () => {
-  const fuera = JSON.stringify({ person, stats, education, workflow, areas });
+  const fuera = JSON.stringify({ person, education, workflow, areas });
   expect(fuera).not.toMatch(/Scrum|Azure DevOps/);
   expect(JSON.stringify(experience)).toMatch(/Scrum/);
   expect(JSON.stringify(experience)).toMatch(/Azure DevOps/);
@@ -57,7 +58,6 @@ test('contacto', () => {
   expect(person.email).toBe('mvnaranjo1@gmail.com');
   expect(person.github).toBe('https://github.com/marcovinir');
 });
-test('cifras', () => expect(stats.map(s => s.value)).toEqual(['700+', '6', '6']));
 test('Claude Code aparece en el perfil y en el flujo', () => {
   expect(person.about.join(' ')).toMatch(/Claude Code/);
   expect(JSON.stringify(workflow)).toMatch(/Claude Code/);
@@ -104,3 +104,4 @@ test('el párrafo de IA deja claro que él dirige y revisa', () => {
 test('no se publica el dominio de desarrollo de SIRA (confidencialidad)', () => expect(allText()).not.toMatch(/dannyas/i));
 test('los despliegues de SIRA son del entorno de desarrollo', () => expect(experience[0].bullets).toContain('Despliegues del entorno de desarrollo por SSH en AWS (EC2 y RDS).'));
 test('no se nombra al cliente de SIRA (confidencialidad)', () => expect(allText()).not.toMatch(/Montes de Oro|munimontesdeoro/i));
+test('ya no hay cifras de commits ni proyectos', () => expect('stats' in cv).toBe(false));

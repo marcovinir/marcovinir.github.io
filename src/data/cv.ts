@@ -29,12 +29,6 @@ export const person = {
   ],
 };
 
-export const stats: { value: string; label: string }[] = [
-  { value: '700+', label: 'commits en el último año' },
-  { value: '6', label: 'proyectos destacados' },
-  { value: '6', label: 'lenguajes' },
-];
-
 export const education: TimelineEntry[] = [
   {
     period: '2024 — Actualidad',
@@ -93,7 +87,7 @@ export const areas: Area[] = [
     text: 'APIs, modelos de datos y bases de datos diseñadas para crecer sin romperse.',
     skills: ['Spring Boot', 'Django', 'FastAPI', '.NET 8', 'PostgreSQL', 'Neon', 'Oracle', 'Docker'],
     projects: [
-      { name: 'OraAdmin XE', summary: 'Consola DBA de escritorio para Oracle 21c', stack: 'C# + .NET 8', code: 'https://github.com/marcovinir/oraadmin-xe', team: false },
+      { name: 'OraAdmin XE', summary: 'Consola DBA de escritorio para Oracle 21c', stack: 'C# + .NET 8', code: 'https://github.com/marcovinir/oraadmin-xe', team: true },
       { name: 'Coffee Tour Pura Vista', summary: 'Tienda de café y reservas de visitas para una finca familiar', stack: 'React + Spring Boot + PostgreSQL', demo: 'https://zagala.marcovinir.dev/', team: false },
     ],
     color: '#34d399', color2: '#a3e635',
@@ -137,6 +131,6 @@ function collect(value: unknown, out: string[]): void {
 /** Une todos los textos del CV; lo usan las pruebas de reglas de contenido. */
 export function allText(): string {
   const out: string[] = [];
-  collect({ person, stats, education, experience, workflow, areas, certifications, tools }, out);
+  collect({ person, education, experience, workflow, areas, certifications, tools }, out);
   return out.join('\n');
 }
