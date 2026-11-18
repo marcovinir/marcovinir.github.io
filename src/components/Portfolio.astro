@@ -4,6 +4,7 @@ import Rail from './Rail.astro';
 import Hero from './Hero.astro';
 import Perfil from './Perfil.astro';
 import Experiencia from './Experiencia.astro';
+import Toolbox from './Toolbox.astro';
 import ComoTrabajo from './ComoTrabajo.astro';
 import AreasIntro from './AreasIntro.astro';
 import Area from './Area.astro';
@@ -27,6 +28,7 @@ const visuals = { fluir: Waves, cimientos: IsoBlocks, chispa: Embers, horizonte:
 const rail = [
   { id: 'hero', color: '#ffffff', label: ui.rail.hero },
   { id: 'perfil', color: '#ffffff', label: ui.rail.perfil },
+  { id: 'stack', color: '#ffffff', label: ui.rail.stack },
   { id: 'experiencia', color: '#38bdf8', label: ui.rail.experiencia },
   { id: 'como-trabajo', color: '#a78bfa', label: ui.rail.comoTrabajo },
   ...areas.map(a => ({ id: a.id, color: a.id === 'horizonte' ? a.color2 : a.color, label: a.label })),
@@ -40,6 +42,7 @@ const rail = [
   <main>
     <Hero lang={lang} />
     <Perfil lang={lang} />
+    <Toolbox lang={lang} />
     <Experiencia lang={lang} />
     <ComoTrabajo lang={lang} />
     <AreasIntro lang={lang} />

@@ -31,3 +31,16 @@ test('la certificación de Google enlaza a Skillshop', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#perfil').getByRole('link', { name: 'Cloud Computing' })).toHaveAttribute('href', 'https://skillshop.exceedlms.com/student/award/xbT5TszjkaUcbVz9YzWg2Euy');
 });
+
+test('resumen Con qué trabajo después de Sobre mí', async ({ page }) => {
+  await page.goto('/');
+  const s = page.locator('#stack');
+  await expect(s.getByRole('heading', { name: 'Con qué trabajo' })).toBeVisible();
+  await expect(s.locator('dt')).toHaveText(['Lenguajes', 'Frontend', 'Backend', 'Datos', 'Cloud y despliegue', 'Herramientas']);
+  await expect(s.locator('dd').nth(1)).toContainText('React');
+  const orden = await page.evaluate(() => ['perfil', 'stack', 'experiencia'].map(id => document.getElementById(id)!.getBoundingClientRect().top));
+  expect(orden[0]).toBeLessThan(orden[1]);
+  expect(orden[1]).toBeLessThan(orden[2]);
+  await page.goto('/en/');
+  await expect(page.locator('#stack').getByRole('heading', { name: 'What I work with' })).toBeVisible();
+});

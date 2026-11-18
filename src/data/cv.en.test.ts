@@ -66,3 +66,8 @@ describe('inglés: textos clave', () => {
     expect(en.education[1].title).toMatch(/Application Programming/i);
   });
 });
+
+test('inglés: el resumen de herramientas tiene las mismas tecnologías', () => {
+  expect(en.toolbox.map(r => r.label)).toEqual(['Languages', 'Frontend', 'Backend', 'Data', 'Cloud & deployment', 'Tools']);
+  expect(en.toolbox.map(r => r.items.length)).toEqual(es.toolbox.map(r => r.items.length));
+});

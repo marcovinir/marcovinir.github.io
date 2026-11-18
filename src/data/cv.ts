@@ -123,6 +123,16 @@ export const certifications: Certification[] = [
   { name: 'AI Skills Fest 2026', issuer: 'Microsoft', date: '2026', href: 'https://www.credly.com/badges/9fe53920-c524-4bfa-9019-586444f4c141' },
 ];
 
+/** Resumen rápido para reclutadores: con qué trabajo, por categoría. */
+export const toolbox: { label: string; items: string[] }[] = [
+  { label: 'Lenguajes', items: ['TypeScript', 'JavaScript', 'Java', 'Python', 'C#', 'SQL'] },
+  { label: 'Frontend', items: ['React', 'Vue', 'Astro', 'Vite', 'Three.js'] },
+  { label: 'Backend', items: ['Spring Boot', 'Django', 'FastAPI', 'Express', 'Socket.io', '.NET 8'] },
+  { label: 'Datos', items: ['PostgreSQL', 'Neon', 'Oracle', 'Prisma', 'Flyway'] },
+  { label: 'Cloud y despliegue', items: ['AWS (EC2, RDS)', 'Render', 'Cloudinary', 'Docker', 'GitHub Actions', 'GitHub Pages'] },
+  { label: 'Herramientas', items: ['Git', 'GitHub', 'Claude Code', 'Agentes', 'MCP', 'Vitest', 'Playwright'] },
+];
+
 /** Herramientas de trabajo que no pertenecen a un área; solo aparecen en el CV. */
 export const tools: string[] = ['Git', 'GitHub', 'Claude Code', 'Agentes', 'MCP', 'Vitest', 'Playwright'];
 
@@ -135,6 +145,6 @@ function collect(value: unknown, out: string[]): void {
 /** Une todos los textos del CV; lo usan las pruebas de reglas de contenido. */
 export function allText(): string {
   const out: string[] = [];
-  collect({ person, education, experience, workflow, areas, certifications, tools }, out);
+  collect({ person, education, experience, workflow, areas, certifications, toolbox, tools }, out);
   return out.join('\n');
 }

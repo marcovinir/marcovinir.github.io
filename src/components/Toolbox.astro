@@ -1,0 +1,39 @@
+---
+import { cvData, type Lang } from '../data';
+import { t } from '../i18n/ui';
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const { toolbox } = cvData(lang);
+const ui = t(lang).stack;
+---
+
+<section id="stack" data-accent="#ffffff">
+  <div class="grid">
+    <div>
+      <div class="kicker reveal">{ui.kicker}</div>
+      <h2 class="reveal">{ui.title}</h2>
+    </div>
+    <dl class="rows reveal">
+      {toolbox.map(r => (
+        <div class="row">
+          <dt>{r.label}</dt>
+          <dd>{r.items.join(', ')}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  #stack { min-height: auto; padding-top: 72px; padding-bottom: 72px; border-top: 1px solid #ffffff12; border-bottom: 1px solid #ffffff12; }
+  .grid { position: relative; z-index: 2; width: 100%; max-width: 1150px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 6vw; align-items: start; }
+  .kicker { color: var(--muted); }
+  h2 { font-size: clamp(28px, 3.4vw, 40px); }
+  .rows { display: grid; gap: 14px; }
+  .row { display: grid; grid-template-columns: 180px 1fr; gap: 20px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid #ffffff0d; }
+  .row:last-child { border-bottom: 0; padding-bottom: 0; }
+  dt { color: var(--muted); font-size: 15px; }
+  dd { font-size: 16px; line-height: 1.6; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; gap: 24px; } }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; gap: 4px; } }
+</style>

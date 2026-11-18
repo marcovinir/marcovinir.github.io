@@ -107,3 +107,10 @@ test('no se publica el dominio de desarrollo de SIRA (confidencialidad)', () => 
 test('los despliegues de SIRA son del entorno de desarrollo', () => expect(experience[0].bullets).toContain('Despliegues del entorno de desarrollo por SSH en AWS (EC2 y RDS).'));
 test('no se nombra al cliente de SIRA (confidencialidad)', () => expect(allText()).not.toMatch(/Montes de Oro|munimontesdeoro/i));
 test('ya no hay cifras de commits ni proyectos', () => expect('stats' in cv).toBe(false));
+test('resumen de herramientas', () => {
+  expect(cv.toolbox.map(r => r.label)).toEqual(['Lenguajes', 'Frontend', 'Backend', 'Datos', 'Cloud y despliegue', 'Herramientas']);
+  for (const r of cv.toolbox) expect(r.items.length).toBeGreaterThan(2);
+  const todo = cv.toolbox.flatMap(r => r.items);
+  for (const t of ['React', 'Spring Boot', 'Django', 'PostgreSQL', 'Neon', 'AWS (EC2, RDS)', 'Cloudinary', 'Claude Code']) expect(todo).toContain(t);
+  expect(JSON.stringify(cv.toolbox)).not.toMatch(/Scrum|Azure DevOps/);
+});
