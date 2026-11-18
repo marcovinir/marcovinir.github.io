@@ -66,11 +66,11 @@ export const experience: TimelineEntry[] = [
 ];
 
 export const workflow: Step[] = [
-  { title: 'Entender', text: 'Escucho la necesidad y la aterrizo con maquetas antes de escribir código.', example: 'Coffee Tour Pura Vista: estilos y paletas definidos con la familia.' },
-  { title: 'Diseñar', text: 'Escribo un documento de diseño y un plan por etapas, con issues.', example: 'Rivalmon y este portafolio.' },
-  { title: 'Construir', text: 'En ramas, con Claude Code, agentes y servidores MCP para conectar herramientas.', example: 'Pull requests pequeños y revisados.' },
-  { title: 'Probar', text: 'Pruebas automáticas e integración continua antes de fusionar.', example: 'Vitest y Playwright en Rivalmon y en este portafolio.' },
-  { title: 'Desplegar', text: 'Lo dejo en línea, con dominio propio, y lo mantengo.', example: 'Render, GitHub Pages y AWS (EC2 y RDS).' },
+  { title: 'Entender', text: 'Escucho la necesidad y la aterrizo con maquetas antes de escribir código.', example: 'En Coffee Tour Pura Vista definí estilos y paletas con la familia antes de programar.' },
+  { title: 'Diseñar', text: 'Escribo un documento de diseño y un plan por etapas, con issues.', example: 'Rivalmon y este portafolio empezaron con un documento de diseño y un plan.' },
+  { title: 'Construir', text: 'En ramas, con Claude Code, agentes y servidores MCP para conectar herramientas.', example: 'En Rivalmon, cada cambio entró en un pull request pequeño con pruebas en CI.' },
+  { title: 'Probar', text: 'Pruebas automáticas e integración continua antes de fusionar.', example: 'Rivalmon tiene más de 200 archivos de pruebas con Vitest y Playwright.' },
+  { title: 'Desplegar', text: 'Lo dejo en línea, con dominio propio, y lo mantengo.', example: 'Rivalmon vive en Render, este portafolio en GitHub Pages y el entorno de desarrollo de SIRA en AWS.' },
 ];
 
 export const areas: Area[] = [
@@ -109,10 +109,10 @@ export const areas: Area[] = [
   {
     id: 'horizonte', label: 'Cloud y despliegue', number: '04',
     titleLine1: 'Del código', titleLine2: 'a la nube.',
-    text: 'Despliegues automatizados, CI y servicios cloud para que tu proyecto llegue a todos. Conocimientos básicos de AWS.',
+    text: 'Despliegues automatizados, CI y servicios cloud para que tu proyecto llegue a todos.',
     skills: ['AWS EC2', 'AWS RDS', 'SSH', 'Render', 'Cloudinary', 'GitHub Actions', 'GitHub Pages'],
     projects: [
-      { name: 'SIRA', summary: 'Sistema de Reportes de Avería para una institución pública', stack: 'Django + React + TypeScript', team: true, inProgress: true },
+      { name: 'marcovinir.dev', summary: 'Este portafolio: pruebas, CV en PDF y publicación automática en cada cambio', stack: 'Astro + GitHub Actions + GitHub Pages + Playwright', demo: 'https://marcovinir.dev/', code: 'https://github.com/marcovinir/marcovinir.github.io', team: false },
     ],
     color: '#e2e8f0', color2: '#a78bfa',
   },

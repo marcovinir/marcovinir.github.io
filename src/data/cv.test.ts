@@ -17,11 +17,11 @@ test('proyectos por área', () => {
   expect(areas[0].projects.map(p => p.name)).toEqual(['PomoPet', 'Gym-LACOBRA']);
   expect(areas[1].projects.map(p => p.name)).toEqual(['OraAdmin XE', 'Coffee Tour Pura Vista']);
   expect(areas[2].projects.map(p => p.name)).toEqual(['Rivalmon']);
-  expect(areas[3].projects.map(p => p.name)).toEqual(['SIRA']);
+  expect(areas[3].projects.map(p => p.name)).toEqual(['marcovinir.dev']);
 });
 test('etiqueta En equipo solo en proyectos de equipo', () => {
   const team = areas.flatMap(a => a.projects).filter(p => p.team).map(p => p.name).sort();
-  expect(team).toEqual(['Gym-LACOBRA', 'OraAdmin XE', 'PomoPet', 'SIRA']);
+  expect(team).toEqual(['Gym-LACOBRA', 'OraAdmin XE', 'PomoPet']);
 });
 test('Scrum y Azure DevOps solo en SIRA', () => {
   const fuera = JSON.stringify({ person, education, workflow, areas });
@@ -40,9 +40,9 @@ test('experiencia SIRA como desarrollador', () => {
   expect(experience[0].org).toMatch(/institución pública/);
   expect(experience[0].links).toBeUndefined();
 });
-test('AWS básico con EC2, RDS y SSH', () => {
+test('AWS con EC2, RDS y SSH, sin autolimitarse', () => {
   const nube = areas.find(a => a.id === 'horizonte')!;
-  expect(nube.text).toMatch(/básic/i);
+  expect(nube.text).not.toMatch(/básic/i);
   expect(nube.skills).toEqual(expect.arrayContaining(['AWS EC2', 'AWS RDS', 'SSH']));
   expect(JSON.stringify(experience)).toMatch(/SSH/);
 });
@@ -75,7 +75,7 @@ test('enlaces de demo y código de cada proyecto', () => {
     'OraAdmin XE': { demo: undefined, code: 'https://github.com/marcovinir/oraadmin-xe' },
     'Coffee Tour Pura Vista': { demo: 'https://zagala.marcovinir.dev/', code: undefined },
     'Rivalmon': { demo: 'https://rivalmon.marcovinir.dev/', code: 'https://github.com/marcovinir/rivalmon' },
-    'SIRA': { demo: undefined, code: undefined },
+    'marcovinir.dev': { demo: 'https://marcovinir.dev/', code: 'https://github.com/marcovinir/marcovinir.github.io' },
   });
 });
 test('rol en SIRA: historias de usuario completas, backend y frontend', () => {
@@ -113,4 +113,14 @@ test('resumen de herramientas', () => {
   const todo = cv.toolbox.flatMap(r => r.items);
   for (const t of ['React', 'Spring Boot', 'Django', 'PostgreSQL', 'Neon', 'AWS (EC2, RDS)', 'Cloudinary', 'Claude Code']) expect(todo).toContain(t);
   expect(JSON.stringify(cv.toolbox)).not.toMatch(/Scrum|Azure DevOps/);
+});
+test('SIRA solo aparece en Experiencia, no como proyecto', () => {
+  expect(areas.flatMap(a => a.projects).map(p => p.name)).not.toContain('SIRA');
+  expect(experience[0].title).toMatch(/SIRA/);
+});
+test('los ejemplos de Cómo trabajo son frases completas', () => {
+  for (const s of workflow) {
+    expect(s.example.split(' ').length).toBeGreaterThanOrEqual(7);
+    expect(s.example).toMatch(/\.$/);
+  }
 });
