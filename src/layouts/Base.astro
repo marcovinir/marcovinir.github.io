@@ -17,6 +17,9 @@ interface Props {
 
 const { title, description, noindex = false, lang = 'es', translated = false, pairs = alternates } = Astro.props;
 const url = new URL(Astro.url.pathname, Astro.site);
+// Imagen de vista previa al compartir el enlace (LinkedIn, WhatsApp, etc.). Se genera con scripts/generate-og.mjs.
+const ogImage = new URL(`/og/marco-rojas-${lang}.png`, Astro.site);
+const ogAlt = lang === 'en' ? 'Marco Rojas, full-stack developer' : 'Marco Rojas, desarrollador full-stack';
 ---
 
 <!doctype html>
@@ -35,6 +38,14 @@ const url = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />
     <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_CR'} />
+    <meta property="og:site_name" content="Marco Rojas" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
     {translated && Object.entries(pairs).map(([l, path]) => <link rel="alternate" hreflang={l} href={new URL(path, Astro.site)} />)}
     {translated && <link rel="alternate" hreflang="x-default" href={new URL(pairs.es, Astro.site)} />}
     <slot name="head" />

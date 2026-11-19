@@ -47,6 +47,12 @@ for (const file of htmlFiles(DIST)) {
   if (html.includes('formspree.io/f/PENDIENTE')) problems.push(`${where}: falta el código real del formulario de Formspree`);
   if (CONFIDENCIAL.test(html)) problems.push(`${where}: contiene datos confidenciales de SIRA`);
 
+  // La imagen de vista previa debe ser absoluta (LinkedIn no acepta rutas relativas) y existir en dist/.
+  const og = html.match(/<meta property="og:image" content="([^"]+)"/);
+  if (!og) problems.push(`${where}: falta og:image`);
+  else if (!og[1].startsWith('https://marcovinir.dev/')) problems.push(`${where}: og:image no es absoluta: ${og[1]}`);
+  else if (!resolves(new URL(og[1]).pathname, file)) problems.push(`${where}: og:image ${og[1]} no existe en dist/`);
+
   const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
   for (const [, attr, target] of html.matchAll(/\s(href|src)="([^"]+)"/g)) {
     if (/^(https?:|mailto:|tel:|data:|\/\/)/.test(target)) continue;
