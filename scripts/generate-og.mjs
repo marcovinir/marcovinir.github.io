@@ -10,7 +10,7 @@ const IMAGES = [
   { out: 'public/og/marco-rojas-es.png', role: 'Desarrollador full-stack', line: 'Frontend, backend, tiempo real y despliegue.' },
   { out: 'public/og/marco-rojas-en.png', role: 'Full-stack developer', line: 'Frontend, backend, real time and deployment.' },
 ];
-const STACK = ['React', 'Spring Boot', 'Django', 'AWS'];
+const STACK = ['React', 'Spring Boot', 'Django'];
 
 const html = ({ role, line }) => `<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face { font-family: Inter; src: url(data:font/woff2;base64,${font}) format('woff2'); font-weight: 100 900; }
@@ -26,7 +26,7 @@ body { width: 1200px; height: 630px; background: #05060a; color: #eef0f6; font-f
 .logo i { width: 18px; height: 18px; border-radius: 50%; display: block; }
 h1 { font-size: 104px; font-weight: 800; letter-spacing: -.035em; line-height: 1; margin-top: 54px; }
 .role { font-size: 50px; font-weight: 700; letter-spacing: -.02em; margin-top: 18px;
-  background: linear-gradient(90deg, #38bdf8, #34d399, #f59e0b, #fb7185, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; width: fit-content; }
+  color: #38bdf8; }
 .line { font-size: 26px; color: #8a90a6; margin-top: 20px; }
 .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
 .chips { display: flex; gap: 12px; }
