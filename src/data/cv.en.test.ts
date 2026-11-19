@@ -71,3 +71,8 @@ test('inglés: el resumen de herramientas tiene las mismas tecnologías', () => 
   expect(en.toolbox.map(r => r.label)).toEqual(['Languages', 'Frontend', 'Backend', 'Data', 'Cloud & deployment', 'Tools']);
   expect(en.toolbox.map(r => r.items.length)).toEqual(es.toolbox.map(r => r.items.length));
 });
+
+test('SIRA is presented as an academic project since February 2026', () => {
+  expect(en.experience[0].org).toMatch(/academic/);
+  expect(en.experience[0].period).toMatch(/^February 2026/);
+});

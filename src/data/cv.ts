@@ -52,11 +52,12 @@ export const education: TimelineEntry[] = [
 
 export const experience: TimelineEntry[] = [
   {
-    period: '2026 — Actualidad',
+    period: 'Febrero 2026 — Actualidad',
     title: 'SIRA — Sistema de Reportes de Avería',
-    org: 'Desarrollador full-stack · proyecto en equipo para una institución pública',
+    org: 'Desarrollador full-stack · proyecto académico en equipo para una institución pública',
     current: true,
     bullets: [
+      'Proyecto de año y medio de los cursos de Ingeniería de Sistemas de la UNA.',
       'Desarrollo historias de usuario completas, del backend al frontend.',
       'Desarrollado con metodología Scrum (sprints e historias de usuario) usando Azure DevOps.',
       'Stack: Django + React + TypeScript.',

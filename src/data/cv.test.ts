@@ -124,3 +124,9 @@ test('los ejemplos de Cómo trabajo son frases completas', () => {
     expect(s.example).toMatch(/\.$/);
   }
 });
+
+test('SIRA se presenta como proyecto académico desde febrero de 2026', () => {
+  expect(experience[0].org).toMatch(/proyecto académico/);
+  expect(experience[0].period).toMatch(/^Febrero 2026/);
+  expect(experience[0].bullets?.join(' ')).toMatch(/Ingeniería de Sistemas/);
+});
