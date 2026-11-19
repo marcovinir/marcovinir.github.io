@@ -3,7 +3,7 @@ import type { Lang } from '../data';
 
 const es = {
   meta: {
-    title: 'Marco Rojas · Desarrollador full-stack (React, Spring Boot, Django y AWS)',
+    title: 'Marco Rojas · Desarrollador full-stack (React, Spring Boot y Django)',
     description: 'Portafolio y CV de Marco Rojas, desarrollador full-stack: frontend, backend, tiempo real y despliegue.',
     cvTitle: 'CV · Marco Rojas',
     cvDescription: 'Currículum de Marco Rojas, desarrollador full-stack.',
@@ -32,7 +32,7 @@ const es = {
 
 const en: typeof es = {
   meta: {
-    title: 'Marco Rojas · Full-stack developer (React, Spring Boot, Django and AWS)',
+    title: 'Marco Rojas · Full-stack developer (React, Spring Boot and Django)',
     description: 'Portfolio and CV of Marco Rojas, full-stack developer: frontend, backend, real time and deployment.',
     cvTitle: 'CV · Marco Rojas',
     cvDescription: 'Resume of Marco Rojas, full-stack developer.',
